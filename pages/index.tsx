@@ -1,7 +1,8 @@
 import React from 'react'
+import Profile from '@/src/components/profile'
 
 const Home = () => {
-  return <p>Ankit</p>
+  return <Profile />
 }
 
 export default Home
