@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+
+body {
+  font-family: 'Titillium Web';
+}
+
+.dash {
+  color: #FF851B;
+  @keyframes flickerAnimation {
+      0%   { opacity:1; }
+      50%  { opacity:0; }
+      100% { opacity:1; }
+    }
+  animation: flickerAnimation 1s infinite;
+}
