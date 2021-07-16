@@ -1,15 +1,12 @@
 import React from 'react'
 import { Box } from '@chakra-ui/react'
-import Image from 'next/image'
+import SocialIcons from '@/src/components/profile/social-icons'
+import Navbar from '@/src/components/navbar'
 
 const Profile = () => {
   return (
-    <Box height='100vh' backgroundColor='black'>
-      <Box display='flex'>
-        <Box height='20px' m='1rem'>
-          <a href='https://knowankit.com'><Image src='/portfolio-logo.png' alt='knowankit logo' height='50px' width='50px' /></a>
-        </Box>
-      </Box>
+    <Box height='100vh' backgroundColor='black' id='profile'>
+      <Navbar />
       <Box textAlign='center' mt={['6rem', '6rem', '6rem', '6rem']}>
           <Box color='#FF851B' fontSize={['1.5rem', '1.5rem', '3rem', '3rem']} fontWeight='bold'>
             <Box className='tech-profile' display='inline-flex' position='relative' overflow='hidden'>
@@ -28,6 +25,7 @@ const Profile = () => {
             <p>And of-course a love for egyptian bracket</p>
             <Box as='img' margin='0px auto' mt='4rem' src='/ankit.png' alt='Ankit' height={['100', '100', '200', '200']} />
           </Box>
+          <SocialIcons />
         </Box>
     </Box>
   )
