@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Blog = () => {
-  return (
-    <p>Under constructions</p>
-  )
-}
+  return <p>Under constructions</p>;
+};
 
-export default Blog
+export default Blog;

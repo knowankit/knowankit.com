@@ -2,7 +2,14 @@ import React from 'react';
 import { Box } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, useDisclosure } from '@chakra-ui/react';
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalCloseButton,
+  ModalBody,
+  useDisclosure
+} from '@chakra-ui/react';
 import { BiMenuAltRight } from 'react-icons/bi';
 
 const Navbar = () => {
@@ -48,7 +55,11 @@ const Navbar = () => {
           <Image src="/portfolio-logo.png" alt="knowankit logo" height="50px" width="50px" />
         </a>
       </Box>
-      <Box color="white" display={['none', 'none', 'flex', 'flex']} alignItems="center" fontSize="1.2rem">
+      <Box
+        color="white"
+        display={['none', 'none', 'flex', 'flex']}
+        alignItems="center"
+        fontSize="1.2rem">
         {loadMenu()}
       </Box>
       <Box m="1rem" display={['flex', 'flex', 'none', 'none']}>

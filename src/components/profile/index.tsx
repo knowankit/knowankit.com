@@ -23,7 +23,11 @@ const Profile = () => {
           flexDirection="column"
           alignItems="center">
           <Box color="#FF851B" fontSize={['2rem', '2.5rem', '3rem', '3rem']} fontWeight="bold">
-            <Box className="tech-profile" display="inline-flex" position="relative" overflow="hidden">
+            <Box
+              className="tech-profile"
+              display="inline-flex"
+              position="relative"
+              overflow="hidden">
               <Box display="inline-flex" flexDirection="column">
                 <Box>Front-end</Box>
                 {/* <Box>Back-end</Box>
@@ -41,7 +45,10 @@ const Profile = () => {
               </Box>
             </Box>
           </Box>
-          <Box color="white" fontSize={['1rem', '1.6rem', '1.8rem', '1.8rem']} mx={['1rem', '1rem', '1rem', '1rem']}>
+          <Box
+            color="white"
+            fontSize={['1rem', '1.6rem', '1.8rem', '1.8rem']}
+            mx={['1rem', '1rem', '1rem', '1rem']}>
             <p>I code beautifully simple things and I love what I do</p>
             <p>And of-course a love for egyptian bracket</p>
           </Box>

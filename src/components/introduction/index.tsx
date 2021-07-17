@@ -28,10 +28,11 @@ const Introduction = () => {
             mt="1rem"
             mx={['4rem', '4rem', '6rem', '8rem']}
             color="white">
-            I&apos;m a Front-end developer and UI Designer from India. I love CSS and JavaScript which along with other
-            acroynms gives me superpowers to develop compelling front-end, intuitive yet minimalistic interfaces, and
-            engaging designs. I work to the principle that simple is beautiful, while carefully including the finest
-            details and interactions. I&apos;m quiet confident, naturally curious, and perpetually improving my skills.
+            I&apos;m a Front-end developer and UI Designer from India. I love CSS and JavaScript
+            which along with other acroynms gives me superpowers to develop compelling front-end,
+            intuitive yet minimalistic interfaces, and engaging designs. I work to the principle
+            that simple is beautiful, while carefully including the finest details and interactions.
+            I&apos;m quiet confident, naturally curious, and perpetually improving my skills.
           </Box>
         </Box>
       </Box>
