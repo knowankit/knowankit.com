@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from '@chakra-ui/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, useDisclosure  } from '@chakra-ui/react'
+import { Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, useDisclosure } from '@chakra-ui/react'
 import { BiMenuAltRight }  from 'react-icons/bi'
 
 const Navbar = () => {
@@ -16,7 +16,7 @@ const Navbar = () => {
         <Box>
         {menus.map((menu, index) => (
           <Box m='1rem' key={index} fontWeight='bold'>
-            <Link href={menu.link}>
+            <Link href={menu.link} passHref>
               {menu.name}
             </Link>
           </Box>
@@ -26,8 +26,8 @@ const Navbar = () => {
     }
 
     return menus.map((menu, index) => (
-      <Box mr='20px' key={index}>
-        <Link href={menu.link}>
+      <Box mr='20px' key={index} cursor='pointer'>
+        <Link href={menu.link} passHref>
           <Box as='span' fontWeight='bold'>{menu.name}</Box>
         </Link>
       </Box>
