@@ -5,13 +5,13 @@ import { AiOutlineGithub, AiOutlineTwitter, AiOutlineInstagram } from 'react-ico
 const SocialIcons = () => {
   return (
     <Box display='flex' justifyContent='center' alignItems='flex-end'>
-      <Box as='a' color='white' fontSize='3rem' mt='2.5rem' mr='20px' href='https://github.com/knowankit'>
+      <Box as='a' color='white' fontSize={['1.4rem', '2.4rem', '3rem', '3rem']} mt='2.5rem' mr='20px' href='https://github.com/knowankit'>
           <AiOutlineGithub />
       </Box>
-      <Box as='a' color='white' fontSize='3rem' mt='2.5rem' mr='20px' href='https://twitter.com/knowankit'>
+      <Box as='a' color='white' fontSize={['1.4rem', '2.4rem', '3rem', '3rem']} mt='2.5rem' mr='20px' href='https://twitter.com/knowankit'>
           <AiOutlineTwitter />
       </Box>
-      <Box as='a' color='white' fontSize='3rem' mt='2.5rem' href='https://www.instagram.com/knowankitt/'>
+      <Box as='a' color='white' fontSize={['1.4rem', '2.4rem', '3rem', '3rem']} mt='2.5rem' href='https://www.instagram.com/knowankitt/'>
           <AiOutlineInstagram />
       </Box>
     </Box>
