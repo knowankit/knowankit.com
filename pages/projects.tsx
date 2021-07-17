@@ -1,7 +1,3 @@
-import React from 'react';
-
-const Projects = () => {
-  return <p>Under constructions</p>;
-};
+import Projects from '@/src/components/projects';
 
 export default Projects;
