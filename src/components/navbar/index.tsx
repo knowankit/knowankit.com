@@ -3,11 +3,11 @@ import { Box } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalCloseButton,
-  ModalBody,
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerOverlay,
+  DrawerCloseButton,
   useDisclosure
 } from '@chakra-ui/react';
 import { BiMenuAltRight } from 'react-icons/bi';
@@ -25,9 +25,14 @@ const Navbar = () => {
 
     if (isMobile) {
       return (
-        <Box>
+        <Box
+          height="100vh"
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center">
           {menus.map((menu, index) => (
-            <Box m="1rem" key={index} fontWeight="bold">
+            <Box m="1rem" height="10vh" key={index} fontWeight="bold" fontSize="2rem">
               <Link href={menu.link} passHref>
                 {menu.name}
               </Link>
@@ -63,14 +68,14 @@ const Navbar = () => {
         {loadMenu()}
       </Box>
       <Box m="1rem" display={['flex', 'flex', 'none', 'none']}>
-        <BiMenuAltRight color="white" fontSize="2.5em" onClick={onOpen} />
-        <Modal onClose={onClose} size="lg" isOpen={isOpen} isCentered>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalCloseButton />
-            <ModalBody>{loadMenu(true)}</ModalBody>
-          </ModalContent>
-        </Modal>
+        <BiMenuAltRight color="white" fontSize="2.5em" cursor="pointer" onClick={onOpen} />
+        <Drawer size="full" onClose={onClose} isOpen={isOpen}>
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerBody>{loadMenu(true)}</DrawerBody>
+          </DrawerContent>
+        </Drawer>
       </Box>
     </Box>
   );
