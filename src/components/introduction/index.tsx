@@ -15,8 +15,8 @@ const Introduction = () => {
         <Box>
           <Box as="p" color="white" fontSize={['1.5rem', '1.5rem', '3rem', '3rem']}>
             <strong>
-              Hi, I&apos;m{' '}
-              <Box as="span" color="#FF851B">
+              Hi, I&apos;m
+              <Box as="span" color="brand">
                 Ankit
               </Box>
               . Nice to meet you.

@@ -2,6 +2,7 @@ import React from 'react';
 import { Box } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import {
   Drawer,
   DrawerBody,
@@ -14,6 +15,7 @@ import { BiMenuAltRight } from 'react-icons/bi';
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const router = useRouter();
 
   const loadMenu = (isMobile = false) => {
     const menus = [
@@ -32,7 +34,13 @@ const Navbar = () => {
           justifyContent="center"
           alignItems="center">
           {menus.map((menu, index) => (
-            <Box m="1rem" height="10vh" key={index} fontWeight="bold" fontSize="2rem">
+            <Box
+              m="1rem"
+              height="10vh"
+              key={index}
+              fontWeight="bold"
+              fontSize="2rem"
+              color={router.asPath === menu.link ? 'brand' : ''}>
               <Link href={menu.link} passHref>
                 {menu.name}
               </Link>
@@ -43,7 +51,11 @@ const Navbar = () => {
     }
 
     return menus.map((menu, index) => (
-      <Box mr="20px" key={index} cursor="pointer">
+      <Box
+        mr="20px"
+        key={index}
+        cursor="pointer"
+        color={router.asPath === menu.link ? 'brand' : ''}>
         <Link href={menu.link} passHref>
           <Box as="span" fontWeight="bold">
             {menu.name}

@@ -16,7 +16,7 @@ const ProjectCard = ({ isBlog = false, project }) => {
       overflow={'hidden'}>
       <Stack>
         <Text
-          color="#ff851b"
+          color="brand"
           textTransform={'uppercase'}
           fontWeight={800}
           fontSize={'sm'}
