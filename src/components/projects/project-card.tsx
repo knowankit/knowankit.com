@@ -3,13 +3,13 @@ import React from 'react';
 import { Box, Heading, Text, Stack, Avatar, useColorModeValue } from '@chakra-ui/react';
 import { AiFillGithub } from 'react-icons/ai';
 
-const Card = ({ isBlog = false, project }) => {
+const ProjectCard = ({ isBlog = false, project }) => {
   return (
     <Box
       maxW={'350px'}
       w={'full'}
       bg={useColorModeValue('white', 'gray.900')}
-      boxShadow={'xl'}
+      boxShadow={'lg'}
       rounded={'md'}
       p={6}
       m="1rem"
@@ -56,4 +56,4 @@ const Card = ({ isBlog = false, project }) => {
   );
 };
 
-export default Card;
+export default ProjectCard;

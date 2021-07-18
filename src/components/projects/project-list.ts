@@ -29,7 +29,7 @@ const projectList = [
   {
     name: 'Google Holi',
     github: 'https://github.com/knowankit/google-holi',
-    description: 'A npm package similar to google Holi'
+    description: 'A npm package similar to google Holi 🎨'
   },
   {
     name: 'Book library system',
