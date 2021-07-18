@@ -9,7 +9,9 @@ const Projects = () => {
       <Box bg="black">
         <Navbar />
       </Box>
-      <SearchProject />
+      <Box height="100%">
+        <SearchProject />
+      </Box>
     </Box>
   );
 };

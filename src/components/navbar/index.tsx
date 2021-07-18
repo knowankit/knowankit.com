@@ -54,7 +54,7 @@ const Navbar = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="space-between" height="10vh">
+    <Box display="flex" justifyContent="space-between" height="10vh" boxShadow="xl">
       <Box height="20px" m="1rem">
         <a href="https://knowankit.com">
           <Image src="/portfolio-logo.png" alt="knowankit logo" height="50px" width="50px" />
