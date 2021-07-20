@@ -10,7 +10,8 @@
     "paths": {
       "@/src/*": ["src/*"],
       "@/util/*": ["util/*"],
-      "@/data/*": ["data/*"]
+      "@/data/*": ["data/*"],
+      "@/lib/*": ["lib/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,

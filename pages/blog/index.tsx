@@ -1,5 +1,5 @@
 import Blog from '@/src/components/blog';
-import { getAllFilesFrontMatter } from '@/src/lib/mdx';
+import { getAllFilesFrontMatter } from '@/lib/mdx';
 
 const BlogPage = ({ posts }) => {
   return <Blog posts={posts} />;

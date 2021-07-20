@@ -1,6 +1,6 @@
 import React from 'react';
 import { MDXRemote } from 'next-mdx-remote';
-import { getFiles, getFileBySlug } from '@/src/lib/mdx';
+import { getFiles, getFileBySlug } from '@/lib/mdx';
 import MDXComponents from '@/src/components/mdx';
 
 const Blog = ({ mdxSource }) => {
