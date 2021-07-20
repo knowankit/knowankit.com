@@ -1,3 +1,3 @@
-import Projects from '@/src/components/projects';
+import Projects from '@/components/projects';
 
 export default Projects;

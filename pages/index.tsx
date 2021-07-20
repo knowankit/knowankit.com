@@ -1,13 +1,8 @@
 import React from 'react';
-import Profile from '@/src/components/profile';
-import Introduction from '@/src/components/introduction';
+import HomePage from '@/components/homepage';
 
 const Home = () => {
-  return (
-    <>
-      <Profile />
-    </>
-  );
+  return <HomePage />;
 };
 
 export default Home;

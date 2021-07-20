@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
-import SocialIcons from '@/src/components/profile/social-icons';
-import Navbar from '@/src/components/navbar';
+import SocialIcons from '@/components/homepage/social-icons';
+import Navbar from '@/components/navbar';
 
 const Profile = () => {
   return (
@@ -22,14 +22,17 @@ const Profile = () => {
           justifyContent="space-between"
           flexDirection="column"
           alignItems="center">
-          <Box color="#FF851B" fontSize={['2rem', '2.5rem', '3rem', '3rem']} fontWeight="bold">
+          <Box fontSize={['2rem', '2.5rem', '3rem', '3rem']} fontWeight="bold">
+            <Box as="p" color="white" fontSize="2rem">
+              Hi, I am Ankit
+            </Box>
             <Box
               className="tech-profile"
               display="inline-flex"
               position="relative"
               overflow="hidden">
               <Box display="inline-flex" flexDirection="column">
-                <Box>Front-end</Box>
+                <Box color="#FF851B">Front-end</Box>
                 {/* <Box>Back-end</Box>
                 <Box>Full-stack</Box> */}
               </Box>
@@ -48,19 +51,10 @@ const Profile = () => {
           <Box
             color="white"
             fontSize={['1rem', '1.6rem', '1.8rem', '1.8rem']}
-            mx={['1rem', '1rem', '1rem', '1rem']}>
+            mx={['2rem', '1rem', '1rem', '1rem']}>
             <p>I code beautifully simple things and I love what I do</p>
             <p>And of-course a love for egyptian bracket</p>
           </Box>
-          <Box
-            as="img"
-            margin="0px auto"
-            mt="4rem"
-            src="/myself.jpg"
-            borderRadius="50%"
-            alt="Ankit"
-            height={['100', '150', '200', '200']}
-          />
           <SocialIcons />
         </Box>
       </Box>

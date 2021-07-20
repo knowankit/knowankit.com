@@ -1,7 +1,9 @@
-import Blog from '@/src/components/blog';
-import { getAllFilesFrontMatter } from '@/src/lib/mdx';
+import { FC } from 'react';
+import Blog from '@/components/blog';
+import { getAllFilesFrontMatter } from '@/lib/mdx';
+import { Posts } from '@/types/blog';
 
-const BlogPage = ({ posts }) => {
+const BlogPage: FC<Posts> = ({ posts }): JSX.Element => {
   return <Blog posts={posts} />;
 };
 

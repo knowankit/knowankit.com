@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProjectCard from '@/src/components/projects/project-card';
+import ProjectCard from '@/components/projects/project-card';
 import { Box, InputGroup, InputRightElement, Input } from '@chakra-ui/react';
 import projects from '@/data/projects';
 import { AiOutlineSearch } from 'react-icons/ai';
