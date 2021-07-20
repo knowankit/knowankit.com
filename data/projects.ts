@@ -1,4 +1,4 @@
-const projectList = [
+export default [
   {
     name: 'Trello Clone',
     github: 'https://github.com/knowankit/trello-clone',
@@ -48,5 +48,3 @@ const projectList = [
     description: 'A basic calculator made with ReactJS'
   }
 ];
-
-export default projectList;

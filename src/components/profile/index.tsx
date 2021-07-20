@@ -35,7 +35,7 @@ const Profile = () => {
               </Box>
             </Box>
             <Box color="white" display="inline-block" ml="10px">
-              Developer{' '}
+              Developer &nbsp;
               <Box as="span">
                 &lt;
                 <Box as="span" className="dash">

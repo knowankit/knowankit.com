@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ProjectCard from '@/src/components/projects/project-card';
 import { Box, InputGroup, InputRightElement, Input } from '@chakra-ui/react';
-import projects from '@/src/components/projects/project-list';
+import projects from '@/data/projects';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 const SearchProject = () => {
@@ -31,7 +31,7 @@ const SearchProject = () => {
 
   return (
     <>
-      <Box my="2rem" mx={['8rem', '10rem', '16rem', '16rem']}>
+      <Box my="2rem" width={['16rem', '20rem', '32rem', '32rem']} mx="auto">
         <InputGroup>
           <InputRightElement pointerEvents="none">
             <AiOutlineSearch />
