@@ -1,6 +1,6 @@
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { MDXProvider } from '@mdx-js/react';
-import '@/src/styles/global.scss';
+import '@/styles/global.scss';
 import MDXComponents from '@/src/components/mdx';
 
 function MyApp({ Component, pageProps }) {

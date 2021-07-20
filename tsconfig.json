@@ -11,7 +11,8 @@
       "@/src/*": ["src/*"],
       "@/util/*": ["util/*"],
       "@/data/*": ["data/*"],
-      "@/lib/*": ["lib/*"]
+      "@/lib/*": ["lib/*"],
+      "@/styles/*": ["styles/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
