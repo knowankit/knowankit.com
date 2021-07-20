@@ -21,7 +21,7 @@ const Navbar = () => {
     const menus = [
       { name: 'Home', link: '/' },
       { name: 'Projects', link: '/projects' },
-      { name: 'Articles', link: '/articles' },
+      { name: 'Blog', link: '/blog' },
       { name: 'About me', link: '/about' }
     ];
 
