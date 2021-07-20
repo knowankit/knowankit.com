@@ -7,37 +7,37 @@ import {
   Text,
   HStack,
   Avatar,
-  Tag,
-  SpaceProps,
+  // Tag,
+  // SpaceProps,
   useColorModeValue
 } from '@chakra-ui/react';
 import Link from 'next/link';
 
-interface IBlogTags {
-  tags: Array<string>;
-  marginTop?: SpaceProps['marginTop'];
-}
+// interface IBlogTags {
+//   tags: Array<string>;
+//   marginTop?: SpaceProps['marginTop'];
+// }
 
-const BlogTags: React.FC<IBlogTags> = (props) => {
-  return (
-    <HStack spacing={2} marginTop={props.marginTop}>
-      {props.tags.map((tag) => {
-        return (
-          <Tag size={'md'} variant="solid" colorScheme="orange" key={tag}>
-            {tag}
-          </Tag>
-        );
-      })}
-    </HStack>
-  );
-};
+// const BlogTags: React.FC<IBlogTags> = (props) => {
+//   return (
+//     <HStack spacing={2} marginTop={props.marginTop}>
+//       {props.tags.map((tag) => {
+//         return (
+//           <Tag size={'md'} variant="solid" colorScheme="orange" key={tag}>
+//             {tag}
+//           </Tag>
+//         );
+//       })}
+//     </HStack>
+//   );
+// };
 
 interface BlogAuthorProps {
   date: Date;
   name: string;
 }
 
-export const BlogAuthor: React.FC<BlogAuthorProps> = (props) => {
+export const BlogAuthor: React.FC<BlogAuthorProps> = (props): JSX.Element => {
   return (
     <HStack marginTop="2" spacing="2" display="flex" alignItems="center" color="black">
       <Image
@@ -53,7 +53,7 @@ export const BlogAuthor: React.FC<BlogAuthorProps> = (props) => {
   );
 };
 
-const ArticleCard = ({ post }) => {
+const ArticleCard = ({ post }): JSX.Element => {
   return (
     <Link href={`blog/${post.slug}`}>
       <Box
@@ -61,7 +61,7 @@ const ArticleCard = ({ post }) => {
         maxW={'350px'}
         w={'full'}
         bg={useColorModeValue('white', 'gray.900')}
-        boxShadow={'2xl'}
+        boxShadow={'lg'}
         rounded={'md'}
         p={6}
         overflow={'hidden'}>

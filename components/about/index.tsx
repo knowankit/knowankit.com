@@ -1,11 +1,11 @@
 import React from 'react';
 import Navbar from '@/components/navbar';
-import Introduction from '@/components/introduction';
+import Introduction from '@/components/about/introduction';
 import { Box } from '@chakra-ui/react';
 
 const About = () => {
   return (
-    <Box height="100vh" backgroundColor="black" id="profile">
+    <Box minHeight="100vh" backgroundColor="black" id="about">
       <Navbar />
       <Introduction />
     </Box>

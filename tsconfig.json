@@ -13,7 +13,8 @@
       "@/data/*": ["data/*"],
       "@/lib/*": ["lib/*"],
       "@/styles/*": ["styles/*"],
-      "@/components/*": ["components/*"]
+      "@/components/*": ["components/*"],
+      "@/types/*": ["types/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,

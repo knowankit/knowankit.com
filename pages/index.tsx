@@ -1,12 +1,8 @@
 import React from 'react';
-import Profile from '@/components/profile';
+import HomePage from '@/components/homepage';
 
 const Home = () => {
-  return (
-    <>
-      <Profile />
-    </>
-  );
+  return <HomePage />;
 };
 
 export default Home;

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Navbar from '@/components/navbar';
 import { Box } from '@chakra-ui/react';
 import ArticleCard from '@/components/blog/card';
+import { Posts } from '@/types/blog';
 
-const Blog = ({ posts }) => {
+const Blog: FC<Posts> = ({ posts }): JSX.Element => {
   return (
     <Box height="100vh" backgroundColor="black" id="profile">
       <Navbar />
