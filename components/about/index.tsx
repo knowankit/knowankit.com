@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from '@/src/components/navbar';
-import Introduction from '@/src/components/introduction';
+import Navbar from '@/components/navbar';
+import Introduction from '@/components/introduction';
 import { Box } from '@chakra-ui/react';
 
 const About = () => {

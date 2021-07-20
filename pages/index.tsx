@@ -1,6 +1,5 @@
 import React from 'react';
-import Profile from '@/src/components/profile';
-import Introduction from '@/src/components/introduction';
+import Profile from '@/components/profile';
 
 const Home = () => {
   return (

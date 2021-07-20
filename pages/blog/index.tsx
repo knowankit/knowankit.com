@@ -1,4 +1,4 @@
-import Blog from '@/src/components/blog';
+import Blog from '@/components/blog';
 import { getAllFilesFrontMatter } from '@/lib/mdx';
 
 const BlogPage = ({ posts }) => {

@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from '@/src/components/navbar';
+import Navbar from '@/components/navbar';
 import { Box } from '@chakra-ui/react';
-import ArticleCard from '@/src/components/blog/card';
+import ArticleCard from '@/components/blog/card';
 
 const Blog = ({ posts }) => {
   return (

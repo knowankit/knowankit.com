@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
-import SocialIcons from '@/src/components/profile/social-icons';
-import Navbar from '@/src/components/navbar';
+import SocialIcons from '@/components/profile/social-icons';
+import Navbar from '@/components/navbar';
 
 const Profile = () => {
   return (
