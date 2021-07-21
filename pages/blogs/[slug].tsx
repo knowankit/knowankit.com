@@ -2,17 +2,22 @@ import React from 'react';
 import { MDXRemote } from 'next-mdx-remote';
 import { getFiles, getFileBySlug } from '@/lib/mdx';
 import MDXComponents from '@/components/mdx';
+import { Box } from '@chakra-ui/react';
+import Navbar from '@/components/navbar';
 
 const Blog = ({ mdxSource }): JSX.Element => {
   return (
-    <div>
+    <Box>
+      <Box bg="black">
+        <Navbar />
+      </Box>
       <MDXRemote
         {...mdxSource}
         components={{
           ...MDXComponents
         }}
       />
-    </div>
+    </Box>
   );
 };
 

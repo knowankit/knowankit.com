@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Blog from '@/components/blog';
+import Blog from '@/components/blogs';
 import { getAllFilesFrontMatter } from '@/lib/mdx';
 import { Posts } from '@/types/blog';
 
