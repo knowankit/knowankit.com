@@ -21,7 +21,7 @@ const Navbar = () => {
     const menus = [
       { name: 'Home', link: '/' },
       { name: 'Projects', link: '/projects' },
-      { name: 'Blog', link: '/blog' },
+      { name: 'Blog', link: '/blogs' },
       { name: 'About me', link: '/about' }
     ];
 
@@ -66,7 +66,7 @@ const Navbar = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="space-between" height="10vh" boxShadow="xl">
+    <Box display="flex" justifyContent="space-between" height="10vh" boxShadow="xl" bg="black">
       <Box height="20px" m="1rem">
         <a href="https://knowankit.com">
           <Image src="/portfolio-logo.png" alt="knowankit logo" height="50px" width="50px" />

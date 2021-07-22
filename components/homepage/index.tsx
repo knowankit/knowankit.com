@@ -6,9 +6,7 @@ import Navbar from '@/components/navbar';
 const Profile = () => {
   return (
     <>
-      <Box bg="black">
-        <Navbar />
-      </Box>
+      <Navbar />
       <Box
         height="90vh"
         backgroundColor="black"

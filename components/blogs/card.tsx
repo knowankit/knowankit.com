@@ -55,14 +55,16 @@ export const BlogAuthor: React.FC<BlogAuthorProps> = (props): JSX.Element => {
 
 const ArticleCard = ({ post }): JSX.Element => {
   return (
-    <Link href={`blog/${post.slug}`}>
+    <Link href={`blogs/${post.slug}`}>
       <Box
         cursor="pointer"
-        maxW={'350px'}
-        w={'full'}
+        minW={'250px'}
+        w={['full', '32rem', '32rem', '50vw']}
         bg={useColorModeValue('white', 'gray.900')}
         boxShadow={'lg'}
         rounded={'md'}
+        mx="auto"
+        mb="1rem"
         p={6}
         overflow={'hidden'}>
         {/* <Box h={'210px'} bg={'gray.100'} mt={-6} mx={-6} mb={6} pos={'relative'}>
@@ -90,8 +92,8 @@ const ArticleCard = ({ post }): JSX.Element => {
           </Heading>
           <Text color={'gray.500'}>{post.summary}</Text>
         </Stack>
-        <Stack mt={6} direction={'row'} spacing={4} align={'center'}>
-          <Avatar src={'https://avatars0.githubusercontent.com/knowankit'} alt={'Author'} />
+        <Stack direction={'row'} spacing={4} align={'center'}>
+          {/* <Avatar src={'https://avatars0.githubusercontent.com/knowankit'} alt={'Author'} /> */}
           <Stack direction={'column'} spacing={0} fontSize={'sm'}>
             <Text fontWeight={600}>Ankit Kumar</Text>
             <Text color={'gray.500'}>{post.publishedAt} · 6min read</Text>
