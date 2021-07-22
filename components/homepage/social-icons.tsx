@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
-import { AiOutlineGithub, AiOutlineTwitter, AiOutlineInstagram } from 'react-icons/ai';
+import { AiOutlineGithub, AiOutlineTwitter, AiFillLinkedin } from 'react-icons/ai';
 
 const SocialIcons = () => {
   return (
@@ -16,7 +16,7 @@ const SocialIcons = () => {
       </Box>
       <Box
         as="a"
-        color="white"
+        color="#1DA1F2"
         fontSize={['1.4rem', '2.4rem', '3rem', '3rem']}
         mt="2.5rem"
         mr="20px"
@@ -28,8 +28,8 @@ const SocialIcons = () => {
         color="white"
         fontSize={['1.4rem', '2.4rem', '3rem', '3rem']}
         mt="2.5rem"
-        href="https://www.instagram.com/knowankitt/">
-        <AiOutlineInstagram />
+        href="https://www.linkedin.com/in/knowankit/">
+        <AiFillLinkedin />
       </Box>
     </Box>
   );
