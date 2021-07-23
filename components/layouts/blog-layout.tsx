@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { FC } from 'react';
 import Navbar from '@/components/navbar';
 import { Box } from '@chakra-ui/react';
 import { Global } from '@emotion/react';
 import { prismDarkTheme } from '@/styles/style';
 
-const BlogLayout = ({ children }) => {
+const BlogLayout: FC = ({ children }) => {
   return (
     <Box>
       <Global styles={prismDarkTheme} />

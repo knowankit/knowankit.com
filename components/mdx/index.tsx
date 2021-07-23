@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Heading } from '@chakra-ui/react';
+import Image from 'next/image';
 
 const CustomLink = (props) => {
   const href = props.href;
@@ -30,7 +31,8 @@ const components = {
   h1,
   h2,
   h3,
-  h4
+  h4,
+  Image
 };
 
 export default components;
