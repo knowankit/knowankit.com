@@ -21,9 +21,9 @@ const Profile = () => {
           flexDirection="column"
           alignItems="center">
           <Box fontSize={['2rem', '2.5rem', '3rem', '3rem']} fontWeight="bold">
-            <Box as="p" color="white" fontSize="2rem">
+            {/* <Box as="p" color="white" fontSize="2rem">
               Hi, I am Ankit
-            </Box>
+            </Box> */}
             <Box
               className="tech-profile"
               display="inline-flex"

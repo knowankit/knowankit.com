@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Heading } from '@chakra-ui/react';
+import Image from 'next/image';
 
 const CustomLink = (props) => {
   const href = props.href;
@@ -20,13 +21,18 @@ const CustomLink = (props) => {
   );
 };
 
-const H1 = (props) => <Heading size="2xl" {...props} />;
-const H2 = (props) => <Heading size="xl" {...props} />;
-const H3 = (props) => <Heading size="lg" {...props} />;
-const H4 = (props) => <Heading size="sm" {...props} />;
+const h1 = (props) => <Heading size="2xl" {...props} />;
+const h2 = (props) => <Heading size="xl" {...props} />;
+const h3 = (props) => <Heading size="lg" {...props} />;
+const h4 = (props) => <Heading size="sm" {...props} />;
 
 const components = {
-  a: CustomLink
+  a: CustomLink,
+  h1,
+  h2,
+  h3,
+  h4,
+  Image
 };
 
 export default components;
