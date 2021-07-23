@@ -22,7 +22,7 @@
   "homepage": "https://github.com/knowankit/knowankit.com#readme",
   "dependencies": {
     "@chakra-ui/react": "^1.6.4",
-    "@emotion/react": "^11",
+    "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11",
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
