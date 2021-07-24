@@ -2,6 +2,7 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 import { serialize } from 'next-mdx-remote/serialize';
+import readingTime from 'reading-time';
 
 import mdxPrism from 'mdx-prism';
 
@@ -39,6 +40,8 @@ export async function getFileBySlug(type, slug) {
   return {
     mdxSource,
     frontMatter: {
+      wordCount: content.split(/\s+/gu).length,
+      readingTime: readingTime(content),
       slug: slug || null,
       ...data
     }
