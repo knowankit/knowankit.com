@@ -2,11 +2,11 @@ import React from 'react';
 import { MDXRemote } from 'next-mdx-remote';
 import { getFiles, getFileBySlug } from '@/lib/mdx';
 import MDXComponents from '@/components/mdx';
-import BlogLayout from '@/components/layouts/blog-layout';
+import BlogLayout from '@/layouts/blog-layout';
 
-const Blog = ({ mdxSource }): JSX.Element => {
+const Blog = ({ mdxSource, frontMatter }): JSX.Element => {
   return (
-    <BlogLayout>
+    <BlogLayout frontMatter={frontMatter}>
       <MDXRemote
         {...mdxSource}
         components={{
