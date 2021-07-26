@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Heading } from '@chakra-ui/react';
+import { Heading, Link as _Link } from '@chakra-ui/react';
 import Image from 'next/image';
 
 const CustomLink = (props) => {
@@ -9,22 +9,30 @@ const CustomLink = (props) => {
   if (isInternalLink) {
     return (
       <Link href={href}>
-        <a {...props}>{props.children}</a>
+        <_Link color="link" {...props} fontWeight="bold" className="mdx">
+          {props.children}
+        </_Link>
       </Link>
     );
   }
 
   return (
-    <a target="_blank" rel="noopener noreferrer" {...props}>
-      {''}
-    </a>
+    <_Link
+      target="_blank"
+      rel="noopener noreferrer"
+      color="link"
+      className="mdx"
+      fontWeight="bold"
+      {...props}>
+      {props.children}
+    </_Link>
   );
 };
 
-const h1 = (props) => <Heading size="2xl" {...props} />;
-const h2 = (props) => <Heading size="xl" {...props} />;
-const h3 = (props) => <Heading size="lg" {...props} />;
-const h4 = (props) => <Heading size="sm" {...props} />;
+const h1 = (props) => <Heading size="2xl" my="0.5rem" {...props} />;
+const h2 = (props) => <Heading size="xl" my="0.5rem" {...props} />;
+const h3 = (props) => <Heading size="lg" my="0.5rem" {...props} />;
+const h4 = (props) => <Heading size="sm" my="0.5rem" {...props} />;
 
 const components = {
   a: CustomLink,

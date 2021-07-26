@@ -7,7 +7,8 @@ import MDXComponents from '@/components/mdx';
 function MyApp({ Component, pageProps }) {
   const theme = extendTheme({
     colors: {
-      brand: '#ff851b'
+      brand: '#ff851b',
+      link: '#1890ff'
     },
     fonts: {
       body: 'Titillium Web'

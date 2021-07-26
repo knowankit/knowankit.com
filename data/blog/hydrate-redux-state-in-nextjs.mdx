@@ -1,19 +1,167 @@
 ---
-title: 'Hydrate redux store in NextJS'
-publishedAt: '2017-07-15'
+title: 'Hydrate redux store in Next.js'
+publishedAt: '2017-07-26'
 summary: 'Learn how to create store in the server side and use the same store on the client'
 ---
 
 <Image
-  src={`/static/images/add-unsplash-to-react/banner.png`}
+  src={`/static/images/add-unsplash-to-react/nextjs-with-redux.png`}
   width={1501 / 2}
   height={712 / 2}
   priority
 />
 
-[over 23,000 employees in R&D](https://www.sec.gov/Archives/edgar/data/1288776/000165204416000012/goog10-k2015.htm)
+### Table of Contents
 
-```html
-<div class="meta">Friday, March 9, 2018 at 11:53pm UTC+11</div>
-<div class="comment">Some post, comment, song, or link shared</div>
+1. [Overview](/blogs/hydrate-redux-state-in-nextjs#overview)
+2. [Bried introduction to redux and redux toolkit](/blogs/hydrate-redux-state-in-nextjs#brief-introduction-to-redux-and-redux-toolkit)
+3. [Introduction to Next.js](/blogs/hydrate-redux-state-in-nextjs#introduction-to-nextjs)
+4. [Combining Next.js with Redux Toolkit and Preserve State during SSR](/blogs/hydrate-redux-state-in-nextjs#combining-nextjs-with-redux-toolkit-and-preserve-state-during-ssr)
+
+### Overview
+
+Probably all of us have set redux with or without redux toolkit in our project. This is not a **how-to** article
+about redux and react but there will be small introduction about these. In this article, we are mainly going to focus
+on setting up redux and particularly **Redux Toolkit**, so that the application state will be accessible from both the
+client side as well as on the server side of the Next.js project. By the term client side and server side, I am referring to
+front-end and the back-end of the application. This is about the code that will run on the client side i.e browser and on the server
+side when rendered by Next.js Server (will be talk on this more later). Let's discuss on Next.js and how it works as SSR with redux toolkit.
+
+---
+
+### Brief introduction to Redux and Redux Toolkit
+
+Many of us have probably used the the combination of react(create-react-app) with redux. Redux is an amazing tool to
+handle the state management of the application but it comes to one major draback i.e too much of **boiler plate** to achieve
+one small functionality. This eats up large amount of your time from real coding. To come out of this situation, the creators
+of Redux came up with **Redux Toolkit**.
+
+<br />
+
+**Redux Toolkit** => "_The official, opinionated, batteries-included toolset for efficient Redux development_ "
+
+It was created to address three common concerns of redux.
+
+- Configuring redux is too complicated
+- I have to add a lot of package to make redux do something useful
+- Redux requires too much of boilerplate code
+
+### Introduction to Next.js
+
+Next.js is the next best thing for React applications. It is one of the most complete Frameworks
+for creating React applications, providing best developer experience with all the features you need
+for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching,
+and more.
+
+#### Next.js server side rendering
+
+Next.js provides out-of-the-box support for server-side rendering of your page without any extra configuration
+from your part.
+
+### Combining Next.js with Redux Toolkit and Preserve State during SSR
+
+First, we need to create a store.
+
+<br />
+
+```js:store.js
+const createStore = (preloadedState) => {
+  return configureStore({
+    reducer: {
+      nextRepo: nextSlice
+    },
+    preloadedState
+  });
+};
 ```
+
+As you can see above, we pass the preloadedState value to the configureStore. This value is used
+to HYDRATE the state with the server fetched data — or any other pre-existing data for that matter.
+
+<br />
+
+The second step is to correctly initialize our store depending on which side of the application
+we are currently operating. As you can see below on the code snippet, we perform a check to see
+whether our code is executing on the client-side or on the server, by checking the value of the window.
+
+<br />
+
+```js:initialize-store.js
+let store;
+export const initialiseStore = (preloadedState) => {
+  let _store = store ?? createStore(preloadedState);
+
+  if (preloadedState && store) {
+   _store = createStore({ ...store.getState(), ...preloadedState });
+    store = undefined;
+  }
+
+  // For SSG and SSR always create a new store
+  if (typeof window === 'undefined') return _store;
+  // Create the store once in the client
+  if (!store) store = _store;
+
+  return _store;
+};
+```
+
+You can see that if a preloadedState is provided to the initialiseStore method and a store has been
+already created the new store that is created will include both the old state and the preloaded state
+that in most cases will be the props they were fetching on the server-side.
+
+<br />
+
+Now let's use the above code snippet to hydrate our store. Suppose, I have a page named **board** and
+in that I want to fetch all the boards in the SSR.
+
+<br />
+
+My code snippet would be something like
+
+<br />
+
+```js:boards.js
+export async function getServerSideProps(context: AppContext) {
+  const appProps = {}
+
+  //initialise redux store on server side
+  const reduxStore = initialiseStore({});
+  const { dispatch } = reduxStore;
+  const res = await fetch('https://trello.com/api/boards')
+  const json = await res.json()
+  dispatch(setStars({ boards: json.boards }));
+
+  appProps.pageProps = {
+    ...appProps.pageProps,
+    initialReduxState: reduxStore.getState(),
+  };
+
+  return {
+    props: {
+      ...appProps
+    }, // will be passed to the page component as props
+  }
+}
+```
+
+Now, we have the SSR fetched store data. We will fetch the object and pass it in the `initialiseStore` function to hydrate
+the SSR data to the client side.
+
+<br />
+
+```js:boards-page.js
+const BoardsPage = ({ initialReduxState }) => (
+  // Pass the store state and initialise at the client side
+  <Provider store={initialiseStore(initialReduxState)}>
+    <Boards />
+  </Provider>
+)
+```
+
+Now you know the secret recipe for hydrating the SSR data to client side.
+I have implement the same in one of my project ([Trello Clone](https://github.com/knowankit/trello-clone)).
+Do check it out.
+
+<br />
+
+Thank You! 👋🏻

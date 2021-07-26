@@ -12,7 +12,7 @@ type Props = {
 
 const BlogLayout: FC<Props> = ({ children, frontMatter }) => {
   return (
-    <Box>
+    <Box className="mdx">
       <Global styles={prismDarkTheme} />
       <Navbar />
       <Box
