@@ -3,7 +3,6 @@ import { Box, Heading, Avatar } from '@chakra-ui/react';
 import { parseISO, format } from 'date-fns';
 import { AiOutlineFieldTime } from 'react-icons/ai';
 const FrontMatter = ({ matter }) => {
-  console.log('matter', matter);
   return (
     <Box>
       <Heading as="h1" size="2xl">

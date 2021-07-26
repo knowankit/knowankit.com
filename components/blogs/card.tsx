@@ -12,6 +12,7 @@ import {
   useColorModeValue
 } from '@chakra-ui/react';
 import Link from 'next/link';
+import { parseISO, format } from 'date-fns';
 
 // interface IBlogTags {
 //   tags: Array<string>;
@@ -96,7 +97,10 @@ const ArticleCard = ({ post }): JSX.Element => {
           {/* <Avatar src={'https://avatars0.githubusercontent.com/knowankit'} alt={'Author'} /> */}
           <Stack direction={'column'} spacing={0} fontSize={'sm'}>
             <Text fontWeight={600}>Ankit Kumar</Text>
-            <Text color={'gray.500'}>{post.publishedAt} · 6min read</Text>
+            <Text color={'gray.500'}>
+              {format(parseISO(post.publishedAt), 'MMMM dd, yyyy')} ·{' '}
+              {post.frontMatter.readingTime.text}
+            </Text>
           </Stack>
         </Stack>
       </Box>
