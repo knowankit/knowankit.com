@@ -55,7 +55,6 @@ export const BlogAuthor: React.FC<BlogAuthorProps> = (props): JSX.Element => {
 };
 
 const ArticleCard = ({ post }): JSX.Element => {
-  console.log('post', post);
   return (
     <Link href={`blogs/${post.slug}`}>
       <Box
