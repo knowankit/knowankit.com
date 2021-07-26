@@ -53,12 +53,16 @@ export async function getAllFilesFrontMatter(type) {
 
   return files.reduce((allPosts, postSlug) => {
     const source = fs.readFileSync(path.join(root, 'data', type, postSlug), 'utf8');
-    const { data } = matter(source);
+    const { data, content } = matter(source);
 
     return [
       {
         ...data,
-        slug: postSlug.replace('.mdx', '')
+        slug: postSlug.replace('.mdx', ''),
+        frontMatter: {
+          wordCount: content.split(/\s+/gu).length,
+          readingTime: readingTime(content)
+        }
       },
       ...allPosts
     ];
