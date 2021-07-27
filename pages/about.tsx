@@ -1,3 +1,14 @@
 import About from '@/components/about';
+import Head from 'next/head';
 
-export default About;
+const AboutPage = () => {
+  return (
+    <>
+      <Head>
+        <title>KnowAnkit | About</title>
+      </Head>
+      <About />
+    </>
+  );
+};
+export default AboutPage;
