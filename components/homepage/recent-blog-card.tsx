@@ -43,19 +43,19 @@ const ArticleCard = ({ post }): JSX.Element => {
             color="brand"
             textTransform={'uppercase'}
             fontWeight={800}
-            fontSize={'sm'}
+            fontSize={['xs', 'xs', 'sm', 'sm']}
             letterSpacing={1.1}>
             Blog
           </Text>
           <Heading
             color={useColorModeValue('gray.700', 'white')}
-            fontSize={'2xl'}
+            fontSize={['md', 'xl', '2xl', '2xl']}
             fontFamily={'body'}>
             {post.title}
           </Heading>
         </Stack>
         <Stack direction={'row'} spacing={4} align={'center'}>
-          <Stack direction={'column'} spacing={0} fontSize={'sm'}>
+          <Stack direction={'column'} spacing={0} fontSize={['xs', 'xs', 'sm', 'sm']}>
             <Text color={'gray.500'}>
               {format(parseISO(post.publishedAt), 'MMMM dd, yyyy')} ·{' '}
               {post.frontMatter.readingTime.text}
