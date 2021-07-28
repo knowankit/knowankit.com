@@ -32,7 +32,7 @@ const ProjectCard = ({ project }) => {
         <Text color={'gray.500'}>{project.description}</Text>
         <Box display="flex">
           {project.demo && (
-            <Box as="a" href={project.demo} mr="1rem">
+            <Box as="a" href={`/${project.demo}`} mr="1rem">
               Preview
             </Box>
           )}
