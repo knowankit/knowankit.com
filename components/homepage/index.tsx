@@ -1,9 +1,24 @@
 import React from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
 import SocialIcons from '@/components/homepage/social-icons';
 import Navbar from '@/components/navbar';
+import RecentBlog from '@/components/homepage/recent-blog-card';
 
 const Profile = () => {
+  const recentPosts = [
+    {
+      title: 'Hydrate redux store in Next.js',
+      summary: 'Learn how to create store in the server side and use the same store on the client',
+      publishedAt: '2017-07-26',
+      slug: 'hydrate-redux-state-in-nextjs',
+      frontMatter: {
+        readingTime: {
+          text: '5 mins'
+        }
+      }
+    }
+  ];
+
   return (
     <>
       <Navbar />
@@ -12,6 +27,7 @@ const Profile = () => {
         backgroundColor="black"
         id="profile"
         display="flex"
+        flexDirection="column"
         justifyContent="center"
         alignItems="center">
         <Box
@@ -55,6 +71,16 @@ const Profile = () => {
           </Box>
           <SocialIcons />
         </Box>
+        <Box color="white" my="2rem">
+          <Heading as="h2" size="md">
+            Latest Post
+          </Heading>
+        </Box>
+        {recentPosts.map((post, index) => (
+          <Box m="0.5rem" key={index}>
+            <RecentBlog post={post} />
+          </Box>
+        ))}
       </Box>
     </>
   );
