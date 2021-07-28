@@ -3,11 +3,11 @@ import React from 'react';
 import { Box, Heading, Text, Stack, Avatar, useColorModeValue } from '@chakra-ui/react';
 import { AiFillGithub } from 'react-icons/ai';
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ isBlog = false, project }) => {
   return (
     <Box
-      maxW={'350px'}
-      w={'full'}
+      w={['full', '32rem', '32rem', '50vw']}
+      minW={'250px'}
       bg={useColorModeValue('white', 'gray.900')}
       boxShadow={'lg'}
       rounded={'md'}

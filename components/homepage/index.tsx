@@ -3,6 +3,7 @@ import { Box, Heading } from '@chakra-ui/react';
 import SocialIcons from '@/components/homepage/social-icons';
 import Navbar from '@/components/navbar';
 import RecentBlog from '@/components/homepage/recent-blog-card';
+import RecentProject from '@/components/homepage/recent-project-card';
 
 const Profile = () => {
   const recentPosts = [
@@ -19,11 +20,21 @@ const Profile = () => {
     }
   ];
 
+  const recentProjects = [
+    {
+      name: 'Trello Clone',
+      github: 'https://github.com/knowankit/trello-clone',
+      description:
+        'Built with Nextjs framework with Typescript and Chakra UI library with support from MongoDB',
+      demo: 'trello-clone-one.vercel.app'
+    }
+  ];
+
   return (
     <>
       <Navbar />
       <Box
-        height="90vh"
+        minHeight="90vh"
         backgroundColor="black"
         id="profile"
         display="flex"
@@ -79,6 +90,16 @@ const Profile = () => {
         {recentPosts.map((post, index) => (
           <Box m="0.5rem" key={index}>
             <RecentBlog post={post} />
+          </Box>
+        ))}
+        <Box color="white" my="2rem">
+          <Heading as="h2" size="md">
+            Latest Project
+          </Heading>
+        </Box>
+        {recentProjects.map((project, index) => (
+          <Box m="0.5rem" key={index}>
+            <RecentProject project={project} />
           </Box>
         ))}
       </Box>
