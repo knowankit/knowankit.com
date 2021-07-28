@@ -32,8 +32,8 @@ const Profile = () => {
 
   const loadRecentProjectsAndBlogs = () => {
     return (
-      <>
-        <Box color="white" my="2rem">
+      <Box display="flex" flexDirection="column" mt="2rem">
+        <Box color="white" mt="2rem" ml="0.5rem">
           <Heading as="h2" size="md">
             Latest Post
           </Heading>
@@ -43,8 +43,8 @@ const Profile = () => {
             <RecentBlog post={post} />
           </Box>
         ))}
-        <Box color="white" my="1rem">
-          <Heading as="h2" size="md">
+        <Box color="white">
+          <Heading as="h2" size="md" ml="0.5rem">
             Latest Project
           </Heading>
         </Box>
@@ -53,7 +53,7 @@ const Profile = () => {
             <RecentProject project={project} />
           </Box>
         ))}
-      </>
+      </Box>
     );
   };
 

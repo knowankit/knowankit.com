@@ -12,7 +12,6 @@ const ProjectCard = ({ project }) => {
       boxShadow={'lg'}
       rounded={'md'}
       p={6}
-      m="1rem"
       mx="auto"
       overflow={'hidden'}>
       <Stack>
