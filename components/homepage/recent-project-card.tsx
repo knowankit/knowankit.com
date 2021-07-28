@@ -3,7 +3,7 @@ import React from 'react';
 import { Box, Heading, Text, Stack, Avatar, useColorModeValue } from '@chakra-ui/react';
 import { AiFillGithub } from 'react-icons/ai';
 
-const ProjectCard = ({ isBlog = false, project }) => {
+const ProjectCard = ({ project }) => {
   return (
     <Box
       w={['full', '32rem', '32rem', '50vw']}
@@ -13,31 +13,34 @@ const ProjectCard = ({ isBlog = false, project }) => {
       rounded={'md'}
       p={6}
       m="1rem"
+      mx="auto"
       overflow={'hidden'}>
       <Stack>
         <Text
           color="brand"
           textTransform={'uppercase'}
           fontWeight={800}
-          fontSize={'sm'}
+          fontSize={['xs', 'xs', 'sm', 'sm']}
           letterSpacing={1.1}>
           Project
         </Text>
         <Heading
           color={useColorModeValue('gray.700', 'white')}
-          fontSize={'2xl'}
+          fontSize={['md', 'xl', '2xl', '2xl']}
           fontFamily={'body'}>
           {project.name}
         </Heading>
-        <Text color={'gray.500'}>{project.description}</Text>
+        {/* <Text color={'gray.500'} fontSize={['sm', 'sm', 'xl', 'xl']}>
+          {project.description}
+        </Text> */}
         <Box display="flex">
           {project.demo && (
-            <Box as="a" href={project.demo} mr="1rem">
+            <Box as="a" href={project.demo} mr="1rem" fontSize={'sm'}>
               Preview
             </Box>
           )}
           {project.github && (
-            <Box as="a" href={project.github} fontSize="1.6rem">
+            <Box as="a" href={project.github} fontSize="1.2rem">
               <AiFillGithub />
             </Box>
           )}

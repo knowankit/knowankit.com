@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Heading, Text, Stack, Avatar, useColorModeValue } from '@chakra-ui/react';
+import { Box, Heading, Text, Stack, useColorModeValue } from '@chakra-ui/react';
 import { AiFillGithub } from 'react-icons/ai';
 
 const ProjectCard = ({ project }) => {
