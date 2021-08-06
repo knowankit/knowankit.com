@@ -9,14 +9,14 @@ const ProjectCard = ({ project }) => {
       w={['full', '32rem', '32rem', '50vw']}
       minW={'250px'}
       bg={useColorModeValue('white', 'gray.900')}
-      boxShadow={'lg'}
+      boxShadow={'md'}
       rounded={'md'}
       p={6}
       mx="auto"
       overflow={'hidden'}>
       <Stack>
         <Text
-          color="brand"
+          color="project"
           textTransform={'uppercase'}
           fontWeight={800}
           fontSize={['xs', 'xs', 'sm', 'sm']}
@@ -34,7 +34,7 @@ const ProjectCard = ({ project }) => {
         </Text> */}
         <Box display="flex">
           {project.demo && (
-            <Box as="a" href={project.demo} mr="1rem" fontSize={'sm'}>
+            <Box as="a" href={`https://${project.demo}`} mr="1rem" fontSize={'sm'}>
               Preview
             </Box>
           )}

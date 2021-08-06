@@ -6,9 +6,7 @@ import { Box } from '@chakra-ui/react';
 const Projects = () => {
   return (
     <Box id="profile">
-      <Box bg="black">
-        <Navbar />
-      </Box>
+      <Navbar />
       <Box height="100%">
         <SearchProject />
       </Box>

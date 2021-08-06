@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Heading } from '@chakra-ui/react';
-import SocialIcons from '@/components/homepage/social-icons';
 import Navbar from '@/components/navbar';
 import RecentBlog from '@/components/homepage/recent-blog-card';
 import RecentProject from '@/components/homepage/recent-project-card';
@@ -62,7 +61,6 @@ const Profile = () => {
       <Navbar />
       <Box
         minHeight="90vh"
-        backgroundColor="black"
         id="profile"
         display="flex"
         flexDirection="column"
@@ -77,12 +75,12 @@ const Profile = () => {
           <Box fontSize={['2rem', '2.5rem', '3rem', '3rem']} fontWeight="bold">
             <Box display="inline-flex" position="relative" overflow="hidden">
               <Box display="inline-flex" flexDirection="column" mt="4rem">
-                <Box color="#FF851B">Front-end</Box>
+                <Box>Front-end</Box>
                 {/* <Box>Back-end</Box>
                 <Box>Full-stack</Box> */}
               </Box>
             </Box>
-            <Box color="white" display="inline-block" ml="10px">
+            <Box display="inline-block" ml="10px">
               Developer &nbsp;
               <Box as="span">
                 &lt;
@@ -94,7 +92,6 @@ const Profile = () => {
             </Box>
           </Box>
           <Box
-            color="white"
             fontSize={['1rem', '1.6rem', '1.8rem', '1.8rem']}
             mx={['2rem', '1rem', '1rem', '1rem']}>
             <p>I code beautifully simple things and I love what I do</p>
@@ -102,9 +99,6 @@ const Profile = () => {
           </Box>
         </Box>
         {loadRecentProjectsAndBlogs()}
-        <Box m="1rem">
-          <SocialIcons />
-        </Box>
       </Box>
     </>
   );

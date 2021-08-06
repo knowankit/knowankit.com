@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/react';
 import React from 'react';
+import SocialIcons from '@/components/homepage/social-icons';
 
 const Introduction = () => {
   return (
@@ -22,11 +23,7 @@ const Introduction = () => {
             alt="Ankit"
             height={['100', '150', '200', '200']}
           />
-          <Box
-            as="p"
-            color="white"
-            fontSize={['1.25rem', '1.5rem', '3rem', '3rem']}
-            mx={['0.5rem', '', '', '']}>
+          <Box as="p" fontSize={['1.25rem', '1.5rem', '3rem', '3rem']} mx={['0.5rem', '', '', '']}>
             <strong>
               Hi, I&apos;m&nbsp;
               <Box as="span" color="brand">
@@ -39,8 +36,7 @@ const Introduction = () => {
             as="p"
             fontSize={['1rem', '1rem', '1.4rem', '1.8rem']}
             mt="1rem"
-            mx={['2rem', '4rem', '6rem', '8rem']}
-            color="white">
+            mx={['2rem', '4rem', '6rem', '8rem']}>
             I&apos;m a Front-end developer and UI Designer from India. I love CSS and JavaScript{' '}
             <span role="img" aria-label="rocket">
               🚀
@@ -58,6 +54,7 @@ const Introduction = () => {
             </span>
             .
           </Box>
+          <SocialIcons />
         </Box>
       </Box>
     </Box>

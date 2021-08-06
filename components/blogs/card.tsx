@@ -62,7 +62,7 @@ const ArticleCard = ({ post }): JSX.Element => {
         minW={'250px'}
         w={['full', '32rem', '32rem', '50vw']}
         bg={useColorModeValue('white', 'gray.900')}
-        boxShadow={'lg'}
+        boxShadow={'md'}
         rounded={'md'}
         mx="auto"
         mb="1rem"
@@ -78,7 +78,7 @@ const ArticleCard = ({ post }): JSX.Element => {
       </Box> */}
         <Stack>
           <Text
-            color="brand"
+            color="project"
             textTransform={'uppercase'}
             fontWeight={800}
             fontSize={'sm'}

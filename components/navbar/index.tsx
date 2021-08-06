@@ -55,7 +55,8 @@ const Navbar = () => {
         mr="20px"
         key={index}
         cursor="pointer"
-        color={router.asPath === menu.link ? 'brand' : ''}>
+        fontWeight="bold"
+        color={router.asPath === menu.link ? 'brand' : 'black'}>
         <Link href={menu.link} passHref>
           <Box as="span" fontWeight="bold">
             {menu.name}
@@ -66,21 +67,17 @@ const Navbar = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="space-between" height="10vh" boxShadow="xl" bg="black">
+    <Box display="flex" justifyContent="space-between" height="10vh">
       <Box height="20px" m="1rem">
         <a href="https://knowankit.com">
-          <Image src="/portfolio-logo.png" alt="knowankit logo" height="50px" width="50px" />
+          {/* <Image src="/portfolio-logo.png" alt="knowankit logo" height="50px" width="50px" /> */}
         </a>
       </Box>
-      <Box
-        color="white"
-        display={['none', 'none', 'flex', 'flex']}
-        alignItems="center"
-        fontSize="1.2rem">
+      <Box display={['none', 'none', 'flex', 'flex']} alignItems="center" fontSize="1.2rem">
         {loadMenu()}
       </Box>
       <Box m="1rem" display={['flex', 'flex', 'none', 'none']}>
-        <BiMenuAltRight color="white" fontSize="2.5em" cursor="pointer" onClick={onOpen} />
+        <BiMenuAltRight fontSize="2.5em" cursor="pointer" onClick={onOpen} />
         <Drawer size="full" onClose={onClose} isOpen={isOpen}>
           <DrawerOverlay />
           <DrawerContent>

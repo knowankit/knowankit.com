@@ -8,7 +8,8 @@ function MyApp({ Component, pageProps }) {
   const theme = extendTheme({
     colors: {
       brand: '#ff851b',
-      link: '#1890ff'
+      link: '#1890ff',
+      project: '#0275d8'
     },
     fonts: {
       body: 'Titillium Web'

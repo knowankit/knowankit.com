@@ -7,7 +7,6 @@ const SocialIcons = () => {
     <Box display="flex" justifyContent="center" alignItems="flex-end">
       <Box
         as="a"
-        color="white"
         fontSize={['1.4rem', '2.4rem', '3rem', '3rem']}
         mt="2.5rem"
         mr="20px"
@@ -25,7 +24,6 @@ const SocialIcons = () => {
       </Box>
       <Box
         as="a"
-        color="white"
         fontSize={['1.4rem', '2.4rem', '3rem', '3rem']}
         mt="2.5rem"
         href="https://www.linkedin.com/in/knowankit/">

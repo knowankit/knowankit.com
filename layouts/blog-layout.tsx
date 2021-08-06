@@ -22,7 +22,7 @@ const BlogLayout: FC<Props> = ({ children, frontMatter }) => {
         <Navbar />
         <Box
           mx="auto"
-          px={['0.5rem', '1rem', '1rem', '1rem']}
+          px={['1rem', '1rem', '1rem', '1rem']}
           py={['0.5rem', '1rem', '2rem', '2rem']}
           my="2rem"
           width={['full', '34rem', '48rem', '48rem']}

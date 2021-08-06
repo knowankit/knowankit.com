@@ -5,7 +5,7 @@ import { Box } from '@chakra-ui/react';
 
 const About = () => {
   return (
-    <Box minHeight="100vh" backgroundColor="black" id="about">
+    <Box minHeight="100vh" id="about">
       <Navbar />
       <Introduction />
     </Box>
