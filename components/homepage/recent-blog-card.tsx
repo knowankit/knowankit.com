@@ -40,7 +40,7 @@ const ArticleCard = ({ post }): JSX.Element => {
         overflow={'hidden'}>
         <Stack>
           <Text
-            color="project"
+            color="blog"
             textTransform={'uppercase'}
             fontWeight={800}
             fontSize={['xs', 'xs', 'sm', 'sm']}

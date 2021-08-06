@@ -1,13 +1,13 @@
 import About from '@/components/about';
 import Head from 'next/head';
 
-const AboutPage = () => {
+const AboutPage = (props) => {
   return (
     <>
       <Head>
         <title>KnowAnkit | About</title>
       </Head>
-      <About />
+      <About {...props} />
     </>
   );
 };

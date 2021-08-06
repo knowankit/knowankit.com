@@ -4,13 +4,18 @@ import { getAllFilesFrontMatter } from '@/lib/mdx';
 import { Posts } from '@/types/blog';
 import Head from 'next/head';
 
-const BlogPage: FC<Posts> = ({ posts }): JSX.Element => {
+type IProps = {
+  setTheme: () => void;
+  isLightTheme: boolean;
+};
+
+const BlogPage: FC<Posts & IProps> = ({ posts, setTheme, isLightTheme }): JSX.Element => {
   return (
     <>
       <Head>
         <title>KnowAnkit | Blogs</title>
       </Head>
-      <Blog posts={posts} />
+      <Blog posts={posts} setTheme={setTheme} isLightTheme={isLightTheme} />
     </>
   );
 };

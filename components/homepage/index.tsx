@@ -4,7 +4,7 @@ import Navbar from '@/components/navbar';
 import RecentBlog from '@/components/homepage/recent-blog-card';
 import RecentProject from '@/components/homepage/recent-project-card';
 
-const Profile = () => {
+const Profile = (props) => {
   const recentPosts = [
     {
       title: 'Hydrate redux store in Next.js',
@@ -31,8 +31,8 @@ const Profile = () => {
 
   const loadRecentProjectsAndBlogs = () => {
     return (
-      <Box display="flex" flexDirection="column" mt="2rem">
-        <Box color="white" mt="2rem" ml="0.5rem">
+      <Box display="flex" flexDirection="column" mt="1rem">
+        <Box color="white" mt="1rem" ml="0.5rem">
           <Heading as="h2" size="md">
             Latest Post
           </Heading>
@@ -58,11 +58,12 @@ const Profile = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar {...props} />
       <Box
         minHeight="90vh"
         id="profile"
         display="flex"
+        bg="bgColor"
         flexDirection="column"
         justifyContent="center"
         alignItems="center">
@@ -72,7 +73,7 @@ const Profile = () => {
           justifyContent="space-between"
           flexDirection="column"
           alignItems="center">
-          <Box fontSize={['2rem', '2.5rem', '3rem', '3rem']} fontWeight="bold">
+          <Box fontSize={['2rem', '2.5rem', '3rem', '3rem']} fontWeight="bold" color="textColor">
             <Box display="inline-flex" position="relative" overflow="hidden">
               <Box display="inline-flex" flexDirection="column" mt="4rem">
                 <Box>Front-end</Box>
@@ -93,6 +94,7 @@ const Profile = () => {
           </Box>
           <Box
             fontSize={['1rem', '1.6rem', '1.8rem', '1.8rem']}
+            color="textColor"
             mx={['2rem', '1rem', '1rem', '1rem']}>
             <p>I code beautifully simple things and I love what I do</p>
             <p>And of-course a love for egyptian bracket</p>

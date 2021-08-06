@@ -12,7 +12,7 @@ const Introduction = () => {
       pb={['1rem', '', '', '']}
       alignItems="center"
       textAlign="center">
-      <Box display="flex">
+      <Box display="flex" color="textColor">
         <Box>
           <Box
             as="img"

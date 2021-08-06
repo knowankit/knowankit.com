@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { MDXRemote } from 'next-mdx-remote';
 import { getFiles, getFileBySlug } from '@/lib/mdx';
 import MDXComponents from '@/components/mdx';
 import BlogLayout from '@/layouts/blog-layout';
 
-const Blog = ({ mdxSource, frontMatter }): JSX.Element => {
+type IProps = {
+  mdxSource: any;
+  frontMatter: any;
+  setTheme: () => void;
+  isLightTheme: boolean;
+};
+
+const Blog: FC<IProps> = ({ mdxSource, frontMatter, setTheme, isLightTheme }): JSX.Element => {
   return (
-    <BlogLayout frontMatter={frontMatter}>
+    <BlogLayout frontMatter={frontMatter} setTheme={setTheme} isLightTheme={isLightTheme}>
       <MDXRemote
         {...mdxSource}
         components={{

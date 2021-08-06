@@ -1,6 +1,5 @@
 import React from 'react';
-import { Box } from '@chakra-ui/react';
-import Image from 'next/image';
+import { Box, IconButton } from '@chakra-ui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import {
@@ -12,8 +11,9 @@ import {
   useDisclosure
 } from '@chakra-ui/react';
 import { BiMenuAltRight } from 'react-icons/bi';
+import { BsMoon, BsSun } from 'react-icons/bs';
 
-const Navbar = () => {
+const Navbar = ({ setTheme, isLightTheme }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
 
@@ -40,7 +40,7 @@ const Navbar = () => {
               key={index}
               fontWeight="bold"
               fontSize="2rem"
-              color={router.asPath === menu.link ? 'brand' : ''}>
+              color={router.asPath === menu.link ? 'brand' : 'textColor'}>
               <Link href={menu.link} passHref>
                 {menu.name}
               </Link>
@@ -56,7 +56,7 @@ const Navbar = () => {
         key={index}
         cursor="pointer"
         fontWeight="bold"
-        color={router.asPath === menu.link ? 'brand' : 'black'}>
+        color={router.asPath === menu.link ? 'brand' : 'textColor'}>
         <Link href={menu.link} passHref>
           <Box as="span" fontWeight="bold">
             {menu.name}
@@ -67,11 +67,14 @@ const Navbar = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="space-between" height="10vh">
+    <Box display="flex" justifyContent="space-between" height="10vh" bg="bgColor">
       <Box height="20px" m="1rem">
-        <a href="https://knowankit.com">
-          {/* <Image src="/portfolio-logo.png" alt="knowankit logo" height="50px" width="50px" /> */}
-        </a>
+        <IconButton
+          icon={isLightTheme ? <BsMoon /> : <BsSun />}
+          aria-label="change mode"
+          borderRadius="md"
+          onClick={() => setTheme(!isLightTheme)}
+        />
       </Box>
       <Box display={['none', 'none', 'flex', 'flex']} alignItems="center" fontSize="1.2rem">
         {loadMenu()}

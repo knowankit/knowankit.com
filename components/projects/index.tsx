@@ -3,10 +3,10 @@ import Navbar from '@/components/navbar';
 import SearchProject from '@/components/projects/search-project';
 import { Box } from '@chakra-ui/react';
 
-const Projects = () => {
+const Projects = (props) => {
   return (
-    <Box id="profile">
-      <Navbar />
+    <Box id="profile" bg="bgColor">
+      <Navbar {...props} />
       <Box height="100%">
         <SearchProject />
       </Box>
