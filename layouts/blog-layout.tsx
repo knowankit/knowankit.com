@@ -9,9 +9,11 @@ import Head from 'next/head';
 type Props = {
   children: JSX.Element;
   frontMatter: any;
+  setTheme: () => void;
+  isLightTheme: boolean;
 };
 
-const BlogLayout: FC<Props> = ({ children, frontMatter }) => {
+const BlogLayout: FC<Props> = ({ children, frontMatter, setTheme, isLightTheme }) => {
   return (
     <>
       <Head>
@@ -19,10 +21,10 @@ const BlogLayout: FC<Props> = ({ children, frontMatter }) => {
       </Head>
       <Box className="mdx">
         <Global styles={prismDarkTheme} />
-        <Navbar />
+        <Navbar setTheme={setTheme} isLightTheme={isLightTheme} />
         <Box
           mx="auto"
-          px={['0.5rem', '1rem', '1rem', '1rem']}
+          px={['1rem', '1rem', '1rem', '1rem']}
           py={['0.5rem', '1rem', '2rem', '2rem']}
           my="2rem"
           width={['full', '34rem', '48rem', '48rem']}
