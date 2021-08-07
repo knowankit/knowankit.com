@@ -72,7 +72,7 @@ const Navbar = () => {
     <Box display="flex" justifyContent="space-between" height="10vh">
       <Box height="20px" m="1rem">
         <IconButton
-          icon={<BsMoon />}
+          icon={colorMode === 'light' ? <BsMoon /> : <BsSun />}
           aria-label="change mode"
           borderRadius="md"
           onClick={toggleColorMode}
