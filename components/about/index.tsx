@@ -3,10 +3,10 @@ import Navbar from '@/components/navbar';
 import Introduction from '@/components/about/introduction';
 import { Box } from '@chakra-ui/react';
 
-const About = ({ setTheme, isLightTheme }) => {
+const About = () => {
   return (
     <Box minHeight="100vh" id="about">
-      <Navbar setTheme={setTheme} isLightTheme={isLightTheme} />
+      <Navbar />
       <Introduction />
     </Box>
   );

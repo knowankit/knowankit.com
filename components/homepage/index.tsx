@@ -4,7 +4,7 @@ import Navbar from '@/components/navbar';
 import RecentBlog from '@/components/homepage/recent-blog-card';
 import RecentProject from '@/components/homepage/recent-project-card';
 
-const Profile = (props) => {
+const Profile = () => {
   const recentPosts = [
     {
       title: 'Hydrate redux store in Next.js',
@@ -58,12 +58,11 @@ const Profile = (props) => {
 
   return (
     <>
-      <Navbar {...props} />
+      <Navbar />
       <Box
         minHeight="90vh"
         id="profile"
         display="flex"
-        // bg="bgColor"
         flexDirection="column"
         justifyContent="center"
         alignItems="center">
@@ -94,7 +93,6 @@ const Profile = (props) => {
           </Box>
           <Box
             fontSize={['1rem', '1.6rem', '1.8rem', '1.8rem']}
-            // color="textColor"
             mx={['2rem', '1rem', '1rem', '1rem']}>
             <p>I code beautifully simple things and I love what I do</p>
             <p>And of-course a love for egyptian bracket</p>

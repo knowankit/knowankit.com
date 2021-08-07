@@ -14,7 +14,7 @@ import {
 import { BiMenuAltRight } from 'react-icons/bi';
 import { BsMoon, BsSun } from 'react-icons/bs';
 
-const Navbar = ({ setTheme, isLightTheme }) => {
+const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
   const router = useRouter();
@@ -72,7 +72,7 @@ const Navbar = ({ setTheme, isLightTheme }) => {
     <Box display="flex" justifyContent="space-between" height="10vh">
       <Box height="20px" m="1rem">
         <IconButton
-          icon={isLightTheme ? <BsMoon /> : <BsSun />}
+          icon={<BsMoon />}
           aria-label="change mode"
           borderRadius="md"
           onClick={toggleColorMode}
