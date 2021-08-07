@@ -24,7 +24,7 @@ git clone https://github.com/knowankit/knowankit.com
 ### 2. **Install necessary dependencies for the frontend application**
 
 ```sh
-cd frontend && yarn install
+cd knowankit.com && yarn install
 ```
 
 ### 3. **Start the frontend application**
