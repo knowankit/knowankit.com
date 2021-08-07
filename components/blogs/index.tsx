@@ -11,9 +11,9 @@ type IProps = {
 
 const Blog: FC<Posts & IProps> = (props): JSX.Element => {
   return (
-    <Box height="100vh" id="profile" bg="bgColor">
+    <Box height="100vh" id="profile">
       <Navbar setTheme={props.setTheme} isLightTheme={props.isLightTheme} />
-      <Box color="textColor" bg="bgColor" minHeight="90vh" height="100%" p="2rem">
+      <Box color="textColor" minHeight="90vh" height="100%" p="2rem">
         {props.posts.map((post, index) => (
           <ArticleCard key={index} post={post} />
         ))}

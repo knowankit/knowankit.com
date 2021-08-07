@@ -5,7 +5,7 @@ import { Box } from '@chakra-ui/react';
 
 const Projects = (props) => {
   return (
-    <Box id="profile" bg="bgColor">
+    <Box id="profile">
       <Navbar {...props} />
       <Box height="100%">
         <SearchProject />

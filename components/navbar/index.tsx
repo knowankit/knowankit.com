@@ -8,13 +8,15 @@ import {
   DrawerContent,
   DrawerOverlay,
   DrawerCloseButton,
-  useDisclosure
+  useDisclosure,
+  useColorMode
 } from '@chakra-ui/react';
 import { BiMenuAltRight } from 'react-icons/bi';
 import { BsMoon, BsSun } from 'react-icons/bs';
 
 const Navbar = ({ setTheme, isLightTheme }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { colorMode, toggleColorMode } = useColorMode();
   const router = useRouter();
 
   const loadMenu = (isMobile = false) => {
@@ -40,7 +42,7 @@ const Navbar = ({ setTheme, isLightTheme }) => {
               key={index}
               fontWeight="bold"
               fontSize="2rem"
-              color={router.asPath === menu.link ? 'brand' : 'textColor'}>
+              color={router.asPath === menu.link ? 'brand' : ''}>
               <Link href={menu.link} passHref>
                 {menu.name}
               </Link>
@@ -56,7 +58,7 @@ const Navbar = ({ setTheme, isLightTheme }) => {
         key={index}
         cursor="pointer"
         fontWeight="bold"
-        color={router.asPath === menu.link ? 'brand' : 'textColor'}>
+        color={router.asPath === menu.link ? 'brand' : ''}>
         <Link href={menu.link} passHref>
           <Box as="span" fontWeight="bold">
             {menu.name}
@@ -67,13 +69,13 @@ const Navbar = ({ setTheme, isLightTheme }) => {
   };
 
   return (
-    <Box display="flex" justifyContent="space-between" height="10vh" bg="bgColor">
+    <Box display="flex" justifyContent="space-between" height="10vh">
       <Box height="20px" m="1rem">
         <IconButton
           icon={isLightTheme ? <BsMoon /> : <BsSun />}
           aria-label="change mode"
           borderRadius="md"
-          onClick={() => setTheme(!isLightTheme)}
+          onClick={toggleColorMode}
         />
       </Box>
       <Box display={['none', 'none', 'flex', 'flex']} alignItems="center" fontSize="1.2rem">

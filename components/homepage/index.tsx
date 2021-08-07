@@ -63,7 +63,7 @@ const Profile = (props) => {
         minHeight="90vh"
         id="profile"
         display="flex"
-        bg="bgColor"
+        // bg="bgColor"
         flexDirection="column"
         justifyContent="center"
         alignItems="center">
@@ -73,7 +73,7 @@ const Profile = (props) => {
           justifyContent="space-between"
           flexDirection="column"
           alignItems="center">
-          <Box fontSize={['2rem', '2.5rem', '3rem', '3rem']} fontWeight="bold" color="textColor">
+          <Box fontSize={['2rem', '2.5rem', '3rem', '3rem']} fontWeight="bold">
             <Box display="inline-flex" position="relative" overflow="hidden">
               <Box display="inline-flex" flexDirection="column" mt="4rem">
                 <Box>Front-end</Box>
@@ -94,7 +94,7 @@ const Profile = (props) => {
           </Box>
           <Box
             fontSize={['1rem', '1.6rem', '1.8rem', '1.8rem']}
-            color="textColor"
+            // color="textColor"
             mx={['2rem', '1rem', '1rem', '1rem']}>
             <p>I code beautifully simple things and I love what I do</p>
             <p>And of-course a love for egyptian bracket</p>
