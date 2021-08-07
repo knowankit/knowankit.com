@@ -1,7 +1,14 @@
 import Link from 'next/link';
 import { Heading, Link as _Link } from '@chakra-ui/react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 
+const SocialShare = dynamic(
+  import(/* webpackChunkName: "SocialShare" */ 'components/social-share'),
+  {
+    ssr: false
+  }
+);
 const CustomLink = (props) => {
   const href = props.href;
   const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
@@ -41,7 +48,8 @@ const components = {
   h2,
   h3,
   h4,
-  Image: CImage
+  Image: CImage,
+  SocialShare
 };
 
 export default components;
