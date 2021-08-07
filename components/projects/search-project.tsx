@@ -31,7 +31,7 @@ const SearchProject = () => {
 
   return (
     <>
-      <Box my="2rem" width={['16rem', '20rem', '32rem', '32rem']} mx="auto" color="textColor">
+      <Box my="2rem" width={['16rem', '20rem', '32rem', '32rem']} mx="auto">
         <InputGroup>
           <InputRightElement pointerEvents="none">
             <AiOutlineSearch />

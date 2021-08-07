@@ -9,13 +9,13 @@ type IProps = {
   isLightTheme: boolean;
 };
 
-const BlogPage: FC<Posts & IProps> = ({ posts, setTheme, isLightTheme }): JSX.Element => {
+const BlogPage: FC<Posts & IProps> = ({ posts }): JSX.Element => {
   return (
     <>
       <Head>
         <title>KnowAnkit | Blogs</title>
       </Head>
-      <Blog posts={posts} setTheme={setTheme} isLightTheme={isLightTheme} />
+      <Blog posts={posts} />
     </>
   );
 };

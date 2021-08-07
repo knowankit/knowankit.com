@@ -4,16 +4,11 @@ import { Box } from '@chakra-ui/react';
 import ArticleCard from '@/components/blogs/card';
 import { Posts } from '@/types/blog';
 
-type IProps = {
-  setTheme: () => void;
-  isLightTheme: boolean;
-};
-
-const Blog: FC<Posts & IProps> = (props): JSX.Element => {
+const Blog: FC<Posts> = (props): JSX.Element => {
   return (
-    <Box height="100vh" id="profile" bg="bgColor">
-      <Navbar setTheme={props.setTheme} isLightTheme={props.isLightTheme} />
-      <Box color="textColor" bg="bgColor" minHeight="90vh" height="100%" p="2rem">
+    <Box height="100vh" id="profile">
+      <Navbar />
+      <Box color="textColor" minHeight="90vh" height="100%" p="2rem">
         {props.posts.map((post, index) => (
           <ArticleCard key={index} post={post} />
         ))}

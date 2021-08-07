@@ -1,4 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { ColorModeScript } from '@chakra-ui/react';
+import theme from '@/lib/theme';
 
 class MyDocument extends Document {
   render() {
@@ -9,6 +11,7 @@ class MyDocument extends Document {
           <link rel="icon" type="image/png" href="/portfolio-logo.png" />
         </Head>
         <body>
+          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Main />
           <NextScript />
         </body>
