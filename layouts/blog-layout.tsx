@@ -13,7 +13,7 @@ type Props = {
   isLightTheme: boolean;
 };
 
-const BlogLayout: FC<Props> = ({ children, frontMatter, setTheme, isLightTheme }) => {
+const BlogLayout: FC<Props> = ({ children, frontMatter }) => {
   return (
     <>
       <Head>
@@ -21,7 +21,7 @@ const BlogLayout: FC<Props> = ({ children, frontMatter, setTheme, isLightTheme }
       </Head>
       <Box className="mdx">
         <Global styles={prismDarkTheme} />
-        <Navbar setTheme={setTheme} isLightTheme={isLightTheme} />
+        <Navbar />
         <Box
           mx="auto"
           px={['1rem', '1rem', '1rem', '1rem']}
