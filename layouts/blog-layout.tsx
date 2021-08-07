@@ -15,9 +15,6 @@ type Props = {
 };
 
 const meta = {
-  title: 'KnowAnkit – Frontend Engineer, writer, creator.',
-  description: `JavaScript love, and course creator.`,
-  image: 'https://www.knowankit.com/myself.jpg',
   type: 'website'
 };
 
@@ -27,20 +24,20 @@ const BlogLayout: FC<Props> = ({ children, frontMatter }) => {
   return (
     <>
       <Head>
-        <title>KnowAnkit - {meta.title}</title>
+        <title>KnowAnkit - {frontMatter.title}</title>
         <meta name="robots" content="follow, index" />
-        <meta content={meta.description} name="description" />
+        <meta content={frontMatter.summary} name="description" />
         <meta property="og:type" content={meta.type} />
         <meta property="og:url" content={`https://knowankit.com${router.asPath}`} />
         <link rel="canonical" href={`https://knowankit.com${router.asPath}`} />
         <meta property="og:site_name" content="Know Ankit" />
-        <meta property="og:title" content={meta.title} />
-        <meta property="og:image" content={meta.image} />
+        <meta property="og:title" content={frontMatter.title} />
+        <meta property="og:image" content={`https://knowankit.com${frontMatter.image}`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@knowankit" />
-        <meta name="twitter:title" content={meta.title} />
-        <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={meta.image} />
+        <meta name="twitter:title" content={frontMatter.title} />
+        <meta name="twitter:description" content={frontMatter.summary} />
+        <meta name="twitter:image" content={`https://knowankit.com${frontMatter.image}`} />
       </Head>
       <Box className="mdx">
         <Global styles={prismDarkTheme} />
