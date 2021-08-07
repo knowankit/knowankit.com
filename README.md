@@ -1,8 +1,4 @@
-<p align="center">
-  <img src="https://knowankit/portfolio.png" alt="Logo"/>
-</p>
-
-This is a boilerplate for building portfolio applications using Next.js.
+![Portfolio image](https://github.com/knowankit/knowankit.com/blob/develop/public/portfolio.png?raw=true)
 
 ## Overview
 
