@@ -15,7 +15,7 @@ const FrontMatter = ({ matter }) => {
             src={'https://avatars0.githubusercontent.com/knowankit'}
             alt={'Author'}
           />
-          <Box as="span" fontSize="sm">
+          <Box as="span" fontSize="sm" ml="10px">
             Ankit Kumar / {format(parseISO(matter.publishedAt), 'MMMM dd, yyyy')}
           </Box>
         </Box>
