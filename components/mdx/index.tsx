@@ -9,6 +9,7 @@ const SocialShare = dynamic(
     ssr: false
   }
 );
+
 const CustomLink = (props) => {
   const href = props.href;
   const isInternalLink = href && (href.startsWith('/') || href.startsWith('#'));
