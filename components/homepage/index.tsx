@@ -9,7 +9,7 @@ const Profile = () => {
     {
       title: 'Hydrate redux store in Next.js',
       summary: 'Learn how to create store in the server side and use the same store on the client',
-      publishedAt: '2017-07-26',
+      publishedAt: '2021-07-26',
       slug: 'hydrate-redux-state-in-nextjs',
       frontMatter: {
         readingTime: {
