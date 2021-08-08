@@ -6,6 +6,11 @@ import { prismDarkTheme } from '@/styles/style';
 import FrontMatter from '@/components/front-matter';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
+
+const Comments = dynamic(import(/* webpackChunkName: "SocialShare" */ 'components/comments'), {
+  ssr: false
+});
 
 type Props = {
   children: JSX.Element;
@@ -52,6 +57,7 @@ const BlogLayout: FC<Props> = ({ children, frontMatter }) => {
           flexDirection="column">
           <FrontMatter matter={frontMatter} />
           {children}
+          <Comments />
         </Box>
       </Box>
     </>
