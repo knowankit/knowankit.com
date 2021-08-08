@@ -21,8 +21,8 @@ My own slice of the internet where I post projects and articles related to the w
 ## Running Locally
 
 ```bash
-$ git clone https://github.com/leerob/leerob.io.git
-$ cd leerob.io
+$ git clone https://github.com/knowankit/knowankit.com.git
+$ cd knowankit.com
 $ yarn
 $ yarn dev
 ```
