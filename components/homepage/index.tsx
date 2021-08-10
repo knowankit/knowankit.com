@@ -3,6 +3,7 @@ import { Box, Heading } from '@chakra-ui/react';
 import Navbar from '@/components/navbar';
 import RecentBlog from '@/components/homepage/recent-blog-card';
 import RecentProject from '@/components/homepage/recent-project-card';
+import Footer from '@/components/footer';
 
 const Profile = () => {
   const recentPosts = [
@@ -32,9 +33,9 @@ const Profile = () => {
   const loadRecentProjectsAndBlogs = () => {
     return (
       <Box display="flex" flexDirection="column" mt="1rem">
-        <Box color="white" mt="1rem" ml="0.5rem">
+        <Box mt="1rem" ml="0.5rem">
           <Heading as="h2" size="md">
-            Latest Post
+            Blogs
           </Heading>
         </Box>
         {recentPosts.map((post, index) => (
@@ -42,9 +43,9 @@ const Profile = () => {
             <RecentBlog post={post} />
           </Box>
         ))}
-        <Box color="white">
+        <Box>
           <Heading as="h2" size="md" ml="0.5rem">
-            Latest Project
+            Projects
           </Heading>
         </Box>
         {recentProjects.map((project, index) => (
@@ -100,6 +101,7 @@ const Profile = () => {
         </Box>
         {loadRecentProjectsAndBlogs()}
       </Box>
+      <Footer />
     </>
   );
 };
