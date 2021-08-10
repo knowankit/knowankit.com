@@ -3,6 +3,7 @@ import Navbar from '@/components/navbar';
 import { Box } from '@chakra-ui/react';
 import ArticleCard from '@/components/blogs/card';
 import { Posts } from '@/types/blog';
+import Footer from '@/components/footer';
 
 const Blog: FC<Posts> = (props): JSX.Element => {
   return (
@@ -12,6 +13,7 @@ const Blog: FC<Posts> = (props): JSX.Element => {
         {props.posts.map((post, index) => (
           <ArticleCard key={index} post={post} />
         ))}
+        <Footer />
       </Box>
     </Box>
   );
