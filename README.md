@@ -1,5 +1,4 @@
-![Portfolio image](https://github.com/knowankit/knowankit.com/blob/develop/public/portfolio.png?raw=true)
-
+![Portfolio demo](https://github.com/knowankit/knowankit.com/blob/develop/demo.gif)
 # knowankit.com
 
 My own slice of the internet where I post projects and articles related to the web.
