@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Heading, Link as _Link } from '@chakra-ui/react';
 import Image from 'next/image';
+import HydrateReduxStore from '../../public/static/images/articles/nextjs-with-redux.png';
 import dynamic from 'next/dynamic';
 
 const SocialShare = dynamic(
@@ -37,11 +38,21 @@ const CustomLink = (props) => {
   );
 };
 
+const fetchImage = (slug) => {
+  switch (slug) {
+    case 1:
+      return HydrateReduxStore;
+
+    default:
+      break;
+  }
+};
+
 const h1 = (props) => <Heading size="2xl" my="0.5rem" {...props} />;
 const h2 = (props) => <Heading size="xl" my="0.5rem" {...props} />;
 const h3 = (props) => <Heading size="lg" my="0.5rem" {...props} />;
 const h4 = (props) => <Heading size="sm" my="0.5rem" {...props} />;
-const CImage = (props) => <Image {...props} />;
+const CImage = (props) => <Image {...props} src={fetchImage(props.id)} placeholder="blur" />;
 
 const components = {
   a: CustomLink,
