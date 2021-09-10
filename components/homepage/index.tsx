@@ -22,6 +22,13 @@ const Profile = () => {
 
   const recentProjects = [
     {
+      name: 'React smart carousel',
+      github: 'https://github.com/knowankit/react-smart-carousel',
+      description:
+        'Built with reactjs, typescript. This is a smart and func carousel which remembers how you slid the images',
+      demo: 'https://knowankit.github.io/react-smart-carousel/'
+    },
+    {
       name: 'Trello Clone - Built with Nextjs framework',
       github: 'https://github.com/knowankit/trello-clone',
       description:
