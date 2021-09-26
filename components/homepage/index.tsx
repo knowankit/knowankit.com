@@ -1,41 +1,54 @@
-import React from 'react';
-import { Box, Heading } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import { Box, Heading, Button } from '@chakra-ui/react';
 import Navbar from '@/components/navbar';
 import RecentBlog from '@/components/homepage/recent-blog-card';
 import RecentProject from '@/components/homepage/recent-project-card';
 import Footer from '@/components/footer';
+import getAllGithubStars from '@/lib/get-all-github-stars';
+import { AiOutlineGithub } from 'react-icons/ai';
 
-const Profile = () => {
-  const recentPosts = [
-    {
-      title: 'Hydrate redux store in Next.js',
-      summary: 'Learn how to create store in the server side and use the same store on the client',
-      publishedAt: '2021-07-26',
-      slug: 'hydrate-redux-state-in-nextjs',
-      frontMatter: {
-        readingTime: {
-          text: '5 mins'
-        }
+const recentPosts = [
+  {
+    title: 'Hydrate redux store in Next.js',
+    summary: 'Learn how to create store in the server side and use the same store on the client',
+    publishedAt: '2021-07-26',
+    slug: 'hydrate-redux-state-in-nextjs',
+    frontMatter: {
+      readingTime: {
+        text: '5 mins'
       }
     }
-  ];
+  }
+];
 
-  const recentProjects = [
-    {
-      name: 'React smart carousel',
-      github: 'https://github.com/knowankit/react-smart-carousel',
-      description:
-        'Built with reactjs, typescript. This is a smart and func carousel which remembers how you slid the images',
-      demo: 'knowankit.github.io/react-smart-carousel/'
-    },
-    {
-      name: 'Trello Clone - Built with Nextjs framework',
-      github: 'https://github.com/knowankit/trello-clone',
-      description:
-        'Built with Nextjs framework with Typescript and Chakra UI library with support from MongoDB',
-      demo: 'trello-clone-one.vercel.app'
+const recentProjects = [
+  {
+    name: 'React smart carousel',
+    github: 'https://github.com/knowankit/react-smart-carousel',
+    description:
+      'Built with reactjs, typescript. This is a smart and func carousel which remembers how you slid the images',
+    demo: 'knowankit.github.io/react-smart-carousel/'
+  },
+  {
+    name: 'Trello Clone - Built with Nextjs framework',
+    github: 'https://github.com/knowankit/trello-clone',
+    description:
+      'Built with Nextjs framework with Typescript and Chakra UI library with support from MongoDB',
+    demo: 'trello-clone-one.vercel.app'
+  }
+];
+
+const Profile = () => {
+  useEffect(() => {
+    async function fetchMyAPI() {
+      const count = await getAllGithubStars();
+      setStars(count);
     }
-  ];
+
+    fetchMyAPI();
+  }, []);
+
+  const [stars, setStars] = useState(0);
 
   const loadRecentProjectsAndBlogs = () => {
     return (
@@ -104,6 +117,11 @@ const Profile = () => {
             mx={['2rem', '1rem', '1rem', '1rem']}>
             <p>I code beautifully simple things and I love what I do</p>
             <p>And of-course a love for egyptian bracket</p>
+          </Box>
+          <Box>
+            <Button variant="ghost">
+              <AiOutlineGithub /> &nbsp; {stars} stars
+            </Button>
           </Box>
         </Box>
         {loadRecentProjectsAndBlogs()}
