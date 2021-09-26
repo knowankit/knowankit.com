@@ -1,5 +1,22 @@
 export default [
   {
+    name: 'React bubble effect button',
+    github: 'https://github.com/knowankit/react-bubbly-effect-button',
+    description: '🧼 Bubble animation on button',
+    demo: 'https://knowankit.github.io/react-bubbly-effect-button/'
+  },
+  {
+    name: 'Build React npm',
+    github: 'https://github.com/knowankit/build-react-npm',
+    description: '⚡️ A CLI tool for building reusable react npm packages.'
+  },
+  {
+    name: 'Video calling app',
+    github: 'https://github.com/knowankit/video-calling-app',
+    description: '🎥 One-to-one video calling app built using react, node and socket.io',
+    demo: 'https://video-calling-app-git.netlify.app/'
+  },
+  {
     name: 'React smart carousel',
     github: 'https://github.com/knowankit/react-smart-carousel',
     description:

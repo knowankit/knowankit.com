@@ -1,6 +1,14 @@
 import React from 'react';
-import { Box, Heading, Stack, Image, Text, HStack, useColorModeValue } from '@chakra-ui/react';
-import Link from 'next/link';
+import {
+  Box,
+  Heading,
+  Stack,
+  Image,
+  Text,
+  HStack,
+  useColorModeValue,
+  Link
+} from '@chakra-ui/react';
 import { parseISO, format } from 'date-fns';
 
 interface BlogAuthorProps {
@@ -24,9 +32,9 @@ export const BlogAuthor: React.FC<BlogAuthorProps> = (props): JSX.Element => {
   );
 };
 
-const ArticleCard = ({ post }): JSX.Element => {
+const DevTo = ({ post }): JSX.Element => {
   return (
-    <Link href={`blogs/${post.slug}`}>
+    <Link href={post.slug} textDecoration="none !important" target="_blank">
       <Box
         cursor="pointer"
         minW={'250px'}
@@ -62,7 +70,7 @@ const ArticleCard = ({ post }): JSX.Element => {
             </Text>
             <Text color={'gray.500'}>
               {format(parseISO(post.publishedAt), 'MMMM dd, yyyy')} ·{' '}
-              {post.frontMatter.readingTime.text}
+              {post.frontMatter?.readingTime.text}
             </Text>
           </Stack>
         </Stack>
@@ -71,4 +79,4 @@ const ArticleCard = ({ post }): JSX.Element => {
   );
 };
 
-export default ArticleCard;
+export default DevTo;
