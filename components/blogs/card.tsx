@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Heading, Stack, Image, Text, HStack, useColorModeValue } from '@chakra-ui/react';
 import Link from 'next/link';
 import { parseISO, format } from 'date-fns';
@@ -8,7 +7,7 @@ interface BlogAuthorProps {
   name: string;
 }
 
-export const BlogAuthor: React.FC<BlogAuthorProps> = (props): JSX.Element => {
+export const BlogAuthor = (props: BlogAuthorProps): JSX.Element => {
   return (
     <HStack marginTop="2" spacing="2" display="flex" alignItems="center" color="black">
       <Image
