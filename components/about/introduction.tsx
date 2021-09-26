@@ -46,7 +46,7 @@ const Introduction = (): JSX.Element => {
             </span>{' '}
             to develop compelling front-end, intuitive yet minimalistic interfaces, and engaging
             designs. I work to the principle that simple is beautiful, while carefully including the
-            finest details and interactions. I&apos;m quiet confident, naturally curious, and
+            finest details and interactions. I&apos;m quite confident, naturally curious, and
             perpetually improving my skills
             <span role="img" aria-label="skilled">
               🏋🏼‍♀️
