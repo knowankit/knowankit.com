@@ -1,8 +1,7 @@
 import { Box } from '@chakra-ui/react';
-import React from 'react';
 import SocialIcons from '@/components/homepage/social-icons';
 
-const Introduction = () => {
+const Introduction = (): JSX.Element => {
   return (
     <Box
       id="introduction"
