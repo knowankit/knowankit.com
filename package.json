@@ -1,7 +1,7 @@
 {
   "name": "knowankit.com",
-  "version": "0.0.0",
-  "description": "Kn",
+  "version": "1.0.1",
+  "description": "Personal portfolio",
   "scripts": {
     "dev": "next",
     "build": "next build",
