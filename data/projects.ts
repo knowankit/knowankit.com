@@ -1,5 +1,11 @@
 export default [
   {
+    name: 'Particle effect on text',
+    github: 'https://github.com/knowankit/particle-text-effect',
+    description: '📗 Particle animation effect on text',
+    demo: 'https://knowankit.github.io/particle-text-effect/'
+  },
+  {
     name: 'React bubble effect button',
     github: 'https://github.com/knowankit/react-bubbly-effect-button',
     description: '🧼 Bubble animation on button',

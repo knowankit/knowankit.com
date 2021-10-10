@@ -6,39 +6,10 @@ import RecentProject from '@/components/homepage/recent-project-card';
 import Footer from '@/components/footer';
 import getAllGithubStars from '@/lib/get-all-github-stars';
 import { AiOutlineGithub } from 'react-icons/ai';
+import projects from '@/data/projects';
+import router, { useRouter } from 'next/router';
 
-const recentPosts = [
-  {
-    title: 'Hydrate redux store in Next.js',
-    summary: 'Learn how to create store in the server side and use the same store on the client',
-    publishedAt: '2021-07-26',
-    slug: 'hydrate-redux-state-in-nextjs',
-    frontMatter: {
-      readingTime: {
-        text: '5 mins'
-      }
-    }
-  }
-];
-
-const recentProjects = [
-  {
-    name: 'React smart carousel',
-    github: 'https://github.com/knowankit/react-smart-carousel',
-    description:
-      'Built with reactjs, typescript. This is a smart and func carousel which remembers how you slid the images',
-    demo: 'knowankit.github.io/react-smart-carousel/'
-  },
-  {
-    name: 'Trello Clone - Built with Nextjs framework',
-    github: 'https://github.com/knowankit/trello-clone',
-    description:
-      'Built with Nextjs framework with Typescript and Chakra UI library with support from MongoDB',
-    demo: 'trello-clone-one.vercel.app'
-  }
-];
-
-const Profile = () => {
+const Profile = ({ posts }) => {
   useEffect(() => {
     async function fetchMyAPI() {
       const count = await getAllGithubStars();
@@ -50,7 +21,13 @@ const Profile = () => {
 
   const [stars, setStars] = useState(0);
 
+  const showProjectsPage = () => {
+    router.push('/projects');
+  };
+
   const loadRecentProjectsAndBlogs = () => {
+    const filteredProjects = projects.slice(0, 3);
+
     return (
       <Box display="flex" flexDirection="column" mt="1rem">
         <Box mt="1rem" ml="0.5rem">
@@ -58,7 +35,7 @@ const Profile = () => {
             Blogs
           </Heading>
         </Box>
-        {recentPosts.map((post, index) => (
+        {posts.map((post, index) => (
           <Box m="0.5rem" key={index}>
             <RecentBlog post={post} />
           </Box>
@@ -68,11 +45,14 @@ const Profile = () => {
             Projects
           </Heading>
         </Box>
-        {recentProjects.map((project, index) => (
+        {filteredProjects.map((project, index) => (
           <Box m="0.5rem" key={index}>
             <RecentProject project={project} />
           </Box>
         ))}
+        <Button variant="ghost" onClick={showProjectsPage} colorScheme="brand">
+          See all projects
+        </Button>
       </Box>
     );
   };
@@ -119,7 +99,10 @@ const Profile = () => {
             <p>And of-course a love for egyptian bracket</p>
           </Box>
           <Box>
-            <Button variant="ghost">
+            <Button
+              variant="ghost"
+              colorScheme="brand"
+              onClick={() => (window.location.href = 'https://github.com/knowankit')}>
               <AiOutlineGithub /> &nbsp; {stars} stars
             </Button>
           </Box>

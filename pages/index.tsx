@@ -2,6 +2,7 @@ import React from 'react';
 import HomePage from '@/components/homepage';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { getAllFilesFrontMatter } from '@/lib/mdx';
 
 const meta = {
   type: 'website',
@@ -9,7 +10,7 @@ const meta = {
   summary: 'I will post my learning and projects here'
 };
 
-const Home = () => {
+const Home = (props) => {
   const router = useRouter();
 
   return (
@@ -30,9 +31,15 @@ const Home = () => {
         <meta name="twitter:description" content={meta.summary} />
         <meta name="twitter:image" content="https://knowankit.com/myself.png" />
       </Head>
-      <HomePage />
+      <HomePage posts={props.posts} />
     </>
   );
 };
+
+export async function getStaticProps() {
+  const posts = await getAllFilesFrontMatter('blog');
+
+  return { props: { posts } };
+}
 
 export default Home;
