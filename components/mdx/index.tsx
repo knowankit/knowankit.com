@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Heading, Link as _Link } from '@chakra-ui/react';
 import Image from 'next/image';
 import HydrateReduxStore from '../../public/static/images/articles/nextjs-with-redux.png';
+import SetupLinting from '../../public/static/images/articles/setup-eslint-and-prettier.png';
 import dynamic from 'next/dynamic';
 
 const SocialShare = dynamic(
@@ -42,6 +43,8 @@ const fetchImage = (slug) => {
   switch (slug) {
     case 1:
       return HydrateReduxStore;
+    case 2:
+      return SetupLinting;
 
     default:
       break;

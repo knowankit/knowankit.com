@@ -22,7 +22,6 @@ const BlogPage: FC<Posts & IProps> = ({ posts }): JSX.Element => {
 
 export async function getStaticProps() {
   const posts = await getAllFilesFrontMatter('blog');
-
   return { props: { posts } };
 }
 
