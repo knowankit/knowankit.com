@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProjectCard from '@/components/projects/project-card';
 import { Box, InputGroup, InputRightElement, Input } from '@chakra-ui/react';
 import projects from '@/data/projects';
+import { getRepos } from '@/lib/get-all-github-stars';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 const SearchProject = () => {
   const [filteredList, setFilteredList] = useState(projects);
   const [searchText, setSearchText] = useState('');
+
+  useEffect(() => {
+    async function fetchMyAPI() {
+      const data = await getRepos();
+     
+      const sortedData = data.sort((a, b) => b['stargazers_count'] - a['stargazers_count'])
+      setFilteredList(sortedData)
+    }
+
+    fetchMyAPI();
+  }, []);
 
   const handleChange = (e) => {
     const inputValue = e.target.value;

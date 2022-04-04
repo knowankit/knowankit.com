@@ -12,4 +12,15 @@ const getAllGithubStars = async () => {
   return stars;
 };
 
-export default getAllGithubStars;
+const getRepos = async () => {
+  const URL = 'https://api.github.com/users/knowankit/repos';
+  const response = await fetch(URL);
+  const data = await response.json();
+
+
+  return data;
+};
+
+
+
+export { getAllGithubStars, getRepos } ;

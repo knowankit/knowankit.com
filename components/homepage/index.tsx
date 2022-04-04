@@ -4,10 +4,10 @@ import Navbar from '@/components/navbar';
 import RecentBlog from '@/components/homepage/recent-blog-card';
 import RecentProject from '@/components/homepage/recent-project-card';
 import Footer from '@/components/footer';
-import getAllGithubStars from '@/lib/get-all-github-stars';
+import { getAllGithubStars } from '@/lib/get-all-github-stars';
 import { AiOutlineGithub } from 'react-icons/ai';
 import projects from '@/data/projects';
-import router, { useRouter } from 'next/router';
+import router from 'next/router';
 
 const Profile = ({ posts }) => {
   useEffect(() => {
