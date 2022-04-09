@@ -1,4 +1,5 @@
 ![Portfolio demo](https://github.com/knowankit/knowankit.com/blob/develop/demo.gif)
+
 <p align="center">
   <a href="https://twitter.com/knowankit">
     <img alt="Twitter: Ankit Kumar" src="https://img.shields.io/twitter/follow/knowankit.svg?style=social" target="_blank" />

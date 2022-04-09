@@ -1,12 +1,13 @@
 import React from 'react';
 
 import { Box, Heading, Text, Stack, useColorModeValue } from '@chakra-ui/react';
-import { AiFillGithub } from 'react-icons/ai';
 import Link from 'next/link';
 
 const ProjectCard = ({ project }) => {
+  if (project.fork) return <></>;
+
   return (
-    <Link href={project.github}>
+    <Link href={project['html_url'] || ''}>
       <Box
         maxW={'350px'}
         w={'full'}
@@ -33,18 +34,6 @@ const ProjectCard = ({ project }) => {
             {project.name}
           </Heading>
           <Text color={'gray.500'}>{project.description}</Text>
-          <Box display="flex">
-            {project.demo && (
-              <Box as="a" href={`https://${project.demo}`} mr="1rem">
-                Preview
-              </Box>
-            )}
-            {project.github && (
-              <Box as="a" href={project.github} fontSize="1.6rem">
-                <AiFillGithub />
-              </Box>
-            )}
-          </Box>
         </Stack>
       </Box>
     </Link>
