@@ -4,6 +4,7 @@ import Navbar from '@/components/navbar';
 import RecentBlog from '@/components/homepage/recent-blog-card';
 import RecentProject from '@/components/homepage/recent-project-card';
 import Footer from '@/components/footer';
+import NowPlaying from 'components/NowPlaying';
 import { getAllGithubStars } from '@/lib/get-all-github-stars';
 import { AiOutlineGithub } from 'react-icons/ai';
 import projects from '@/data/projects';
@@ -110,6 +111,9 @@ const Profile = ({ posts }) => {
         {loadRecentProjectsAndBlogs()}
       </Box>
       <Footer />
+      <Box position="fixed" bottom="0px" boxShadow="sm" width="100%">
+        <NowPlaying />
+      </Box>
     </>
   );
 };
