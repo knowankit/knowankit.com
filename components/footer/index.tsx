@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 
 const Footer: FC = () => {
   return (
-    <Box p={4} as="footer">
+    <Box p={4} as="footer" mb={1}>
       <Box maxW="6xl" mx="auto" fontSize="xs">
         <Box d="flex" textAlign="center" justifyContent="center" alignItems="center">
           <HStack spacing={2}>
