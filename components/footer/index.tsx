@@ -1,5 +1,6 @@
 import { Box, HStack, Link as _Link, Text } from '@chakra-ui/react';
 import React, { FC } from 'react';
+import NowPlaying from 'components/NowPlaying';
 
 const Footer: FC = () => {
   return (
@@ -18,6 +19,7 @@ const Footer: FC = () => {
           </HStack>
         </Box>
       </Box>
+      <NowPlaying />
     </Box>
   );
 };
