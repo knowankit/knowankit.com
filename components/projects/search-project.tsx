@@ -12,9 +12,9 @@ const SearchProject = () => {
   useEffect(() => {
     async function fetchMyAPI() {
       const data = await getRepos();
-     
-      const sortedData = data.sort((a, b) => b['stargazers_count'] - a['stargazers_count'])
-      setFilteredList(sortedData)
+
+      const sortedData = data.sort((a, b) => b['stargazers_count'] - a['stargazers_count']);
+      setFilteredList(sortedData);
     }
 
     fetchMyAPI();

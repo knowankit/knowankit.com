@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Navbar from '@/components/navbar';
 import SearchProject from '@/components/projects/search-project';
 import { Box } from '@chakra-ui/react';

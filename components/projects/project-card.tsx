@@ -4,7 +4,7 @@ import { Box, Heading, Text, Stack, useColorModeValue } from '@chakra-ui/react';
 import Link from 'next/link';
 
 const ProjectCard = ({ project }) => {
-  if(project.fork) return  <></>
+  if (project.fork) return <></>;
 
   return (
     <Link href={project['html_url'] || ''}>

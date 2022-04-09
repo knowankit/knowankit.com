@@ -17,10 +17,7 @@ const getRepos = async () => {
   const response = await fetch(URL);
   const data = await response.json();
 
-
   return data;
 };
 
-
-
-export { getAllGithubStars, getRepos } ;
+export { getAllGithubStars, getRepos };
