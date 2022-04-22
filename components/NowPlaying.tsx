@@ -109,18 +109,16 @@ export default function NowPlaying() {
             href={data.songUrl}
             target="_blank"
             fontWeight="bold"
-            color="black"
             rel="noopener noreferrer">
             {data.title}
           </Box>
         ) : (
-          <Box as="span" fontWeight="bold" color="black">
+          <Box as="span" fontWeight="bold">
             Not Playing
           </Box>
         )}
         <span>{' – '}</span>
-
-        <Box as="span" color="black" textTransform="capitalize">
+        <Box as="span" textTransform="capitalize">
           {data?.artist ?? 'Spotify'}
         </Box>
       </Box>
