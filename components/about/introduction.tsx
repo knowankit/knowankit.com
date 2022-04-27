@@ -1,5 +1,4 @@
 import { Box } from '@chakra-ui/react';
-import SocialIcons from '@/components/homepage/social-icons';
 
 const Introduction = (): JSX.Element => {
   return (
@@ -53,7 +52,6 @@ const Introduction = (): JSX.Element => {
             </span>
             .
           </Box>
-          <SocialIcons />
         </Box>
       </Box>
     </Box>

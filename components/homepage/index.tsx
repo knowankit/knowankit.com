@@ -4,7 +4,6 @@ import Navbar from '@/components/navbar';
 import RecentBlog from '@/components/homepage/recent-blog-card';
 import RecentProject from '@/components/homepage/recent-project-card';
 import Footer from '@/components/footer';
-import NowPlaying from 'components/NowPlaying';
 import { getAllGithubStars } from '@/lib/get-all-github-stars';
 import { AiOutlineGithub } from 'react-icons/ai';
 import projects from '@/data/projects';
@@ -62,7 +61,7 @@ const Profile = ({ posts }) => {
     <>
       <Navbar />
       <Box
-        minHeight="90vh"
+        height="80vh"
         id="profile"
         display="flex"
         flexDirection="column"
@@ -76,7 +75,7 @@ const Profile = ({ posts }) => {
           alignItems="center">
           <Box fontSize={['2rem', '2.5rem', '3rem', '3rem']} fontWeight="bold">
             <Box display="inline-flex" position="relative" overflow="hidden">
-              <Box display="inline-flex" flexDirection="column" mt="4rem">
+              <Box display="inline-flex" flexDirection="column">
                 <Box>Front-end</Box>
                 {/* <Box>Back-end</Box>
                 <Box>Full-stack</Box> */}
@@ -108,11 +107,10 @@ const Profile = ({ posts }) => {
             </Button>
           </Box>
         </Box>
-        {loadRecentProjectsAndBlogs()}
+        {/* {loadRecentProjectsAndBlogs()} */}
       </Box>
-      <Footer />
-      <Box position="fixed" bottom="0px" boxShadow="sm" width="100%">
-        <NowPlaying />
+      <Box height="10vh">
+        <Footer />
       </Box>
     </>
   );
