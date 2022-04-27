@@ -10,7 +10,7 @@ const About = (): JSX.Element => {
     <Box minHeight="100vh" id="about">
       <Navbar />
       <Introduction />
-      <Box display='flex' justifyContent='center' alignItems='center'>
+      <Box display="flex" justifyContent="center" alignItems="center">
         <GitHubCalendar username="knowankit" />
       </Box>
       <SocialIcons />
