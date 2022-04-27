@@ -69,8 +69,10 @@ const Navbar = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="space-between" height="10vh">
-      <Box height="20px" m="1rem">
+    <Box display="flex" justifyContent="end" alignItems='center' height="10vh">
+      <Box display={['none', 'none', 'flex', 'flex']} alignItems="center" fontSize="1.2rem">
+        {loadMenu()}
+        <Box m="1rem">
         <IconButton
           icon={colorMode === 'light' ? <BsMoon /> : <BsSun />}
           aria-label="change mode"
@@ -78,8 +80,6 @@ const Navbar = () => {
           onClick={toggleColorMode}
         />
       </Box>
-      <Box display={['none', 'none', 'flex', 'flex']} alignItems="center" fontSize="1.2rem">
-        {loadMenu()}
       </Box>
       <Box m="1rem" display={['flex', 'flex', 'none', 'none']}>
         <BiMenuAltRight fontSize="2.5em" cursor="pointer" onClick={onOpen} />

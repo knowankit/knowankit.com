@@ -1,9 +1,9 @@
 import { Box, HStack, Link as _Link, Text } from '@chakra-ui/react';
-import React, { FC } from 'react';
+import React from 'react';
 
-const Footer: FC = () => {
+const Footer = () => {
   return (
-    <Box p={4} as="footer">
+    <Box px={4} as="footer">
       <Box maxW="6xl" mx="auto" fontSize="xs">
         <Box d="flex" textAlign="center" justifyContent="center" alignItems="center">
           <HStack spacing={2}>
