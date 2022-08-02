@@ -7,15 +7,17 @@ import Footer from '@/components/footer';
 
 const Blog: FC<Posts> = (props): JSX.Element => {
   return (
-    <Box height="100vh" id="profile">
-      <Navbar />
-      <Box color="textColor" minHeight="90vh" height="100%" p="2rem">
-        {props.posts.map((post, index) => (
-          <ArticleCard key={index} post={post} />
-        ))}
-        <Footer />
+    <>
+      <Box height="90vh" id="profile">
+        <Navbar />
+        <Box color="textColor" minHeight="90vh" height="100%" p="2rem">
+          {props.posts.map((post, index) => (
+            <ArticleCard key={index} post={post} />
+          ))}
+        </Box>
       </Box>
-    </Box>
+      <Footer />
+    </>
   );
 };
 

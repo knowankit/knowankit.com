@@ -4,11 +4,10 @@ import { AiOutlineGithub, AiOutlineTwitter, AiFillLinkedin } from 'react-icons/a
 
 const SocialIcons = () => {
   return (
-    <Box display="flex" justifyContent="center" alignItems="flex-end">
+    <Box display="flex" justifyContent="center" alignItems="center">
       <Box
         as="a"
         fontSize={['1.4rem', '2.4rem', '3rem', '3rem']}
-        mt="2.5rem"
         mr="20px"
         href="https://github.com/knowankit">
         <AiOutlineGithub />
@@ -17,7 +16,6 @@ const SocialIcons = () => {
         as="a"
         color="#1DA1F2"
         fontSize={['1.4rem', '2.4rem', '3rem', '3rem']}
-        mt="2.5rem"
         mr="20px"
         href="https://twitter.com/knowankit">
         <AiOutlineTwitter />
@@ -25,7 +23,6 @@ const SocialIcons = () => {
       <Box
         as="a"
         fontSize={['1.4rem', '2.4rem', '3rem', '3rem']}
-        mt="2.5rem"
         href="https://www.linkedin.com/in/knowankit/">
         <AiFillLinkedin />
       </Box>
