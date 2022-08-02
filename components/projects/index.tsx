@@ -8,10 +8,10 @@ const Projects = () => {
   return (
     <Box id="profile">
       <Navbar />
-      <Box height="100%">
+      <Box height="80vh" overflowY={'scroll'}>
         <SearchProject />
-        <Footer />
       </Box>
+      <Footer />
     </Box>
   );
 };
