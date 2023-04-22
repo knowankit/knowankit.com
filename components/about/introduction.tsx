@@ -35,18 +35,19 @@ const Introduction = (): JSX.Element => {
             fontSize={['1rem', '1rem', '1.4rem', '1.8rem']}
             mt="1rem"
             mx={['2rem', '4rem', '6rem', '8rem']}>
-            I&apos;m a Front-end developer and UI Designer from India. I love CSS and JavaScript{' '}
+            I am a Front-end developer and UI Designer hailing from India. My passion lies in
+            working with CSS and JavaScript
             <span role="img" aria-label="rocket">
               🚀
             </span>
-            which along with other acroynms gives me superpowers
+            , which, along with other programming languages, empower
             <span role="img" aria-label="strong">
               💪🏻
-            </span>{' '}
-            to develop compelling front-end, intuitive yet minimalistic interfaces, and engaging
-            designs. I work to the principle that simple is beautiful, while carefully including the
-            finest details and interactions. I&apos;m quite confident, naturally curious, and
-            perpetually improving my skills
+            </span>
+            me to create visually stunning and highly functional front-end designs. I believe that
+            simplicity is beauty and strive to create intuitive yet minimalistic interfaces that
+            incorporate intricate details and interactions. I am confident, inquisitive, and
+            constantly honing my skills to improve my craft
             <span role="img" aria-label="skilled">
               🏋🏼‍♀️
             </span>
