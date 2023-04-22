@@ -42,14 +42,14 @@ const Introduction = (): JSX.Element => {
             </span>
             , which, along with other programming languages, empower
             <span role="img" aria-label="strong">
-              💪🏻
+              💪🏻&nbsp;
             </span>
             me to create visually stunning and highly functional front-end designs. I believe that
             simplicity is beauty and strive to create intuitive yet minimalistic interfaces that
             incorporate intricate details and interactions. I am confident, inquisitive, and
             constantly honing my skills to improve my craft
             <span role="img" aria-label="skilled">
-              🏋🏼‍♀️
+              &nbsp;🏋🏼‍♀️
             </span>
             .
           </Box>
