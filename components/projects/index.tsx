@@ -1,18 +1,12 @@
 import React from 'react';
-import Navbar from '@/components/navbar';
 import SearchProject from '@/components/projects/search-project';
-import { Box } from '@chakra-ui/react';
-import Footer from '@/components/footer';
+import ContentWithNavbarFooter from '@/layouts/content-with-navbar-footer';
 
 const Projects = () => {
   return (
-    <Box id="profile">
-      <Navbar />
-      <Box height="80vh" overflowY={'scroll'}>
-        <SearchProject />
-      </Box>
-      <Footer />
-    </Box>
+    <ContentWithNavbarFooter>
+      <SearchProject />
+    </ContentWithNavbarFooter>
   );
 };
 

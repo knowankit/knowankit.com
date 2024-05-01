@@ -10,11 +10,7 @@ const FrontMatter = ({ matter }) => {
       </Heading>
       <Box display="flex" justifyContent="space-between" my="1rem">
         <Box>
-          <Avatar
-            size="xs"
-            src={'https://avatars0.githubusercontent.com/knowankit'}
-            alt={'Author'}
-          />
+          <Avatar size="xs" src={'https://avatars0.githubusercontent.com/knowankit'} />
           <Box as="span" fontSize="sm" ml="10px">
             Ankit Kumar / {format(parseISO(matter.publishedAt), 'MMMM dd, yyyy')}
           </Box>
