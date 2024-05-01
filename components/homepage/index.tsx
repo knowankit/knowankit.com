@@ -1,15 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Box, Heading, Button } from '@chakra-ui/react';
-import Navbar from '@/components/navbar';
-import RecentBlog from '@/components/homepage/recent-blog-card';
-import RecentProject from '@/components/homepage/recent-project-card';
-import Footer from '@/components/footer';
+import { Box, Button } from '@chakra-ui/react';
 import { getAllGithubStars } from '@/lib/get-all-github-stars';
 import { AiOutlineGithub } from 'react-icons/ai';
-import projects from '@/data/projects';
-import router from 'next/router';
+import ContentWithNavbarFooter from '@/layouts/content-with-navbar-footer';
 
-const Profile = ({ posts }) => {
+const HomePage = () => {
   useEffect(() => {
     async function fetchMyAPI() {
       const count = await getAllGithubStars();
@@ -21,45 +16,8 @@ const Profile = ({ posts }) => {
 
   const [stars, setStars] = useState(0);
 
-  const showProjectsPage = () => {
-    router.push('/projects');
-  };
-
-  const loadRecentProjectsAndBlogs = () => {
-    const filteredProjects = projects.slice(0, 3);
-
-    return (
-      <Box display="flex" flexDirection="column" mt="1rem">
-        <Box mt="1rem" ml="0.5rem">
-          <Heading as="h2" size="md">
-            Blogs
-          </Heading>
-        </Box>
-        {posts.map((post, index) => (
-          <Box m="0.5rem" key={index}>
-            <RecentBlog post={post} />
-          </Box>
-        ))}
-        <Box>
-          <Heading as="h2" size="md" ml="0.5rem">
-            Projects
-          </Heading>
-        </Box>
-        {filteredProjects.map((project, index) => (
-          <Box m="0.5rem" key={index}>
-            <RecentProject project={project} />
-          </Box>
-        ))}
-        <Button variant="ghost" onClick={showProjectsPage} colorScheme="brand">
-          See all projects
-        </Button>
-      </Box>
-    );
-  };
-
   return (
-    <>
-      <Navbar />
+    <ContentWithNavbarFooter>
       <Box
         height="80vh"
         id="profile"
@@ -107,13 +65,9 @@ const Profile = ({ posts }) => {
             </Button>
           </Box>
         </Box>
-        {/* {loadRecentProjectsAndBlogs()} */}
       </Box>
-      <Box height="10vh">
-        <Footer />
-      </Box>
-    </>
+    </ContentWithNavbarFooter>
   );
 };
 
-export default Profile;
+export default HomePage;

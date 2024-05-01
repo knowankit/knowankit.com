@@ -69,7 +69,12 @@ const Navbar = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="end" alignItems="center" height="10vh">
+    <Box
+      display="flex"
+      justifyContent="end"
+      alignItems="center"
+      height="5.125rem"
+      bgColor="transparent">
       <Box display={['none', 'none', 'flex', 'flex']} alignItems="center" fontSize="1.2rem">
         {loadMenu()}
         <Box m="1rem">
