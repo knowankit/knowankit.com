@@ -18,13 +18,7 @@ const HomePage = () => {
 
   return (
     <ContentWithNavbarFooter>
-      <Box
-        height="80vh"
-        id="profile"
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center">
+      <Box id="profile" display="flex" height="inherit" justifyContent="center" alignItems="center">
         <Box
           textAlign="center"
           display="flex"

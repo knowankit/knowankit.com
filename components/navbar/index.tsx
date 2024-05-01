@@ -71,10 +71,11 @@ const Navbar = () => {
   return (
     <Box
       display="flex"
+      boxShadow="md"
       justifyContent="end"
       alignItems="center"
       height="5.125rem"
-      bgColor="transparent">
+      bgColor="white">
       <Box display={['none', 'none', 'flex', 'flex']} alignItems="center" fontSize="1.2rem">
         {loadMenu()}
         <Box m="1rem">
