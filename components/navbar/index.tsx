@@ -75,7 +75,7 @@ const Navbar = () => {
       justifyContent="end"
       alignItems="center"
       height="5.125rem"
-      bgColor="white">
+      bgColor="transparent">
       <Box display={['none', 'none', 'flex', 'flex']} alignItems="center" fontSize="1.2rem">
         {loadMenu()}
         <Box m="1rem">
