@@ -13,7 +13,12 @@ const About = () => {
       <Introduction />
       <Box borderTopWidth="1px" borderColor="site.line" py={{ base: 10, md: 14 }}>
         <Container maxW="1100px" px={{ base: 5, md: 8 }}>
-          <Text fontFamily="mono" fontSize="xs" letterSpacing="0.18em" color="brand.400" mb={6}>
+          <Text
+            fontFamily="mono"
+            fontSize="0.875rem"
+            letterSpacing="0.18em"
+            color="brand.400"
+            mb={6}>
             CONTRIBUTIONS
           </Text>
           <Box overflowX="auto">

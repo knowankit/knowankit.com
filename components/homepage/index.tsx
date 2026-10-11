@@ -93,18 +93,18 @@ const HomePage = () => {
         px={{ base: 3, sm: 4, md: 6 }}
         py={{ base: 2, md: 3 }}
         centerContent>
-        <Grid templateColumns="1fr" w="100%" maxW="42rem">
+        <Grid templateColumns="1fr" w="100%" maxW="52rem">
           <VStack align="start" gap={{ base: 2, md: 3 }} minW={0}>
             <MotionBox initial="hidden" animate="show" variants={fadeUp(0)}>
               <Text
                 fontFamily="mono"
-                fontSize="0.75rem"
+                fontSize="1rem"
                 fontWeight="600"
                 letterSpacing="0.18em"
                 textTransform="uppercase"
                 color="brand.400">
                 Staff software engineer
-                <Box as="span" className="dash" ml="2px">
+                <Box as="span" className="dash" ml="0.125rem">
                   _
                 </Box>
               </Text>
@@ -124,7 +124,7 @@ const HomePage = () => {
                     transition={{ duration: 0.3 }}
                     color="tomato.400"
                     fontFamily="mono"
-                    fontSize="0.75rem"
+                    fontSize="1.125rem"
                     fontWeight="700"
                     letterSpacing="0.14em"
                     textTransform="uppercase">
@@ -137,7 +137,7 @@ const HomePage = () => {
             <MotionBox initial="hidden" animate="show" variants={fadeUp(0.08)}>
               <Heading
                 as="h1"
-                fontSize={{ base: '1.75rem', sm: '2.1rem', md: '2.5rem', lg: '2.85rem' }}
+                fontSize={{ base: '2.25rem', sm: '2.75rem', md: '3.25rem', lg: '3.5rem' }}
                 lineHeight="1.12"
                 fontWeight="700"
                 letterSpacing="-0.03em"
@@ -149,14 +149,14 @@ const HomePage = () => {
             <MotionBox initial="hidden" animate="show" variants={fadeUp(0.16)}>
               <VStack align="start" gap={1}>
                 <Text
-                  fontSize={{ base: 'md', md: 'lg' }}
+                  fontSize={{ base: '1.125rem', md: '1.375rem' }}
                   color={subtext}
                   lineHeight="1.55"
                   wordBreak="break-word">
                   I code beautifully simple things and I love what I do
                 </Text>
                 <Text
-                  fontSize={{ base: 'md', md: 'lg' }}
+                  fontSize={{ base: '1.125rem', md: '1.375rem' }}
                   color={subtext}
                   lineHeight="1.55"
                   wordBreak="break-word">
@@ -167,12 +167,19 @@ const HomePage = () => {
 
             <MotionBox initial="hidden" animate="show" variants={fadeUp(0.24)}>
               <HStack gap={2} flexWrap="wrap">
-                <Button asChild size="sm" variant="accent" borderRadius="full" px={5}>
+                <Button
+                  asChild
+                  size="md"
+                  fontSize="1rem"
+                  variant="accent"
+                  borderRadius="full"
+                  px={5}>
                   <NextLink href="/projects">Work</NextLink>
                 </Button>
                 <Button
                   asChild
-                  size="sm"
+                  size="md"
+                  fontSize="1rem"
                   variant="outline"
                   borderRadius="full"
                   px={5}
@@ -183,7 +190,8 @@ const HomePage = () => {
                 </Button>
                 <Button
                   asChild
-                  size="sm"
+                  size="md"
+                  fontSize="1rem"
                   variant="ghost"
                   borderRadius="full"
                   px={3}
@@ -197,15 +205,20 @@ const HomePage = () => {
             <MotionBox initial="hidden" animate="show" variants={fadeUp(0.32)} w="100%">
               <HStack gap={4} flexWrap="wrap" pt={1} align="start">
                 <Box minW={0}>
-                  <Text fontFamily="mono" fontSize="0.75rem" color={subtext} letterSpacing="0.08em">
+                  <Text
+                    fontFamily="mono"
+                    fontSize="0.875rem"
+                    color={subtext}
+                    letterSpacing="0.08em">
                     OPEN SOURCE
                   </Text>
                   <Button
                     asChild
                     variant="ghost"
-                    size="xs"
+                    size="sm"
                     px={0}
                     height="auto"
+                    fontSize="1.125rem"
                     fontWeight="600"
                     color="brand.400"
                     _hover={{ bg: 'transparent', color: 'brand.300' }}>
@@ -219,10 +232,14 @@ const HomePage = () => {
                   </Button>
                 </Box>
                 <Box minW={0}>
-                  <Text fontFamily="mono" fontSize="0.75rem" color={subtext} letterSpacing="0.08em">
+                  <Text
+                    fontFamily="mono"
+                    fontSize="0.875rem"
+                    color={subtext}
+                    letterSpacing="0.08em">
                     CURRENT FOCUS
                   </Text>
-                  <Text fontWeight="600" fontSize="sm">
+                  <Text fontWeight="600" fontSize="1.125rem">
                     Working with FastAPI, LangGraph, and TypeSafe AI&apos;s Jev
                   </Text>
                 </Box>

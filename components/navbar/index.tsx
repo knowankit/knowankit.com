@@ -28,7 +28,7 @@ const NavLink = ({ href, label, onNavigate }: NavLinkProps) => {
       py={2}
       borderRadius="md"
       fontWeight="600"
-      fontSize="sm"
+      fontSize="1rem"
       letterSpacing="0.02em"
       color={isActive ? 'site.navActive' : 'site.subtext'}
       position="relative"
@@ -89,7 +89,7 @@ const Navbar = () => {
         <NextLink href="/" aria-label="Home">
           <Text
             fontFamily="mono"
-            fontSize="sm"
+            fontSize="1rem"
             fontWeight="600"
             letterSpacing="0.08em"
             color="brand.400">
@@ -97,7 +97,7 @@ const Navbar = () => {
           </Text>
           <Text
             display={{ base: 'none', sm: 'block' }}
-            fontSize="sm"
+            fontSize="1rem"
             fontWeight="500"
             color="site.subtext">
             Ankit Kumar

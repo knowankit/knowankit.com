@@ -28,15 +28,15 @@ const ProjectCard = ({ project }) => {
           color="brand.400"
           textTransform="uppercase"
           fontWeight={800}
-          fontSize="xs"
+          fontSize="0.875rem"
           letterSpacing="0.14em"
           fontFamily="mono">
           {project.stargazers_count ? `${project.stargazers_count} stars` : 'Project'}
         </Text>
-        <Heading color="site.strong" fontSize="xl" mt={3} mb={2} letterSpacing="-0.02em">
+        <Heading color="site.strong" fontSize="1.5rem" mt={3} mb={2} letterSpacing="-0.02em">
           {project.name}
         </Heading>
-        <Text color="site.subtext" fontSize="sm" lineHeight="1.6">
+        <Text color="site.subtext" fontSize="1rem" lineHeight="1.6">
           {project.description}
         </Text>
       </a>

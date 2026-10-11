@@ -28,7 +28,7 @@ const SocialIcons = () => {
           aria-label={label}
           size="sm"
           variant="ghost"
-          fontSize="xl"
+          fontSize="1.25rem"
           color="site.subtext"
           _hover={{ color: hover, bg: 'site.hover' }}>
           <a href={href} target="_blank" rel="noopener noreferrer">

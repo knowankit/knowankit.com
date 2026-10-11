@@ -14,7 +14,7 @@ const Footer = () => {
       mx="auto"
       px={{ base: 4, md: 8 }}
       gap={4}>
-      <Text fontSize="sm" color="site.faint">
+      <Text fontSize="1rem" color="site.faint">
         © {new Date().getFullYear()} Ankit Kumar
       </Text>
       <SocialIcons />

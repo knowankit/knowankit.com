@@ -28,20 +28,20 @@ const ArticleCard = ({ post }) => {
             color="brand.400"
             textTransform="uppercase"
             fontWeight={800}
-            fontSize="xs"
+            fontSize="0.875rem"
             letterSpacing="0.14em"
             fontFamily="mono">
             Writing
           </Text>
-          <Heading color="site.strong" fontSize="2xl" letterSpacing="-0.02em">
+          <Heading color="site.strong" fontSize="1.75rem" letterSpacing="-0.02em">
             {post.title}
           </Heading>
-          <Text color="site.subtext" fontSize="sm" lineHeight="1.6">
+          <Text color="site.subtext" fontSize="1rem" lineHeight="1.6">
             {post.summary}
           </Text>
         </Stack>
         <Stack direction="row" gap={4} align="center" mt={4}>
-          <Stack direction="column" gap={0} fontSize="sm">
+          <Stack direction="column" gap={0} fontSize="1rem">
             <Text fontWeight={600} color="site.strong">
               Ankit Kumar
             </Text>

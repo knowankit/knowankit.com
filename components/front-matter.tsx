@@ -17,11 +17,11 @@ const FrontMatter = ({ matter }) => {
             <Avatar.Image src="https://avatars0.githubusercontent.com/knowankit" />
             <Avatar.Fallback name="Ankit Kumar" />
           </Avatar.Root>
-          <Box as="span" fontSize="sm" ml="10px">
+          <Box as="span" fontSize="1rem" ml="0.625rem">
             Ankit Kumar / {format(parseISO(matter.publishedAt), 'MMMM dd, yyyy')}
           </Box>
         </Box>
-        <Box fontSize="sm" display="flex" alignItems="center">
+        <Box fontSize="1rem" display="flex" alignItems="center">
           <AiOutlineFieldTime /> &nbsp;
           {matter.readingTime.text}
         </Box>

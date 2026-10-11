@@ -68,7 +68,7 @@ const Introduction = () => {
                 transition="color 0.15s ease">
                 <a href="https://github.com/knowankit" target="_blank" rel="noopener noreferrer">
                   <AiOutlineGithub size={16} />
-                  <Text fontSize="sm" fontWeight="500">
+                  <Text fontSize="1rem" fontWeight="500">
                     github.com/knowankit
                   </Text>
                 </a>
@@ -84,14 +84,14 @@ const Introduction = () => {
                   target="_blank"
                   rel="noopener noreferrer">
                   <AiFillLinkedin size={16} />
-                  <Text fontSize="sm" fontWeight="500">
+                  <Text fontSize="1rem" fontWeight="500">
                     linkedin.com/in/knowankit
                   </Text>
                 </a>
               </HStack>
               <HStack gap={2} color={linkColor}>
                 <HiOutlineLocationMarker size={16} />
-                <Text fontSize="sm" fontWeight="500">
+                <Text fontSize="1rem" fontWeight="500">
                   India
                 </Text>
               </HStack>
@@ -99,7 +99,12 @@ const Introduction = () => {
 
             {/* Skills */}
             <Box w="100%" maxW="260px">
-              <Text fontFamily="mono" fontSize="xs" letterSpacing="0.18em" color="brand.400" mb={3}>
+              <Text
+                fontFamily="mono"
+                fontSize="0.875rem"
+                letterSpacing="0.18em"
+                color="brand.400"
+                mb={3}>
                 SKILLS
               </Text>
               <Box display="flex" flexWrap="wrap" gap={2}>
@@ -111,7 +116,7 @@ const Introduction = () => {
                     color={tagColor}
                     borderRadius="full"
                     fontWeight="500"
-                    fontSize="xs">
+                    fontSize="0.875rem">
                     <Tag.Label>{skill}</Tag.Label>
                   </Tag.Root>
                 ))}
@@ -127,12 +132,17 @@ const Introduction = () => {
           transition={{ duration: 0.5, delay: 0.08, ease: easeOutExpo }}>
           <VStack align="start" gap={6}>
             <Box>
-              <Text fontFamily="mono" fontSize="xs" letterSpacing="0.2em" color="brand.400" mb={3}>
+              <Text
+                fontFamily="mono"
+                fontSize="0.875rem"
+                letterSpacing="0.2em"
+                color="brand.400"
+                mb={3}>
                 ABOUT
               </Text>
               <Heading
                 as="h1"
-                fontSize={{ base: '2rem', md: '2.5rem' }}
+                fontSize={{ base: '2.5rem', md: '3rem' }}
                 letterSpacing="-0.03em"
                 lineHeight="1.1"
                 mb={5}>
@@ -146,7 +156,7 @@ const Introduction = () => {
                 align="start"
                 gap={4}
                 color={subtext}
-                fontSize={{ base: 'md', md: 'lg' }}
+                fontSize={{ base: '1.125rem', md: '1.25rem' }}
                 lineHeight="1.75">
                 <Text>
                   I&apos;m a Staff Software Engineer based in India, working across the full stack.
@@ -178,7 +188,12 @@ const Introduction = () => {
               p={6}
               backdropFilter="blur(10px)"
               css={{ WebkitBackdropFilter: 'blur(10px)' }}>
-              <Text fontFamily="mono" fontSize="xs" letterSpacing="0.16em" color="brand.400" mb={4}>
+              <Text
+                fontFamily="mono"
+                fontSize="0.875rem"
+                letterSpacing="0.16em"
+                color="brand.400"
+                mb={4}>
                 WHAT I&apos;M FOCUSED ON
               </Text>
               <Grid templateColumns={{ base: '1fr', sm: '1fr 1fr' }} gap={4}>
@@ -195,10 +210,10 @@ const Introduction = () => {
                   { label: 'Mentorship', desc: 'Raising the quality bar together' }
                 ].map(({ label, desc }) => (
                   <Box key={label}>
-                    <Text fontWeight="700" fontSize="sm" mb={1}>
+                    <Text fontWeight="700" fontSize="1rem" mb={1}>
                       {label}
                     </Text>
-                    <Text fontSize="sm" color={subtext} lineHeight="1.6">
+                    <Text fontSize="1rem" color={subtext} lineHeight="1.6">
                       {desc}
                     </Text>
                   </Box>
