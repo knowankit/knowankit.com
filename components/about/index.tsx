@@ -3,14 +3,13 @@
 import Introduction from '@/components/about/introduction';
 import { Box, Container, Text } from '@chakra-ui/react';
 import { GitHubCalendar } from 'react-github-calendar';
-import ContentWithNavbarFooter from '@/layouts/content-with-navbar-footer';
 import { useColorMode } from '@/components/ui/color-mode';
 
 const About = () => {
   const { colorMode } = useColorMode();
 
   return (
-    <ContentWithNavbarFooter>
+    <>
       <Introduction />
       <Box borderTopWidth="1px" borderColor="site.line" py={{ base: 10, md: 14 }}>
         <Container maxW="1100px" px={{ base: 5, md: 8 }}>
@@ -22,7 +21,7 @@ const About = () => {
           </Box>
         </Container>
       </Box>
-    </ContentWithNavbarFooter>
+    </>
   );
 };
 

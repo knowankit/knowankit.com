@@ -5,53 +5,31 @@ import Navbar from '@/components/navbar';
 import { Box } from '@chakra-ui/react';
 import React from 'react';
 
-type Props = {
-  children: React.ReactNode;
-  /** Lock shell to one viewport height and clip overflow (home landing only). */
-  viewportLock?: boolean;
-};
+const bar = {
+  h: '4rem',
+  flexShrink: 0,
+  display: 'flex',
+  alignItems: 'center',
+  borderColor: 'site.line'
+} as const;
 
-const ContentWithNavbarFooter = ({ children, viewportLock = false }: Props) => {
+const ContentWithNavbarFooter = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Box
-      minH={viewportLock ? '100dvh' : '100vh'}
-      h={viewportLock ? '100dvh' : undefined}
-      maxH={viewportLock ? '100dvh' : undefined}
-      display="flex"
-      flexDirection="column"
-      position="relative"
-      w="100%"
-      maxW="100%"
-      overflow={viewportLock ? 'hidden' : 'visible'}
-      overflowX="hidden">
+    <Box display="flex" flexDirection="column" h="100dvh" w="100%" overflow="hidden">
       <Box
-        position="sticky"
-        top={0}
+        as="header"
+        {...bar}
         zIndex={20}
-        flexShrink={0}
         borderBottomWidth="1px"
-        borderColor="site.line"
         bg="site.header"
         backdropFilter="blur(12px)"
         css={{ WebkitBackdropFilter: 'blur(12px)' }}>
         <Navbar />
       </Box>
-      <Box
-        as="main"
-        flex={viewportLock ? '1' : undefined}
-        flexGrow={viewportLock ? 1 : undefined}
-        minH={viewportLock ? 0 : undefined}
-        minW={0}
-        width="100%"
-        maxW="100%"
-        position="relative"
-        overflowX="hidden"
-        overflowY={viewportLock ? 'hidden' : 'visible'}
-        display={viewportLock ? 'flex' : undefined}
-        flexDirection={viewportLock ? 'column' : undefined}>
+      <Box as="main" flex="1" minH={0} overflowY="auto" overflowX="hidden">
         {children}
       </Box>
-      <Box flexShrink={0}>
+      <Box as="footer" {...bar} borderTopWidth="1px">
         <Footer />
       </Box>
     </Box>

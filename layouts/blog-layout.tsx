@@ -3,7 +3,6 @@
 import React, { ReactNode } from 'react';
 import dynamic from 'next/dynamic';
 import { Box } from '@chakra-ui/react';
-import Navbar from '@/components/navbar';
 import FrontMatter from '@/components/front-matter';
 
 const Comments = dynamic(() => import('@/components/comments'), {
@@ -18,7 +17,6 @@ type Props = {
 const BlogLayout = ({ children, frontMatter }: Props) => {
   return (
     <Box className="mdx">
-      <Navbar />
       <Box
         mx="auto"
         px={['1rem', '1rem', '1rem', '1rem']}

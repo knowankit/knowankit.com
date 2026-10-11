@@ -77,15 +77,14 @@ const Navbar = () => {
 
   return (
     <Flex
-      as="header"
       align="center"
       justify="space-between"
       w="100%"
+      h="100%"
       maxW="1200px"
       minW={0}
       mx="auto"
-      px={{ base: 4, md: 8 }}
-      py={4}>
+      px={{ base: 4, md: 8 }}>
       <HStack asChild alignItems="baseline" gap={2}>
         <NextLink href="/" aria-label="Home">
           <Text
@@ -120,6 +119,7 @@ const Navbar = () => {
         <Drawer.Root size="full" open={open} onOpenChange={(e) => setOpen(e.open)}>
           <Drawer.Trigger asChild>
             <IconButton
+              size="sm"
               variant="ghost"
               aria-label="Open menu"
               color="site.subtext"

@@ -3,6 +3,7 @@ import { IBM_Plex_Mono, Instrument_Sans } from 'next/font/google';
 import Script from 'next/script';
 import type { ReactNode } from 'react';
 import { Provider } from '@/components/ui/provider';
+import ContentWithNavbarFooter from '@/layouts/content-with-navbar-footer';
 import '@/styles/global.scss';
 
 const instrumentSans = Instrument_Sans({
@@ -43,7 +44,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`${instrumentSans.variable} ${plexMono.variable}`}
       suppressHydrationWarning>
       <body>
-        <Provider>{children}</Provider>
+        <Provider>
+          <ContentWithNavbarFooter>{children}</ContentWithNavbarFooter>
+        </Provider>
         {gaId && (
           <>
             <Script

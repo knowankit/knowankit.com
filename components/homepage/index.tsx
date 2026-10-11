@@ -73,15 +73,7 @@ const HomePage = () => {
   });
 
   return (
-    <Box
-      flex="1"
-      minH={0}
-      display="flex"
-      flexDirection="column"
-      position="relative"
-      w="100%"
-      maxW="100%"
-      overflow="hidden">
+    <Box minH="100%" display="flex" flexDirection="column" position="relative" w="100%" maxW="100%">
       <Box
         position="absolute"
         inset={0}
@@ -102,7 +94,7 @@ const HomePage = () => {
         py={{ base: 2, md: 3 }}
         centerContent>
         <Grid templateColumns="1fr" w="100%" maxW="42rem">
-          <VStack align="start" gap={{ base: 2, md: 3 }} minW={0} minH={0} overflow="hidden">
+          <VStack align="start" gap={{ base: 2, md: 3 }} minW={0}>
             <MotionBox initial="hidden" animate="show" variants={fadeUp(0)}>
               <Text
                 fontFamily="mono"

@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import HomePage from '@/components/homepage';
 import OpenGraph from '@/components/open-graph';
-import ContentWithNavbarFooter from '@/layouts/content-with-navbar-footer';
-
 export const metadata: Metadata = {
   title: 'KnowAnkit | Staff Software Engineer',
   description:
@@ -14,9 +12,7 @@ export default function Page() {
   return (
     <>
       <OpenGraph path="/" title="Ankit Kumar · Staff Software Engineer" image="/myself.png" />
-      <ContentWithNavbarFooter viewportLock>
-        <HomePage />
-      </ContentWithNavbarFooter>
+      <HomePage />
     </>
   );
 }
