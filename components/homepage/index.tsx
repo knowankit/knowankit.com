@@ -7,32 +7,50 @@ import {
   Heading,
   HStack,
   Text,
-  Tooltip,
   VStack,
   Wrap,
   WrapItem,
   useColorModeValue
 } from '@chakra-ui/react';
 import Link from 'next/link';
-import { motion, useReducedMotion } from 'framer-motion';
+import {
+  AnimatePresence,
+  animate,
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useTransform
+} from 'framer-motion';
 import { AiOutlineGithub } from 'react-icons/ai';
 import { getAllGithubStars } from '@/lib/get-all-github-stars';
 
 const MotionBox = motion(Box);
 
-const pillars = [
-  {
-    label: 'Product UI & systems',
-    hint: 'Design tokens, composable components, patterns across teams'
-  },
-  { label: 'Backend & APIs', hint: 'Services, data modelling, reliable contracts' },
-  { label: 'Performance', hint: 'Client and server budgets, profiling, pragmatic tuning' },
-  { label: 'Leadership', hint: 'Mentorship, reviews, alignment across design and engineering' }
+const roles = ['Frontend', 'Backend', 'AI', 'DevOps'];
+
+const skills = [
+  'React',
+  'TypeScript',
+  'Next.js',
+  'Node.js',
+  'PostgreSQL',
+  'REST / GraphQL',
+  'Design systems',
+  'CSS',
+  'AWS',
+  'Docker',
+  'Accessibility',
+  'Testing'
 ];
 
 const HomePage = () => {
   const [stars, setStars] = useState(0);
+  const [displayStars, setDisplayStars] = useState(0);
+  const [roleIndex, setRoleIndex] = useState(0);
   const reduceMotion = useReducedMotion();
+  const starsMotion = useMotionValue(0);
+  const roundedStars = useTransform(starsMotion, (latest) => Math.round(latest));
+
   const cardBg = useColorModeValue('white', 'rgba(24, 24, 27, 0.72)');
   const cardBorder = useColorModeValue('blackAlpha.100', 'whiteAlpha.100');
   const cardShadow = useColorModeValue(
@@ -40,7 +58,6 @@ const HomePage = () => {
     '0 1px 0 rgba(255,255,255,0.06) inset, 0 8px 28px rgba(0,0,0,0.35)'
   );
   const subtext = useColorModeValue('ink.600', 'ink.300');
-  const emphasis = useColorModeValue('ink.800', 'ink.50');
   const tagBg = useColorModeValue('ink.100', 'whiteAlpha.100');
   const tagColor = useColorModeValue('ink.700', 'ink.200');
 
@@ -55,6 +72,40 @@ const HomePage = () => {
       cancelled = true;
     };
   }, []);
+
+  useEffect(() => {
+    if (!stars) return;
+    if (reduceMotion) {
+      setDisplayStars(stars);
+      return;
+    }
+    starsMotion.set(0);
+    const controls = animate(starsMotion, stars, { duration: 1, ease: 'easeOut' });
+    const unsub = roundedStars.onChange((v) => setDisplayStars(v));
+    return () => {
+      controls.stop();
+      unsub();
+    };
+  }, [stars, reduceMotion, starsMotion, roundedStars]);
+
+  useEffect(() => {
+    if (reduceMotion) return;
+    const id = setInterval(() => setRoleIndex((i) => (i + 1) % roles.length), 2200);
+    return () => clearInterval(id);
+  }, [reduceMotion]);
+
+  const fadeUp = (delay: number) => ({
+    hidden: { opacity: 0, y: reduceMotion ? 0 : 8 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: reduceMotion ? 0 : delay,
+        duration: 0.4,
+        ease: [0.22, 1, 0.36, 1]
+      }
+    }
+  });
 
   return (
     <Box
@@ -92,49 +143,77 @@ const HomePage = () => {
           w="100%"
           maxW="100%">
           <VStack align="start" spacing={{ base: 2, md: 3 }} minW={0} minH={0} overflow="hidden">
-            <MotionBox
-              initial="hidden"
-              animate="show"
-              variants={{
-                hidden: { opacity: 0, y: reduceMotion ? 0 : 8 },
-                show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } }
-              }}>
+            <MotionBox initial="hidden" animate="show" variants={fadeUp(0)}>
               <Text
                 fontFamily="mono"
-                fontSize="0.65rem"
+                fontSize="0.75rem"
                 fontWeight="600"
                 letterSpacing="0.18em"
                 textTransform="uppercase"
                 color="brand.400">
                 Staff software engineer
+                <Box as="span" className="dash" ml="2px">
+                  _
+                </Box>
               </Text>
+              <HStack
+                spacing={1}
+                align="baseline"
+                h="1.5em"
+                overflow="hidden"
+                mt={1}
+                aria-live="polite">
+                <AnimatePresence exitBeforeEnter>
+                  <MotionBox
+                    key={roles[roleIndex]}
+                    initial={reduceMotion ? false : { opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={reduceMotion ? undefined : { opacity: 0, y: -6 }}
+                    transition={{ duration: 0.3 }}
+                    color="tomato.400"
+                    fontFamily="mono"
+                    fontSize="0.75rem"
+                    fontWeight="700"
+                    letterSpacing="0.14em"
+                    textTransform="uppercase">
+                    {roles[roleIndex]}
+                  </MotionBox>
+                </AnimatePresence>
+              </HStack>
+            </MotionBox>
+
+            <MotionBox initial="hidden" animate="show" variants={fadeUp(0.08)}>
               <Heading
                 as="h1"
-                fontSize={{ base: '1.5rem', sm: '1.85rem', md: '2.1rem', lg: '2.35rem' }}
+                fontSize={{ base: '1.75rem', sm: '2.1rem', md: '2.5rem', lg: '2.85rem' }}
                 lineHeight="1.12"
                 fontWeight="700"
                 letterSpacing="-0.03em"
-                mt={1}
                 mb={2}>
                 Interfaces that scale. Teams that level up.
               </Heading>
-              <Text
-                fontSize={{ base: 'sm', md: 'md' }}
-                color={subtext}
-                lineHeight="1.55"
-                wordBreak="break-word">
-                Full stack — UI, design systems, and backend services — with predictable delivery
-                and high craft.
-              </Text>
             </MotionBox>
 
-            <MotionBox
-              initial="hidden"
-              animate="show"
-              variants={{
-                hidden: { opacity: 0, y: reduceMotion ? 0 : 6 },
-                show: { opacity: 1, y: 0, transition: { delay: 0.06, duration: 0.4 } }
-              }}>
+            <MotionBox initial="hidden" animate="show" variants={fadeUp(0.16)}>
+              <VStack align="start" spacing={1}>
+                <Text
+                  fontSize={{ base: 'md', md: 'lg' }}
+                  color={subtext}
+                  lineHeight="1.55"
+                  wordBreak="break-word">
+                  I code beautifully simple things and I love what I do
+                </Text>
+                <Text
+                  fontSize={{ base: 'md', md: 'lg' }}
+                  color={subtext}
+                  lineHeight="1.55"
+                  wordBreak="break-word">
+                  And of-course a love for egyptian bracket
+                </Text>
+              </VStack>
+            </MotionBox>
+
+            <MotionBox initial="hidden" animate="show" variants={fadeUp(0.24)}>
               <HStack spacing={2} flexWrap="wrap">
                 <Link href="/projects" passHref>
                   <Button as="a" size="sm" variant="accent" borderRadius="full" px={5}>
@@ -161,76 +240,45 @@ const HomePage = () => {
               </HStack>
             </MotionBox>
 
-            <HStack spacing={4} flexWrap="wrap" pt={1} align="start">
-              <Box minW={0}>
-                <Text fontFamily="mono" fontSize="0.65rem" color={subtext} letterSpacing="0.08em">
-                  OPEN SOURCE
-                </Text>
-                <Button
-                  as="a"
-                  href="https://github.com/knowankit"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  leftIcon={<AiOutlineGithub />}
-                  variant="ghost"
-                  size="xs"
-                  px={0}
-                  height="auto"
-                  fontWeight="600"
-                  color="brand.400"
-                  _hover={{ bg: 'transparent', color: 'brand.300' }}>
-                  {stars ? `${stars.toLocaleString()} stars` : 'GitHub'}
-                </Button>
-              </Box>
-              <Box minW={0}>
-                <Text fontFamily="mono" fontSize="0.65rem" color={subtext} letterSpacing="0.08em">
-                  FOCUS
-                </Text>
-                <Text fontWeight="600" fontSize="xs">
-                  React · Node · TypeScript · Systems
-                </Text>
-              </Box>
-            </HStack>
-
-            <Box w="100%" pt={1} flexShrink={0}>
-              <Text
-                fontFamily="mono"
-                fontSize="0.65rem"
-                letterSpacing="0.14em"
-                color="brand.400"
-                mb={1.5}>
-                FOCUS AREAS
-              </Text>
-              <Wrap spacing={1.5} shouldWrapChildren>
-                {pillars.map((p) => (
-                  <WrapItem key={p.label}>
-                    <Tooltip label={p.hint} placement="top" hasArrow openDelay={400}>
-                      <Text
-                        as="span"
-                        display="inline-block"
-                        fontSize="xs"
-                        fontWeight="600"
-                        px={2.5}
-                        py={1}
-                        borderRadius="full"
-                        bg={tagBg}
-                        color={tagColor}
-                        cursor="default">
-                        {p.label}
-                      </Text>
-                    </Tooltip>
-                  </WrapItem>
-                ))}
-              </Wrap>
-            </Box>
+            <MotionBox initial="hidden" animate="show" variants={fadeUp(0.32)} w="100%">
+              <HStack spacing={4} flexWrap="wrap" pt={1} align="start">
+                <Box minW={0}>
+                  <Text fontFamily="mono" fontSize="0.75rem" color={subtext} letterSpacing="0.08em">
+                    OPEN SOURCE
+                  </Text>
+                  <Button
+                    as="a"
+                    href="https://github.com/knowankit"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    leftIcon={<AiOutlineGithub />}
+                    variant="ghost"
+                    size="xs"
+                    px={0}
+                    height="auto"
+                    fontWeight="600"
+                    color="brand.400"
+                    _hover={{ bg: 'transparent', color: 'brand.300' }}>
+                    {displayStars ? `${displayStars.toLocaleString()} stars` : 'GitHub'}
+                  </Button>
+                </Box>
+                <Box minW={0}>
+                  <Text fontFamily="mono" fontSize="0.75rem" color={subtext} letterSpacing="0.08em">
+                    CURRENT FOCUS
+                  </Text>
+                  <Text fontWeight="600" fontSize="sm">
+                    Working with FastAPI, LangGraph, and TypeSafe AI&apos;s Jev
+                  </Text>
+                </Box>
+              </HStack>
+            </MotionBox>
           </VStack>
 
           <MotionBox
             minW={0}
-            display={{ base: 'none', lg: 'block' }}
-            initial={{ opacity: 0, y: reduceMotion ? 0 : 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, delay: 0.08 }}
+            initial="hidden"
+            animate="show"
+            variants={fadeUp(0.4)}
             borderRadius="xl"
             borderWidth="1px"
             borderColor={cardBorder}
@@ -238,35 +286,45 @@ const HomePage = () => {
             boxShadow={cardShadow}
             p={4}
             backdropFilter="blur(8px)"
-            sx={{ WebkitBackdropFilter: 'blur(8px)' }}>
+            sx={{
+              WebkitBackdropFilter: 'blur(8px)',
+              transition: 'box-shadow 0.2s ease',
+              _hover: {
+                boxShadow: '0 0 0 1px rgba(232,148,18,0.5), 0 8px 28px rgba(232,148,18,0.12)'
+              }
+            }}>
             <Text
               fontFamily="mono"
-              fontSize="0.65rem"
+              fontSize="0.75rem"
               letterSpacing="0.12em"
               color="brand.400"
-              mb={1.5}>
-              HOW I WORK
+              mb={3}>
+              SKILLS
             </Text>
-            <VStack align="start" spacing={1.5} fontSize="xs" color={subtext} lineHeight="1.5">
-              <Text>
-                <Text as="span" color={emphasis} fontWeight="600">
-                  North-star clarity —
-                </Text>{' '}
-                Turn goals into concrete contracts, states, and edge cases the team can share.
-              </Text>
-              <Text>
-                <Text as="span" color={emphasis} fontWeight="600">
-                  Opinionated defaults —
-                </Text>{' '}
-                Linting, APIs, and docs so the right thing is the easy thing.
-              </Text>
-              <Text>
-                <Text as="span" color={emphasis} fontWeight="600">
-                  Measured iteration —
-                </Text>{' '}
-                Ship in slices, instrument what matters, tighten feedback loops.
-              </Text>
-            </VStack>
+            <Wrap spacing={1.5}>
+              {skills.map((skill) => (
+                <WrapItem key={skill}>
+                  <Text
+                    as="span"
+                    fontSize="sm"
+                    fontWeight="600"
+                    px={2.5}
+                    py={1}
+                    borderRadius="full"
+                    borderWidth="1px"
+                    borderColor="transparent"
+                    bg={tagBg}
+                    color={tagColor}
+                    transition="all 0.15s ease"
+                    _hover={{
+                      transform: 'translateY(-2px)',
+                      borderColor: 'brand.500'
+                    }}>
+                    {skill}
+                  </Text>
+                </WrapItem>
+              ))}
+            </Wrap>
           </MotionBox>
         </Grid>
       </Container>

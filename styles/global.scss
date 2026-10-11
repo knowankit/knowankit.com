@@ -7,18 +7,32 @@ body {
   font-size: 17px;
 }
 
+@keyframes gridDrift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 48px 48px;
+  }
+}
+
 /* Subtle blueprint grid — reads “systems / craft” without overwhelming content */
 .page-grid-bg {
-  background-image:
-    linear-gradient(rgba(232, 148, 18, 0.06) 1px, transparent 1px),
+  background-image: linear-gradient(rgba(232, 148, 18, 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(232, 148, 18, 0.06) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 75%);
+  animation: gridDrift 12s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-grid-bg {
+    animation: none;
+  }
 }
 
 .chakra-ui-dark .page-grid-bg {
-  background-image:
-    linear-gradient(rgba(255, 200, 120, 0.05) 1px, transparent 1px),
+  background-image: linear-gradient(rgba(255, 200, 120, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 200, 120, 0.05) 1px, transparent 1px);
 }
 
