@@ -32,37 +32,36 @@ const NavLink = ({ href, label, onNavigate }: NavLinkProps) => {
   const isActive = router.asPath === href || (href !== '/' && router.asPath.startsWith(href));
 
   return (
-    <Link href={href} passHref>
-      <Box
-        as="a"
-        onClick={onNavigate}
-        px={3}
-        py={2}
-        borderRadius="md"
-        fontWeight="600"
-        fontSize="sm"
-        letterSpacing="0.02em"
-        color={isActive ? activeColor : muted}
-        position="relative"
-        transition="color 0.2s ease"
-        _hover={{ color: isActive ? activeColor : hoverInactive }}
-        _after={
-          isActive
-            ? {
-                content: '""',
-                position: 'absolute',
-                left: 3,
-                right: 3,
-                bottom: '6px',
-                height: '2px',
-                borderRadius: 'full',
-                bg: 'brand.500'
-              }
-            : undefined
-        }>
-        {label}
-      </Box>
-    </Link>
+    <Box
+      as={Link}
+      href={href}
+      onClick={onNavigate}
+      px={3}
+      py={2}
+      borderRadius="md"
+      fontWeight="600"
+      fontSize="sm"
+      letterSpacing="0.02em"
+      color={isActive ? activeColor : muted}
+      position="relative"
+      transition="color 0.2s ease"
+      _hover={{ color: isActive ? activeColor : hoverInactive }}
+      _after={
+        isActive
+          ? {
+              content: '""',
+              position: 'absolute',
+              left: 3,
+              right: 3,
+              bottom: '6px',
+              height: '2px',
+              borderRadius: 'full',
+              bg: 'brand.500'
+            }
+          : undefined
+      }>
+      {label}
+    </Box>
   );
 };
 
@@ -84,25 +83,19 @@ const Navbar = () => {
       mx="auto"
       px={{ base: 4, md: 8 }}
       py={4}>
-      <Link href="/" passHref>
-        <HStack as="a" alignItems="baseline" spacing={2} aria-label="Home">
-          <Text
-            fontFamily="mono"
-            fontSize="sm"
-            fontWeight="600"
-            letterSpacing="0.08em"
-            color="brand.400">
-            KA
-          </Text>
-          <Text
-            display={{ base: 'none', sm: 'block' }}
-            fontSize="sm"
-            fontWeight="500"
-            color={muted}>
-            Ankit Kumar
-          </Text>
-        </HStack>
-      </Link>
+      <HStack as={Link} href="/" alignItems="baseline" spacing={2} aria-label="Home">
+        <Text
+          fontFamily="mono"
+          fontSize="sm"
+          fontWeight="600"
+          letterSpacing="0.08em"
+          color="brand.400">
+          KA
+        </Text>
+        <Text display={{ base: 'none', sm: 'block' }} fontSize="sm" fontWeight="500" color={muted}>
+          Ankit Kumar
+        </Text>
+      </HStack>
 
       <HStack spacing={1} display={{ base: 'none', md: 'flex' }}>
         {navItems.map((item) => (

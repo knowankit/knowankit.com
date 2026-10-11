@@ -32,6 +32,9 @@ module.exports = {
     'react/prop-types': 0,
     '@typescript-eslint/no-var-requires': 1,
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/explicit-module-boundary-types': 'warn',
     'jsx-a11y/anchor-is-valid': [
       'error',
       {

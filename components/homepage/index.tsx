@@ -163,7 +163,7 @@ const HomePage = () => {
                 overflow="hidden"
                 mt={1}
                 aria-live="polite">
-                <AnimatePresence exitBeforeEnter>
+                <AnimatePresence mode="wait">
                   <MotionBox
                     key={roles[roleIndex]}
                     initial={reduceMotion ? false : { opacity: 0, y: 6 }}
@@ -215,28 +215,35 @@ const HomePage = () => {
 
             <MotionBox initial="hidden" animate="show" variants={fadeUp(0.24)}>
               <HStack spacing={2} flexWrap="wrap">
-                <Link href="/projects" passHref>
-                  <Button as="a" size="sm" variant="accent" borderRadius="full" px={5}>
-                    Work
-                  </Button>
-                </Link>
-                <Link href="/blogs" passHref>
-                  <Button
-                    as="a"
-                    size="sm"
-                    variant="outline"
-                    borderRadius="full"
-                    px={5}
-                    borderColor="brand.500"
-                    color="brand.400">
-                    Writing
-                  </Button>
-                </Link>
-                <Link href="/about" passHref>
-                  <Button as="a" size="sm" variant="ghost" borderRadius="full" px={3}>
-                    About
-                  </Button>
-                </Link>
+                <Button
+                  as={Link}
+                  href="/projects"
+                  size="sm"
+                  variant="accent"
+                  borderRadius="full"
+                  px={5}>
+                  Work
+                </Button>
+                <Button
+                  as={Link}
+                  href="/blogs"
+                  size="sm"
+                  variant="outline"
+                  borderRadius="full"
+                  px={5}
+                  borderColor="brand.500"
+                  color="brand.400">
+                  Writing
+                </Button>
+                <Button
+                  as={Link}
+                  href="/about"
+                  size="sm"
+                  variant="ghost"
+                  borderRadius="full"
+                  px={3}>
+                  About
+                </Button>
               </HStack>
             </MotionBox>
 

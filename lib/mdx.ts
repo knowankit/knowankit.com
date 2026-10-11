@@ -6,9 +6,14 @@ import path from 'path';
 import { serialize } from 'next-mdx-remote/serialize';
 import readingTime from 'reading-time';
 
-import mdxPrism from 'mdx-prism';
-
 const root = process.cwd();
+
+// remark-code-titles used ```lang:filename fences and emitted raw HTML, which MDX 2 rejects.
+function withCodeTitles(source) {
+  return source.replace(/```([A-Za-z0-9]+):([^\n]+)\n/g, (_, lang, title) => {
+    return `<div className="remark-code-title">${title}</div>\n\n\`\`\`${lang}\n`;
+  });
+}
 
 export async function getFiles(type) {
   return fs.readdirSync(path.join(root, 'data', type));
@@ -21,28 +26,30 @@ export async function getFileBySlug(type, slug) {
 
   const { data, content } = matter(source);
 
-  const mdxSource = await serialize(content, {
+  const rehypeSlug = await import('rehype-slug');
+  const rehypeAutolinkHeadings = await import('rehype-autolink-headings');
+  const rehypePrism = await import('rehype-prism-plus');
+
+  const mdxSource = await serialize(withCodeTitles(content), {
     mdxOptions: {
-      remarkPlugins: [
-        require('remark-slug'),
+      rehypePlugins: [
+        rehypeSlug.default,
         [
-          require('remark-autolink-headings'),
+          rehypeAutolinkHeadings.default,
           {
-            linkProperties: {
-              className: ['anchor']
-            }
+            behavior: 'wrap',
+            properties: { className: ['anchor'] }
           }
         ],
-        require('remark-code-titles')
-      ],
-      rehypePlugins: [mdxPrism]
+        rehypePrism.default
+      ]
     }
   });
 
   return {
     mdxSource,
     frontMatter: {
-      wordCount: content.split(/\s+/gu).length,
+      wordCount: content.split(/\s+/g).length,
       readingTime: readingTime(content),
       slug: slug || null,
       ...data
@@ -62,7 +69,7 @@ export async function getAllFilesFrontMatter(type) {
         ...data,
         slug: postSlug.replace('.mdx', ''),
         frontMatter: {
-          wordCount: content.split(/\s+/gu).length,
+          wordCount: content.split(/\s+/g).length,
           readingTime: readingTime(content)
         }
       },
