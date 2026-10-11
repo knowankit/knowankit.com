@@ -1,42 +1,46 @@
-import React from 'react';
+'use client';
 
-import { Box, Heading, Text, Stack, useColorModeValue } from '@chakra-ui/react';
-import Link from 'next/link';
+import React from 'react';
+import { Box, Heading, Text } from '@chakra-ui/react';
 
 const ProjectCard = ({ project }) => {
-  if (project.fork) return <></>;
+  const href = project.html_url || project.github || project.demo || '#';
+
+  if (project.fork) return null;
 
   return (
-    <Link href={project['html_url'] || ''}>
-      <Box
-        maxW={'350px'}
-        w={'full'}
-        bg={useColorModeValue('white', 'gray.900')}
-        boxShadow={'md'}
-        rounded={'md'}
-        p={6}
-        m="1rem"
-        cursor="pointer"
-        overflow={'hidden'}>
-        <Stack>
-          <Text
-            color="project"
-            textTransform={'uppercase'}
-            fontWeight={800}
-            fontSize={'sm'}
-            letterSpacing={1.1}>
-            Project
-          </Text>
-          <Heading
-            color={useColorModeValue('gray.700', 'white')}
-            fontSize={'2xl'}
-            fontFamily={'body'}>
-            {project.name}
-          </Heading>
-          <Text color={'gray.500'}>{project.description}</Text>
-        </Stack>
-      </Box>
-    </Link>
+    <Box
+      asChild
+      display="flex"
+      flexDirection="column"
+      h="100%"
+      bg="site.card"
+      borderWidth="1px"
+      borderColor="site.line"
+      boxShadow="md"
+      rounded="xl"
+      p={6}
+      overflow="hidden"
+      transition="border-color 0.2s ease, transform 0.2s ease"
+      _hover={{ borderColor: 'brand.500', transform: 'translateY(-2px)', textDecoration: 'none' }}>
+      <a href={href} target="_blank" rel="noopener noreferrer">
+        <Text
+          color="brand.400"
+          textTransform="uppercase"
+          fontWeight={800}
+          fontSize="0.875rem"
+          letterSpacing="0.14em"
+          fontFamily="mono">
+          {project.stargazers_count ? `${project.stargazers_count} stars` : 'Project'}
+        </Text>
+        <Heading color="site.strong" fontSize="1.5rem" mt={3} mb={2} letterSpacing="-0.02em">
+          {project.name}
+        </Heading>
+        <Text color="site.subtext" fontSize="1rem" lineHeight="1.6">
+          {project.description}
+        </Text>
+      </a>
+    </Box>
   );
 };
 

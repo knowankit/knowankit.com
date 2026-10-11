@@ -1,6 +1,8 @@
+'use client';
+
 import { Box, HStack, Link, VStack } from '@chakra-ui/react';
 import React, { FC } from 'react';
-import { IoLogoFacebook, IoLogoLinkedin, IoLogoTwitter } from 'react-icons/io';
+import { IoLogoFacebook, IoLogoLinkedin } from 'react-icons/io';
 
 interface IProps {
   title: string;
@@ -9,12 +11,6 @@ interface IProps {
 
 const SocialShare: FC<IProps> = ({ title, url = window.location.href }) => {
   const socialLinks = [
-    {
-      href: `https://twitter.com/intent/tweet?text=${title}&url=${url}`,
-      label: 'Twitter',
-      icon: IoLogoTwitter,
-      bg: '#1DA1F2'
-    },
     {
       href: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
       label: 'Facebook',
@@ -31,25 +27,25 @@ const SocialShare: FC<IProps> = ({ title, url = window.location.href }) => {
 
   return (
     <Box py={4} rounded="md">
-      <VStack spacing={2} align="left">
-        {/* <Text fontWeight="bold">Share this post</Text> */}
-        <HStack spacing={2}>
-          {socialLinks.map((link, index) => {
+      <VStack gap={2} align="left">
+        <HStack gap={2}>
+          {socialLinks.map((link) => {
+            const Icon = link.icon;
             return (
               <Link
-                key={index}
+                key={link.label}
+                aria-label={`Share on ${link.label}`}
                 py={2}
                 px={2}
                 href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 rounded="md"
                 bg={link.bg}
                 color="#fff"
                 fontWeight="bold"
-                isExternal>
-                <HStack spacing={2} alignItems="center">
-                  <Box as={link.icon} />
-                  {/* <Text fontSize="xs">{link.label}</Text> */}
-                </HStack>
+                _hover={{ color: '#fff' }}>
+                <Icon />
               </Link>
             );
           })}

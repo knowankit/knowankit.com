@@ -1,19 +1,31 @@
-import Navbar from '@/components/navbar';
-import Introduction from '@/components/about/introduction';
-import { Box } from '@chakra-ui/react';
-import Footer from '@/components/footer';
-import GitHubCalendar from 'react-github-calendar';
-import ContentWithNavbarFooter from '@/layouts/content-with-navbar-footer';
+'use client';
 
-const About = (): JSX.Element => {
+import Introduction from '@/components/about/introduction';
+import { Box, Container, Text } from '@chakra-ui/react';
+import { GitHubCalendar } from 'react-github-calendar';
+import { useColorMode } from '@/components/ui/color-mode';
+
+const About = () => {
+  const { colorMode } = useColorMode();
+
   return (
     <>
-      <ContentWithNavbarFooter>
-        <Introduction />
-        <Box display="flex" justifyContent="center" alignItems="center" p="1rem">
-          <GitHubCalendar username="knowankit" />
-        </Box>
-      </ContentWithNavbarFooter>
+      <Introduction />
+      <Box borderTopWidth="1px" borderColor="site.line" py={{ base: 10, md: 14 }}>
+        <Container maxW="1100px" px={{ base: 5, md: 8 }}>
+          <Text
+            fontFamily="mono"
+            fontSize="0.875rem"
+            letterSpacing="0.18em"
+            color="brand.400"
+            mb={6}>
+            CONTRIBUTIONS
+          </Text>
+          <Box overflowX="auto">
+            <GitHubCalendar username="knowankit" colorScheme={colorMode} />
+          </Box>
+        </Container>
+      </Box>
     </>
   );
 };

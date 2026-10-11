@@ -1,103 +1,160 @@
-import React from 'react';
-import { Box, IconButton } from '@chakra-ui/react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import {
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
-  DrawerCloseButton,
-  useDisclosure,
-  useColorMode
-} from '@chakra-ui/react';
+'use client';
+
+import React, { useState } from 'react';
+import { Box, CloseButton, Drawer, Flex, HStack, IconButton, Portal, Text } from '@chakra-ui/react';
+import NextLink from 'next/link';
+import { usePathname } from 'next/navigation';
 import { BiMenuAltRight } from 'react-icons/bi';
 import { BsMoon, BsSun } from 'react-icons/bs';
+import { useColorMode } from '@/components/ui/color-mode';
 
-const Navbar = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { colorMode, toggleColorMode } = useColorMode();
-  const router = useRouter();
+const navItems = [
+  { name: 'Home', link: '/' },
+  { name: 'Projects', link: '/projects' },
+  { name: 'Writing', link: '/blogs' },
+  { name: 'About', link: '/about' }
+];
 
-  const loadMenu = (isMobile = false) => {
-    const menus = [
-      { name: 'Home', link: '/' },
-      { name: 'Projects', link: '/projects' },
-      { name: 'Blog', link: '/blogs' },
-      { name: 'About me', link: '/about' }
-    ];
+type NavLinkProps = { href: string; label: string; onNavigate?: () => void };
 
-    if (isMobile) {
-      return (
-        <Box
-          height="100vh"
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center">
-          {menus.map((menu, index) => (
-            <Box
-              m="1rem"
-              height="10vh"
-              key={index}
-              fontWeight="bold"
-              fontSize="2rem"
-              color={router.asPath === menu.link ? 'brand' : ''}>
-              <Link href={menu.link} passHref>
-                {menu.name}
-              </Link>
-            </Box>
-          ))}
-        </Box>
-      );
-    }
-
-    return menus.map((menu, index) => (
-      <Box
-        mr="20px"
-        key={index}
-        cursor="pointer"
-        fontWeight="bold"
-        color={router.asPath === menu.link ? 'brand' : ''}>
-        <Link href={menu.link} passHref>
-          <Box as="span" fontWeight="bold">
-            {menu.name}
-          </Box>
-        </Link>
-      </Box>
-    ));
-  };
+const NavLink = ({ href, label, onNavigate }: NavLinkProps) => {
+  const pathname = usePathname() || '/';
+  const isActive = pathname === href || (href !== '/' && pathname.startsWith(href));
 
   return (
     <Box
-      display="flex"
-      boxShadow="md"
-      justifyContent="end"
-      alignItems="center"
-      height="5.125rem"
-      bgColor="transparent">
-      <Box display={['none', 'none', 'flex', 'flex']} alignItems="center" fontSize="1.2rem">
-        {loadMenu()}
-        <Box m="1rem">
-          <IconButton
-            icon={colorMode === 'light' ? <BsMoon /> : <BsSun />}
-            aria-label="change mode"
-            borderRadius="md"
-            onClick={toggleColorMode}
-          />
-        </Box>
-      </Box>
-      <Box m="1rem" display={['flex', 'flex', 'none', 'none']}>
-        <BiMenuAltRight fontSize="2.5em" cursor="pointer" onClick={onOpen} />
-        <Drawer size="full" onClose={onClose} isOpen={isOpen}>
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerBody>{loadMenu(true)}</DrawerBody>
-          </DrawerContent>
-        </Drawer>
-      </Box>
+      asChild
+      px={3}
+      py={2}
+      borderRadius="md"
+      fontWeight="600"
+      fontSize="1rem"
+      letterSpacing="0.02em"
+      color={isActive ? 'site.navActive' : 'site.subtext'}
+      position="relative"
+      transition="color 0.2s ease"
+      _hover={{ color: isActive ? 'site.navActive' : 'site.strong' }}
+      _after={
+        isActive
+          ? {
+              content: '""',
+              position: 'absolute',
+              left: 3,
+              right: 3,
+              bottom: '6px',
+              height: '2px',
+              borderRadius: 'full',
+              bg: 'brand.500'
+            }
+          : undefined
+      }>
+      <NextLink href={href} onClick={onNavigate}>
+        {label}
+      </NextLink>
     </Box>
+  );
+};
+
+const ColorModeButton = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+
+  return (
+    <IconButton
+      size="sm"
+      variant="ghost"
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      onClick={toggleColorMode}
+      color="site.subtext"
+      _hover={{ bg: 'site.hover' }}>
+      {isDark ? <BsSun /> : <BsMoon />}
+    </IconButton>
+  );
+};
+
+const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Flex
+      align="center"
+      justify="space-between"
+      w="100%"
+      h="100%"
+      maxW="1200px"
+      minW={0}
+      mx="auto"
+      px={{ base: 4, md: 8 }}>
+      <HStack asChild alignItems="baseline" gap={2}>
+        <NextLink href="/" aria-label="Home">
+          <Text
+            fontFamily="mono"
+            fontSize="1rem"
+            fontWeight="600"
+            letterSpacing="0.08em"
+            color="brand.400">
+            KA
+          </Text>
+          <Text
+            display={{ base: 'none', sm: 'block' }}
+            fontSize="1rem"
+            fontWeight="500"
+            color="site.subtext">
+            Ankit Kumar
+          </Text>
+        </NextLink>
+      </HStack>
+
+      <HStack gap={1} display={{ base: 'none', md: 'flex' }}>
+        {navItems.map((item) => (
+          <NavLink key={item.link} href={item.link} label={item.name} />
+        ))}
+        <Box ml={2}>
+          <ColorModeButton />
+        </Box>
+      </HStack>
+
+      <HStack gap={2} display={{ base: 'flex', md: 'none' }}>
+        <ColorModeButton />
+        <Drawer.Root size="full" open={open} onOpenChange={(e) => setOpen(e.open)}>
+          <Drawer.Trigger asChild>
+            <IconButton
+              size="sm"
+              variant="ghost"
+              aria-label="Open menu"
+              color="site.subtext"
+              _hover={{ bg: 'site.hover' }}>
+              <BiMenuAltRight size={26} />
+            </IconButton>
+          </Drawer.Trigger>
+          <Portal>
+            <Drawer.Backdrop />
+            <Drawer.Positioner>
+              <Drawer.Content bg="site.page">
+                <Drawer.CloseTrigger asChild>
+                  <CloseButton size="sm" position="absolute" top={4} right={4} />
+                </Drawer.CloseTrigger>
+                <Drawer.Body
+                  display="flex"
+                  flexDirection="column"
+                  justifyContent="center"
+                  alignItems="center"
+                  gap={6}>
+                  {navItems.map((item) => (
+                    <NavLink
+                      key={item.link}
+                      href={item.link}
+                      label={item.name}
+                      onNavigate={() => setOpen(false)}
+                    />
+                  ))}
+                </Drawer.Body>
+              </Drawer.Content>
+            </Drawer.Positioner>
+          </Portal>
+        </Drawer.Root>
+      </HStack>
+    </Flex>
   );
 };
 
