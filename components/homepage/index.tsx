@@ -1,16 +1,8 @@
+'use client';
+
 import { useEffect, useState } from 'react';
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Heading,
-  HStack,
-  Text,
-  VStack,
-  useColorModeValue
-} from '@chakra-ui/react';
-import Link from 'next/link';
+import { Box, Button, Container, Grid, Heading, HStack, Text, VStack } from '@chakra-ui/react';
+import NextLink from 'next/link';
 import {
   AnimatePresence,
   animate,
@@ -18,11 +10,12 @@ import {
   useMotionValue,
   useReducedMotion,
   useTransform
-} from 'framer-motion';
+} from 'motion/react';
 import { AiOutlineGithub } from 'react-icons/ai';
 import { getAllGithubStars } from '@/lib/get-all-github-stars';
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
+const easeOutExpo = [0.22, 1, 0.36, 1] as const;
 
 const roles = ['Frontend', 'Backend', 'AI', 'DevOps'];
 
@@ -34,7 +27,8 @@ const HomePage = () => {
   const starsMotion = useMotionValue(0);
   const roundedStars = useTransform(starsMotion, (latest) => Math.round(latest));
 
-  const subtext = useColorModeValue('ink.600', 'ink.300');
+  const subtext = 'site.subtext';
+  const shownStars = reduceMotion ? stars : displayStars;
 
   useEffect(() => {
     let cancelled = false;
@@ -49,14 +43,10 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    if (!stars) return;
-    if (reduceMotion) {
-      setDisplayStars(stars);
-      return;
-    }
+    if (!stars || reduceMotion) return;
     starsMotion.set(0);
     const controls = animate(starsMotion, stars, { duration: 1, ease: 'easeOut' });
-    const unsub = roundedStars.onChange((v) => setDisplayStars(v));
+    const unsub = roundedStars.on('change', (v) => setDisplayStars(v));
     return () => {
       controls.stop();
       unsub();
@@ -77,7 +67,7 @@ const HomePage = () => {
       transition: {
         delay: reduceMotion ? 0 : delay,
         duration: 0.4,
-        ease: [0.22, 1, 0.36, 1]
+        ease: easeOutExpo
       }
     }
   });
@@ -112,7 +102,7 @@ const HomePage = () => {
         py={{ base: 2, md: 3 }}
         centerContent>
         <Grid templateColumns="1fr" w="100%" maxW="42rem">
-          <VStack align="start" spacing={{ base: 2, md: 3 }} minW={0} minH={0} overflow="hidden">
+          <VStack align="start" gap={{ base: 2, md: 3 }} minW={0} minH={0} overflow="hidden">
             <MotionBox initial="hidden" animate="show" variants={fadeUp(0)}>
               <Text
                 fontFamily="mono"
@@ -127,7 +117,7 @@ const HomePage = () => {
                 </Box>
               </Text>
               <HStack
-                spacing={1}
+                gap={1}
                 align="baseline"
                 h="1.5em"
                 overflow="hidden"
@@ -165,7 +155,7 @@ const HomePage = () => {
             </MotionBox>
 
             <MotionBox initial="hidden" animate="show" variants={fadeUp(0.16)}>
-              <VStack align="start" spacing={1}>
+              <VStack align="start" gap={1}>
                 <Text
                   fontSize={{ base: 'md', md: 'lg' }}
                   color={subtext}
@@ -184,51 +174,42 @@ const HomePage = () => {
             </MotionBox>
 
             <MotionBox initial="hidden" animate="show" variants={fadeUp(0.24)}>
-              <HStack spacing={2} flexWrap="wrap">
-                <Button
-                  as={Link}
-                  href="/projects"
-                  size="sm"
-                  variant="accent"
-                  borderRadius="full"
-                  px={5}>
-                  Work
+              <HStack gap={2} flexWrap="wrap">
+                <Button asChild size="sm" variant="accent" borderRadius="full" px={5}>
+                  <NextLink href="/projects">Work</NextLink>
                 </Button>
                 <Button
-                  as={Link}
-                  href="/blogs"
+                  asChild
                   size="sm"
                   variant="outline"
                   borderRadius="full"
                   px={5}
                   borderColor="brand.500"
-                  color="brand.400">
-                  Writing
+                  color="brand.400"
+                  _hover={{ bg: 'site.hover' }}>
+                  <NextLink href="/blogs">Writing</NextLink>
                 </Button>
                 <Button
-                  as={Link}
-                  href="/about"
+                  asChild
                   size="sm"
                   variant="ghost"
                   borderRadius="full"
-                  px={3}>
-                  About
+                  px={3}
+                  color="site.strong"
+                  _hover={{ bg: 'site.hover' }}>
+                  <NextLink href="/about">About</NextLink>
                 </Button>
               </HStack>
             </MotionBox>
 
             <MotionBox initial="hidden" animate="show" variants={fadeUp(0.32)} w="100%">
-              <HStack spacing={4} flexWrap="wrap" pt={1} align="start">
+              <HStack gap={4} flexWrap="wrap" pt={1} align="start">
                 <Box minW={0}>
                   <Text fontFamily="mono" fontSize="0.75rem" color={subtext} letterSpacing="0.08em">
                     OPEN SOURCE
                   </Text>
                   <Button
-                    as="a"
-                    href="https://github.com/knowankit"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    leftIcon={<AiOutlineGithub />}
+                    asChild
                     variant="ghost"
                     size="xs"
                     px={0}
@@ -236,7 +217,13 @@ const HomePage = () => {
                     fontWeight="600"
                     color="brand.400"
                     _hover={{ bg: 'transparent', color: 'brand.300' }}>
-                    {displayStars ? `${displayStars.toLocaleString()} stars` : 'GitHub'}
+                    <a
+                      href="https://github.com/knowankit"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      <AiOutlineGithub />
+                      {shownStars ? `${shownStars.toLocaleString()} stars` : 'GitHub'}
+                    </a>
                   </Button>
                 </Box>
                 <Box minW={0}>

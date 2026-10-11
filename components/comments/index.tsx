@@ -1,5 +1,8 @@
-import { Box, useColorMode } from '@chakra-ui/react';
+'use client';
+
+import { Box } from '@chakra-ui/react';
 import React, { useRef, useEffect } from 'react';
+import { useColorMode } from '@/components/ui/color-mode';
 
 const Comments = () => {
   const commentBox = useRef(null);
@@ -7,7 +10,7 @@ const Comments = () => {
 
   useEffect(() => {
     const commentScript = document.createElement('script');
-    const theme = colorMode === 'light' ? 'github-light' : 'github-dark';
+    const theme = colorMode === 'dark' ? 'github-dark' : 'github-light';
 
     commentScript.setAttribute('src', 'https://utteranc.es/client.js');
     commentScript.setAttribute('repo', 'knowankit/knowankit.com');
@@ -19,6 +22,7 @@ const Comments = () => {
     if (commentBox && commentBox.current) {
       commentBox.current.appendChild(commentScript);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

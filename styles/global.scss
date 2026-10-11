@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 @import './mdx.scss';
 @import './icon.scss';
+@import './prism.scss';
 
 body {
-  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-family: var(--font-instrument), system-ui, sans-serif;
   font-size: 17px;
 }
 
@@ -18,7 +18,8 @@ body {
 
 /* Subtle blueprint grid — reads “systems / craft” without overwhelming content */
 .page-grid-bg {
-  background-image: linear-gradient(rgba(232, 148, 18, 0.06) 1px, transparent 1px),
+  background-image:
+    linear-gradient(rgba(232, 148, 18, 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(232, 148, 18, 0.06) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 75%);
@@ -31,8 +32,9 @@ body {
   }
 }
 
-.chakra-ui-dark .page-grid-bg {
-  background-image: linear-gradient(rgba(255, 200, 120, 0.05) 1px, transparent 1px),
+.dark .page-grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 200, 120, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 200, 120, 0.05) 1px, transparent 1px);
 }
 

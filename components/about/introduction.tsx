@@ -1,19 +1,12 @@
-import {
-  Box,
-  Container,
-  Grid,
-  Heading,
-  HStack,
-  Tag,
-  Text,
-  VStack,
-  useColorModeValue
-} from '@chakra-ui/react';
-import { motion } from 'framer-motion';
+'use client';
+
+import { Box, Container, Grid, Heading, HStack, Image, Tag, Text, VStack } from '@chakra-ui/react';
+import { motion } from 'motion/react';
 import { AiFillLinkedin, AiOutlineGithub } from 'react-icons/ai';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
+const easeOutExpo = [0.22, 1, 0.36, 1] as const;
 
 const skills = [
   'React',
@@ -32,14 +25,14 @@ const skills = [
   'Team leadership'
 ];
 
-const Introduction = (): JSX.Element => {
-  const subtext = useColorModeValue('ink.600', 'ink.300');
-  const cardBg = useColorModeValue('white', 'rgba(24, 24, 27, 0.72)');
-  const cardBorder = useColorModeValue('blackAlpha.100', 'whiteAlpha.100');
-  const tagBg = useColorModeValue('ink.100', 'whiteAlpha.100');
-  const tagColor = useColorModeValue('ink.700', 'ink.200');
-  const linkColor = useColorModeValue('ink.600', 'ink.300');
-  const linkHover = useColorModeValue('ink.900', 'ink.50');
+const Introduction = () => {
+  const subtext = 'site.subtext';
+  const cardBg = 'site.glass';
+  const cardBorder = 'site.line';
+  const tagBg = 'site.tagBg';
+  const tagColor = 'site.tagFg';
+  const linkColor = 'site.subtext';
+  const linkHover = 'site.strongest';
 
   return (
     <Container maxW="1100px" px={{ base: 5, md: 8 }} py={{ base: 10, md: 16 }}>
@@ -51,10 +44,9 @@ const Introduction = (): JSX.Element => {
         <MotionBox
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}>
-          <VStack align="center" spacing={5}>
-            <Box
-              as="img"
+          transition={{ duration: 0.45, ease: easeOutExpo }}>
+          <VStack align="center" gap={5}>
+            <Image
               src="/myself.jpg"
               alt="Ankit Kumar"
               borderRadius="2xl"
@@ -67,36 +59,37 @@ const Introduction = (): JSX.Element => {
             />
 
             {/* Quick links */}
-            <VStack align="start" spacing={2} w="100%" maxW="260px">
+            <VStack align="start" gap={2} w="100%" maxW="260px">
               <HStack
-                as="a"
-                href="https://github.com/knowankit"
-                target="_blank"
-                rel="noopener noreferrer"
-                spacing={2}
+                asChild
+                gap={2}
                 color={linkColor}
                 _hover={{ color: linkHover }}
                 transition="color 0.15s ease">
-                <AiOutlineGithub size={16} />
-                <Text fontSize="sm" fontWeight="500">
-                  github.com/knowankit
-                </Text>
+                <a href="https://github.com/knowankit" target="_blank" rel="noopener noreferrer">
+                  <AiOutlineGithub size={16} />
+                  <Text fontSize="sm" fontWeight="500">
+                    github.com/knowankit
+                  </Text>
+                </a>
               </HStack>
               <HStack
-                as="a"
-                href="https://www.linkedin.com/in/knowankit/"
-                target="_blank"
-                rel="noopener noreferrer"
-                spacing={2}
+                asChild
+                gap={2}
                 color={linkColor}
                 _hover={{ color: '#0a66c2' }}
                 transition="color 0.15s ease">
-                <AiFillLinkedin size={16} />
-                <Text fontSize="sm" fontWeight="500">
-                  linkedin.com/in/knowankit
-                </Text>
+                <a
+                  href="https://www.linkedin.com/in/knowankit/"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <AiFillLinkedin size={16} />
+                  <Text fontSize="sm" fontWeight="500">
+                    linkedin.com/in/knowankit
+                  </Text>
+                </a>
               </HStack>
-              <HStack spacing={2} color={linkColor}>
+              <HStack gap={2} color={linkColor}>
                 <HiOutlineLocationMarker size={16} />
                 <Text fontSize="sm" fontWeight="500">
                   India
@@ -111,7 +104,7 @@ const Introduction = (): JSX.Element => {
               </Text>
               <Box display="flex" flexWrap="wrap" gap={2}>
                 {skills.map((skill) => (
-                  <Tag
+                  <Tag.Root
                     key={skill}
                     size="sm"
                     bg={tagBg}
@@ -119,8 +112,8 @@ const Introduction = (): JSX.Element => {
                     borderRadius="full"
                     fontWeight="500"
                     fontSize="xs">
-                    {skill}
-                  </Tag>
+                    <Tag.Label>{skill}</Tag.Label>
+                  </Tag.Root>
                 ))}
               </Box>
             </Box>
@@ -131,8 +124,8 @@ const Introduction = (): JSX.Element => {
         <MotionBox
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}>
-          <VStack align="start" spacing={6}>
+          transition={{ duration: 0.5, delay: 0.08, ease: easeOutExpo }}>
+          <VStack align="start" gap={6}>
             <Box>
               <Text fontFamily="mono" fontSize="xs" letterSpacing="0.2em" color="brand.400" mb={3}>
                 ABOUT
@@ -151,7 +144,7 @@ const Introduction = (): JSX.Element => {
               </Heading>
               <VStack
                 align="start"
-                spacing={4}
+                gap={4}
                 color={subtext}
                 fontSize={{ base: 'md', md: 'lg' }}
                 lineHeight="1.75">
@@ -184,7 +177,7 @@ const Introduction = (): JSX.Element => {
               bg={cardBg}
               p={6}
               backdropFilter="blur(10px)"
-              sx={{ WebkitBackdropFilter: 'blur(10px)' }}>
+              css={{ WebkitBackdropFilter: 'blur(10px)' }}>
               <Text fontFamily="mono" fontSize="xs" letterSpacing="0.16em" color="brand.400" mb={4}>
                 WHAT I&apos;M FOCUSED ON
               </Text>

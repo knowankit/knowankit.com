@@ -1,6 +1,8 @@
+'use client';
+
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
-import { Box, useColorModeValue } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import React from 'react';
 
 type Props = {
@@ -10,8 +12,6 @@ type Props = {
 };
 
 const ContentWithNavbarFooter = ({ children, viewportLock = false }: Props) => {
-  const border = useColorModeValue('blackAlpha.100', 'whiteAlpha.100');
-
   return (
     <Box
       minH={viewportLock ? '100dvh' : '100vh'}
@@ -30,10 +30,10 @@ const ContentWithNavbarFooter = ({ children, viewportLock = false }: Props) => {
         zIndex={20}
         flexShrink={0}
         borderBottomWidth="1px"
-        borderColor={border}
-        bg={useColorModeValue('rgba(250, 250, 248, 0.85)', 'rgba(11, 12, 15, 0.85)')}
+        borderColor="site.line"
+        bg="site.header"
         backdropFilter="blur(12px)"
-        sx={{ WebkitBackdropFilter: 'blur(12px)' }}>
+        css={{ WebkitBackdropFilter: 'blur(12px)' }}>
         <Navbar />
       </Box>
       <Box
