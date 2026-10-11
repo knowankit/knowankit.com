@@ -190,7 +190,7 @@ const HomePage = () => {
                 fontWeight="700"
                 letterSpacing="-0.03em"
                 mb={2}>
-                Interfaces that scale. Teams that level up.
+                Build less. Build it well.
               </Heading>
             </MotionBox>
 
