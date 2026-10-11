@@ -8,8 +8,6 @@ import {
   HStack,
   Text,
   VStack,
-  Wrap,
-  WrapItem,
   useColorModeValue
 } from '@chakra-ui/react';
 import Link from 'next/link';
@@ -28,21 +26,6 @@ const MotionBox = motion(Box);
 
 const roles = ['Frontend', 'Backend', 'AI', 'DevOps'];
 
-const skills = [
-  'React',
-  'TypeScript',
-  'Next.js',
-  'Node.js',
-  'PostgreSQL',
-  'REST / GraphQL',
-  'Design systems',
-  'CSS',
-  'AWS',
-  'Docker',
-  'Accessibility',
-  'Testing'
-];
-
 const HomePage = () => {
   const [stars, setStars] = useState(0);
   const [displayStars, setDisplayStars] = useState(0);
@@ -51,15 +34,7 @@ const HomePage = () => {
   const starsMotion = useMotionValue(0);
   const roundedStars = useTransform(starsMotion, (latest) => Math.round(latest));
 
-  const cardBg = useColorModeValue('white', 'rgba(24, 24, 27, 0.72)');
-  const cardBorder = useColorModeValue('blackAlpha.100', 'whiteAlpha.100');
-  const cardShadow = useColorModeValue(
-    '0 1px 0 rgba(0,0,0,0.04) inset, 0 8px 28px rgba(15, 23, 42, 0.06)',
-    '0 1px 0 rgba(255,255,255,0.06) inset, 0 8px 28px rgba(0,0,0,0.35)'
-  );
   const subtext = useColorModeValue('ink.600', 'ink.300');
-  const tagBg = useColorModeValue('ink.100', 'whiteAlpha.100');
-  const tagColor = useColorModeValue('ink.700', 'ink.200');
 
   useEffect(() => {
     let cancelled = false;
@@ -136,12 +111,7 @@ const HomePage = () => {
         px={{ base: 3, sm: 4, md: 6 }}
         py={{ base: 2, md: 3 }}
         centerContent>
-        <Grid
-          templateColumns={{ base: '1fr', lg: 'minmax(0,1.05fr) minmax(0,0.95fr)' }}
-          gap={{ base: 3, md: 4, lg: 5 }}
-          alignItems={{ base: 'start', lg: 'center' }}
-          w="100%"
-          maxW="100%">
+        <Grid templateColumns="1fr" w="100%" maxW="42rem">
           <VStack align="start" spacing={{ base: 2, md: 3 }} minW={0} minH={0} overflow="hidden">
             <MotionBox initial="hidden" animate="show" variants={fadeUp(0)}>
               <Text
@@ -280,59 +250,6 @@ const HomePage = () => {
               </HStack>
             </MotionBox>
           </VStack>
-
-          <MotionBox
-            minW={0}
-            initial="hidden"
-            animate="show"
-            variants={fadeUp(0.4)}
-            borderRadius="xl"
-            borderWidth="1px"
-            borderColor={cardBorder}
-            bg={cardBg}
-            boxShadow={cardShadow}
-            p={4}
-            backdropFilter="blur(8px)"
-            sx={{
-              WebkitBackdropFilter: 'blur(8px)',
-              transition: 'box-shadow 0.2s ease',
-              _hover: {
-                boxShadow: '0 0 0 1px rgba(232,148,18,0.5), 0 8px 28px rgba(232,148,18,0.12)'
-              }
-            }}>
-            <Text
-              fontFamily="mono"
-              fontSize="0.75rem"
-              letterSpacing="0.12em"
-              color="brand.400"
-              mb={3}>
-              SKILLS
-            </Text>
-            <Wrap spacing={1.5}>
-              {skills.map((skill) => (
-                <WrapItem key={skill}>
-                  <Text
-                    as="span"
-                    fontSize="sm"
-                    fontWeight="600"
-                    px={2.5}
-                    py={1}
-                    borderRadius="full"
-                    borderWidth="1px"
-                    borderColor="transparent"
-                    bg={tagBg}
-                    color={tagColor}
-                    transition="all 0.15s ease"
-                    _hover={{
-                      transform: 'translateY(-2px)',
-                      borderColor: 'brand.500'
-                    }}>
-                    {skill}
-                  </Text>
-                </WrapItem>
-              ))}
-            </Wrap>
-          </MotionBox>
         </Grid>
       </Container>
     </Box>

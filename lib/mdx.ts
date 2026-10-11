@@ -31,6 +31,9 @@ export async function getFileBySlug(type, slug) {
   const rehypePrism = await import('rehype-prism-plus');
 
   const mdxSource = await serialize(withCodeTitles(content), {
+    // Posts use component props like width={1501 / 2}. v6 blocks all JS by default.
+    // blockDangerousJS stays on, so eval/Function/process are still rejected.
+    blockJS: false,
     mdxOptions: {
       rehypePlugins: [
         rehypeSlug.default,
