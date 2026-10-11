@@ -38,11 +38,6 @@ const BlogLayout: FC<Props> = ({ children, frontMatter }) => {
         <meta property="og:site_name" content="Know Ankit" />
         <meta property="og:title" content={frontMatter.title} />
         <meta property="og:image" content={`https://knowankit.com${frontMatter.image}`} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@knowankit" />
-        <meta name="twitter:title" content={frontMatter.title} />
-        <meta name="twitter:description" content={frontMatter.summary} />
-        <meta name="twitter:image" content={`https://knowankit.com${frontMatter.image}`} />
       </Head>
       <Box className="mdx">
         <Global styles={prismDarkTheme} />

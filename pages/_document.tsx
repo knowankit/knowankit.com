@@ -7,6 +7,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
           <link rel="icon" type="image/png" href="/portfolio-logo.png" />
           <link rel="icon" type="image/png" href="/portfolio-logo.png" />
           <script

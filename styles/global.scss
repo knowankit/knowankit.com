@@ -1,14 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 @import './mdx.scss';
 @import './icon.scss';
 
 body {
-  font-family: 'Titillium Web';
-  font-size: 18px;
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  font-size: 17px;
+}
+
+/* Subtle blueprint grid — reads “systems / craft” without overwhelming content */
+.page-grid-bg {
+  background-image:
+    linear-gradient(rgba(232, 148, 18, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 148, 18, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 75%);
+}
+
+.chakra-ui-dark .page-grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 200, 120, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 200, 120, 0.05) 1px, transparent 1px);
 }
 
 .dash {
-  color: #ff851b;
+  color: #e89412;
   @keyframes flickerAnimation {
     0% {
       opacity: 1;

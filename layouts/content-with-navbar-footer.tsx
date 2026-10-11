@@ -1,21 +1,61 @@
 import Footer from '@/components/footer';
 import Navbar from '@/components/navbar';
-import { Box } from '@chakra-ui/react';
+import { Box, useColorModeValue } from '@chakra-ui/react';
+import React from 'react';
 
-const ContentWithNavbarFooter = ({ children }) => (
-  <Box>
-    <Box height="5.25rem" width="100vw">
-      <Navbar />
-    </Box>
-    <Box overflowY="scroll" height="calc(100vh - 10.4rem)">
-      <Box as="main" height="inherit">
+type Props = {
+  children: React.ReactNode;
+  /** Lock shell to one viewport height and clip overflow (home landing only). */
+  viewportLock?: boolean;
+};
+
+const ContentWithNavbarFooter = ({ children, viewportLock = false }: Props) => {
+  const border = useColorModeValue('blackAlpha.100', 'whiteAlpha.100');
+
+  return (
+    <Box
+      minH={viewportLock ? '100dvh' : '100vh'}
+      h={viewportLock ? '100dvh' : undefined}
+      maxH={viewportLock ? '100dvh' : undefined}
+      display="flex"
+      flexDirection="column"
+      position="relative"
+      w="100%"
+      maxW="100%"
+      overflow={viewportLock ? 'hidden' : 'visible'}
+      overflowX="hidden">
+      <Box
+        position="sticky"
+        top={0}
+        zIndex={20}
+        flexShrink={0}
+        borderBottomWidth="1px"
+        borderColor={border}
+        bg={useColorModeValue('rgba(250, 250, 248, 0.85)', 'rgba(11, 12, 15, 0.85)')}
+        backdropFilter="blur(12px)"
+        sx={{ WebkitBackdropFilter: 'blur(12px)' }}>
+        <Navbar />
+      </Box>
+      <Box
+        as="main"
+        flex={viewportLock ? '1' : undefined}
+        flexGrow={viewportLock ? 1 : undefined}
+        minH={viewportLock ? 0 : undefined}
+        minW={0}
+        width="100%"
+        maxW="100%"
+        position="relative"
+        overflowX="hidden"
+        overflowY={viewportLock ? 'hidden' : 'visible'}
+        display={viewportLock ? 'flex' : undefined}
+        flexDirection={viewportLock ? 'column' : undefined}>
         {children}
       </Box>
+      <Box flexShrink={0}>
+        <Footer />
+      </Box>
     </Box>
-    <Box>
-      <Footer />
-    </Box>
-  </Box>
-);
+  );
+};
 
 export default ContentWithNavbarFooter;

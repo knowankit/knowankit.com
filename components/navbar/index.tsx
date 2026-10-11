@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, IconButton } from '@chakra-ui/react';
+import { Box, Flex, IconButton, Text, HStack } from '@chakra-ui/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import {
@@ -9,95 +9,153 @@ import {
   DrawerOverlay,
   DrawerCloseButton,
   useDisclosure,
-  useColorMode
+  useColorMode,
+  useColorModeValue
 } from '@chakra-ui/react';
 import { BiMenuAltRight } from 'react-icons/bi';
 import { BsMoon, BsSun } from 'react-icons/bs';
 
+const navItems = [
+  { name: 'Home', link: '/' },
+  { name: 'Projects', link: '/projects' },
+  { name: 'Writing', link: '/blogs' },
+  { name: 'About', link: '/about' }
+];
+
+type NavLinkProps = { href: string; label: string; onNavigate?: () => void };
+
+const NavLink = ({ href, label, onNavigate }: NavLinkProps) => {
+  const router = useRouter();
+  const muted = useColorModeValue('ink.600', 'ink.300');
+  const activeColor = useColorModeValue('brand.600', 'brand.300');
+  const hoverInactive = useColorModeValue('ink.800', 'ink.50');
+  const isActive = router.asPath === href || (href !== '/' && router.asPath.startsWith(href));
+
+  return (
+    <Link href={href} passHref>
+      <Box
+        as="a"
+        onClick={onNavigate}
+        px={3}
+        py={2}
+        borderRadius="md"
+        fontWeight="600"
+        fontSize="sm"
+        letterSpacing="0.02em"
+        color={isActive ? activeColor : muted}
+        position="relative"
+        transition="color 0.2s ease"
+        _hover={{ color: isActive ? activeColor : hoverInactive }}
+        _after={
+          isActive
+            ? {
+                content: '""',
+                position: 'absolute',
+                left: 3,
+                right: 3,
+                bottom: '6px',
+                height: '2px',
+                borderRadius: 'full',
+                bg: 'brand.500'
+              }
+            : undefined
+        }>
+        {label}
+      </Box>
+    </Link>
+  );
+};
+
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
-  const router = useRouter();
-
-  const loadMenu = (isMobile = false) => {
-    const menus = [
-      { name: 'Home', link: '/' },
-      { name: 'Projects', link: '/projects' },
-      { name: 'Blog', link: '/blogs' },
-      { name: 'About me', link: '/about' }
-    ];
-
-    if (isMobile) {
-      return (
-        <Box
-          height="100vh"
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center">
-          {menus.map((menu, index) => (
-            <Box
-              m="1rem"
-              height="10vh"
-              key={index}
-              fontWeight="bold"
-              fontSize="2rem"
-              color={router.asPath === menu.link ? 'brand' : ''}>
-              <Link href={menu.link} passHref>
-                {menu.name}
-              </Link>
-            </Box>
-          ))}
-        </Box>
-      );
-    }
-
-    return menus.map((menu, index) => (
-      <Box
-        mr="20px"
-        key={index}
-        cursor="pointer"
-        fontWeight="bold"
-        color={router.asPath === menu.link ? 'brand' : ''}>
-        <Link href={menu.link} passHref>
-          <Box as="span" fontWeight="bold">
-            {menu.name}
-          </Box>
-        </Link>
-      </Box>
-    ));
-  };
+  const muted = useColorModeValue('ink.600', 'ink.300');
+  const iconHoverBg = useColorModeValue('blackAlpha.50', 'whiteAlpha.100');
+  const drawerBg = useColorModeValue('ink.50', 'ink.900');
 
   return (
-    <Box
-      display="flex"
-      boxShadow="md"
-      justifyContent="end"
-      alignItems="center"
-      height="5.125rem"
-      bgColor="transparent">
-      <Box display={['none', 'none', 'flex', 'flex']} alignItems="center" fontSize="1.2rem">
-        {loadMenu()}
-        <Box m="1rem">
-          <IconButton
-            icon={colorMode === 'light' ? <BsMoon /> : <BsSun />}
-            aria-label="change mode"
-            borderRadius="md"
-            onClick={toggleColorMode}
-          />
-        </Box>
-      </Box>
-      <Box m="1rem" display={['flex', 'flex', 'none', 'none']}>
-        <BiMenuAltRight fontSize="2.5em" cursor="pointer" onClick={onOpen} />
+    <Flex
+      as="header"
+      align="center"
+      justify="space-between"
+      w="100%"
+      maxW="1200px"
+      minW={0}
+      mx="auto"
+      px={{ base: 4, md: 8 }}
+      py={4}>
+      <Link href="/" passHref>
+        <HStack as="a" alignItems="baseline" spacing={2} aria-label="Home">
+          <Text
+            fontFamily="mono"
+            fontSize="sm"
+            fontWeight="600"
+            letterSpacing="0.08em"
+            color="brand.400">
+            KA
+          </Text>
+          <Text
+            display={{ base: 'none', sm: 'block' }}
+            fontSize="sm"
+            fontWeight="500"
+            color={muted}>
+            Ankit Kumar
+          </Text>
+        </HStack>
+      </Link>
+
+      <HStack spacing={1} display={{ base: 'none', md: 'flex' }}>
+        {navItems.map((item) => (
+          <NavLink key={item.link} href={item.link} label={item.name} />
+        ))}
+        <IconButton
+          ml={2}
+          size="sm"
+          variant="ghost"
+          aria-label={colorMode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+          icon={colorMode === 'light' ? <BsMoon /> : <BsSun />}
+          onClick={toggleColorMode}
+          color={muted}
+          _hover={{ bg: iconHoverBg }}
+        />
+      </HStack>
+
+      <HStack spacing={2} display={{ base: 'flex', md: 'none' }}>
+        <IconButton
+          size="sm"
+          variant="ghost"
+          aria-label={colorMode === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+          icon={colorMode === 'light' ? <BsMoon /> : <BsSun />}
+          onClick={toggleColorMode}
+          color={muted}
+          _hover={{ bg: iconHoverBg }}
+        />
+        <IconButton
+          variant="ghost"
+          aria-label="Open menu"
+          icon={<BiMenuAltRight size={26} />}
+          onClick={onOpen}
+          color={muted}
+          _hover={{ bg: iconHoverBg }}
+        />
         <Drawer size="full" onClose={onClose} isOpen={isOpen}>
           <DrawerOverlay />
-          <DrawerContent>
+          <DrawerContent bg={drawerBg}>
             <DrawerCloseButton />
-            <DrawerBody>{loadMenu(true)}</DrawerBody>
+            <DrawerBody
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
+              gap={6}>
+              {navItems.map((item) => (
+                <NavLink key={item.link} href={item.link} label={item.name} onNavigate={onClose} />
+              ))}
+            </DrawerBody>
           </DrawerContent>
         </Drawer>
-      </Box>
-    </Box>
+      </HStack>
+    </Flex>
   );
 };
 

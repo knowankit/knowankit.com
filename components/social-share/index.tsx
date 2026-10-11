@@ -1,6 +1,6 @@
 import { Box, HStack, Link, VStack } from '@chakra-ui/react';
 import React, { FC } from 'react';
-import { IoLogoFacebook, IoLogoLinkedin, IoLogoTwitter } from 'react-icons/io';
+import { IoLogoFacebook, IoLogoLinkedin } from 'react-icons/io';
 
 interface IProps {
   title: string;
@@ -9,12 +9,6 @@ interface IProps {
 
 const SocialShare: FC<IProps> = ({ title, url = window.location.href }) => {
   const socialLinks = [
-    {
-      href: `https://twitter.com/intent/tweet?text=${title}&url=${url}`,
-      label: 'Twitter',
-      icon: IoLogoTwitter,
-      bg: '#1DA1F2'
-    },
     {
       href: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
       label: 'Facebook',
